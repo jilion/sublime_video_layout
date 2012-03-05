@@ -1,0 +1,15 @@
+- if request.subdomain == 'my'
+  /[if lte IE 8]
+    %meta{ "http-equiv" => "Refresh", content: "0;url=http://jilion.com/ie" }
+    %style{ type: "text/css", media: "screen" }
+      == body {background:#fff;display:none;}
+- else
+  /[if lte IE 7]
+    %meta{ "http-equiv" => "Refresh", content: "0;url=http://jilion.com/ie" }
+    %style{ type: "text/css", media: "screen" }
+      == body {background:#fff;display:none;}
+
+/[if lte IE 8]
+  = stylesheet_link_tag("ie")
+/[if lte IE 9]
+  = javascript_include_tag("#{request.protocol}html5shiv.googlecode.com/svn/trunk/html5.js")

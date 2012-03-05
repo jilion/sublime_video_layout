@@ -1,0 +1,35 @@
+!!! 5
+%html{ "xmlns" => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", "lang" => "en" }
+  %head
+    - title = yield(:title)
+    %title= title_env_prefix + title_subdomain_prefix(request) + (title.present? ? " - #{title}" : '')
+    %meta{ "http-equiv" => "X-UA-Compatible", :content => "chrome=1" }
+    %meta{ "http-equiv" => "Content-Type", :content => "text/html;charset=UTF-8" }
+    = stylesheet_link_tag('my')
+    -# = airbrake_javascript_notifier
+    = csrf_meta_tag
+    %link{ :rel => "shortcut icon", :href => "/favicon.ico", :type => "image/x-icon" }
+
+    /[if lte IE 6]
+      %meta{ "http-equiv" => "Refresh", :content => "0;url=http://jilion.com/ie" }
+      %style{ :type => "text/css", :media => "screen" }
+        == body {background:#fff;display:none;}
+    /[if lte IE 9]
+      = javascript_include_tag("#{request.protocol}html5shiv.googlecode.com/svn/trunk/html5.js")
+
+    = javascript_include_tag('my')
+
+    = yield :head
+
+    = javascript_include_tag "#{request.protocol}use.typekit.com/vcc7hji.js"
+    :javascript
+      try { Typekit.load(); } catch(e) { }
+
+  %body{ class: params[:page] ? h(params[:page]) : nil }
+    #popup_layout
+      %h1
+        %span= "SublimeVideo"
+      = yield
+    = yield :bottom
+
+    = render 'layouts/gosquared' if Rails.env.production?
