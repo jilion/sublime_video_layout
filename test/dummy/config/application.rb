@@ -4,7 +4,6 @@ require 'rails/all'
 
 Bundler.require
 require "sublimevideo_layout"
-require 'haml'
 
 module Dummy
   class Application < Rails::Application

@@ -1,7 +1,11 @@
+require 'haml'
+require 'modernizr'
+require 'prototype-rails'
+
 module SublimevideoLayout
   class Engine < ::Rails::Engine
     config.to_prepare do
-      ApplicationController.layout 'sublimevideo'
+      # ApplicationController.layout 'sublimevideo'
     end
   end
 end
