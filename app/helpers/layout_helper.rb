@@ -21,6 +21,11 @@ module LayoutHelper
     link_to_unless_current(name, options, html_options)
   end
   
+  def my_url(path)
+    scheme = %w[production staging].include?(Rails.env) ? 'https' : 'http'
+    "#{scheme}://my.sublimevideo.net/#{path}"
+  end
+  
   # def content_header(text, options = {})
   #   options.reverse_merge!(header_size: 2)
   #

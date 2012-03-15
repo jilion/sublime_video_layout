@@ -9,19 +9,19 @@
         %li= menu_link 'demo'
         %li= menu_link 'showcase', page: 'customer-showcase'
         %li= menu_link 'help'
-        %li= link_to "login", '/?p=login'
-        %li.signup= link_to "sign up", '/?p=signup'
+        %li= link_to "login", '/?p=login', onclick: "return SublimeVideo.showPopup('login')"
+        %li.signup= link_to "sign up", '/?p=signup', onclick: "return SublimeVideo.showPopup('signup')"
   
 = yield :menu
 
 - unless request.subdomain == 'my'
   = content_for :bottom do
-    -##popup_signup.popup{ style: "display:#{params[:p] == 'signup' ? 'block' : 'none'}" }
-    -#  .popup_wrap
-    -#    .lights
-    -#      .content= render template: '/users/new'
-    -#      = link_to "/", class: 'close', onclick: "return SublimeVideo.hidePopup('signup')" do
-    -#        %span Close
+    #popup_signup.popup{ style: "display:#{params[:p] == 'signup' ? 'block' : 'none'}" }
+      .popup_wrap
+        .lights
+          .content= render template: '/users/new'
+          = link_to "/", class: 'close', onclick: "return SublimeVideo.hidePopup('signup')" do
+            %span Close
   
     #popup_login.popup{ style: "display:#{params[:p] == 'login' ? 'block' : 'none'}" }
       .popup_wrap

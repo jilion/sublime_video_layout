@@ -34,14 +34,13 @@
                   %span= "SublimeVideo"
               = render "layouts/menu"
               = yield :header
+
     = yield :middle
 
     %section#content
       = render "layouts/docs/menu" if request.subdomain == 'docs'
       .content_wrapper= yield
       .spacer
-
-    = 'assadasd'
 
     -#= render "layouts/footer"
     = yield :bottom
