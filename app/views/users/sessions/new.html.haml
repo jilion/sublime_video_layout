@@ -1,0 +1,22 @@
+%h2.title= "Log in to SublimeVideo"
+
+= form_tag url_for(p: 'login', subdomain: 'my'), method: :post, id: 'user_login', class: "main_form" do
+  .entry.email
+    = label_tag :user_email, "Email", class: "icon"
+    = email_field_tag "user[email]", nil, class: "text", placeholder: "Email", required: true, id: :user_email
+
+  .entry.password
+    = label_tag :user_password, "Password", class: "icon"
+    = password_field_tag "user[password]", nil, class: "text", placeholder: "Password", required: true, id: :user_password
+    
+  .checkbox_wrap
+    = check_box_tag "user[remember_me]", 1, id: :user_remember_me
+    = label_tag :user_remember_me, "Remember me"
+
+  .entry.submit.login
+    = submit_tag "Log In", class: "blue_button"
+    %ul.form_list
+      -#%li.signup= link_to "Don't have an account yet?", request.subdomain == 'my' ? signup_url : root_url(host: request.domain, p: 'signup')
+      -#%li= link_to "Forgot your password?", new_user_password_url(subdomain: 'my')
+      -#%li= link_to "Didn't receive confirmation instructions?", new_user_confirmation_url(subdomain: 'my')
+  .spacer

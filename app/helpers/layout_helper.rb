@@ -6,7 +6,7 @@ module LayoutHelper
     klass << @body_class
     h(klass.compact.join(' '))
   end
-  
+
   def page_title
     title = []
     title << "[#{Rails.env.upcase}]" unless Rails.env.production?
@@ -15,15 +15,21 @@ module LayoutHelper
     h(title.compact.join(' '))
   end
   
+  def menu_link(name, options = {})
+    options[:page] ||= name
+    html_options = { onclick: "SublimeVideo.makeSticky(this, '#menu')" }
+    link_to_unless_current(name, options, html_options)
+  end
+  
   # def content_header(text, options = {})
   #   options.reverse_merge!(header_size: 2)
-  # 
+  #
   #   content_tag(:"h#{options.delete(:header_size)}", text.html_safe, options)
   # end
-  # 
+  #
   # def activable_content_tag(tag, options = {})
   #   options.reverse_merge!(active_class: 'active')
-  # 
+  #
   #   active = options[:urls].any? do |u|
   #     if u =~ /^http/
   #       controller.request.url =~ Regexp.new("^#{u}")
@@ -42,30 +48,30 @@ module LayoutHelper
   #   end
   #   classes = options[:class] ? options[:class].split(" ") : []
   #   classes << options[:active_class] if active
-  # 
+  #
   #   tag_options = { class: classes.join(" ") }
   #   tag_options[:onclick] = options[:onclick]
-  # 
+  #
   #   content_tag(tag, tag_options) { yield }
   # end
-  # 
+  #
   # def activable_menu_item(tag, url, options = {})
   #   options.reverse_merge!(urls: [url], link_text: url.to_s.titleize, link_options: {})
-  # 
+  #
   #   link = url.to_s
-  # 
+  #
   #   activable_content_tag(tag, options) do
   #     block_given? ? link_to(link, options[:link_options]) { yield } : link_to(options[:link_text], link, options[:link_options])
   #   end
   # end
-  # 
+  #
   # def activable_menu_restful_item(tag, resources, options = {})
   #   options.reverse_merge!(urls: [resources], link_text: resources.to_s.titleize, link_options: {}, class: resources.to_s)
   #   options[:namespace] = Array.wrap(options[:namespace])
-  # 
+  #
   #   namespace = options[:namespace].present? ? "#{options[:namespace].join('_')}_" : ''
   #   link = send("#{namespace}#{resources}_url", options[:url_options])
-  # 
+  #
   #   activable_content_tag(tag, options) do
   #     block_given? ? link_to(link, options[:link_options]) { yield } : link_to(options[:link_text], link, options[:link_options])
   #   end

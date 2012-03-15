@@ -1,5 +1,4 @@
 require 'haml'
-require 'modernizr'
 require 'prototype-rails'
 
 module SublimevideoLayout

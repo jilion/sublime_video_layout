@@ -19,8 +19,5 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 3.2.0"
   s.add_dependency "coffee-rails", "~> 3.2.0"
   s.add_dependency "prototype-rails", "~> 3.2.0"
-  s.add_dependency "modernizr", "~> 2.5.3"
   s.add_dependency "haml"
-
-  s.add_development_dependency "sqlite3"
 end

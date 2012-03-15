@@ -16,11 +16,11 @@
     %link{ rel: "shortcut icon", href: "http://sublimevideo.net/favicon.ico", type: "image/x-icon" }
 
     = render 'layouts/ie'
-    
+
     - unless @no_sublimevideo_js
       = javascript_include_tag 'sublimevideo'
     = yield :javascript
-    
+
     = render 'layouts/typekit'
 
   %body{ class: body_class }
@@ -30,9 +30,9 @@
           .stars
             .wrap
               %h1
-                -#= link_to root_url(demo_stats_page? || request.subdomain.blank? ? { host: request.domain, protocol: 'http' } : { subdomain: request.subdomain }) do
-                -#  %span= "SublimeVideo"
-              -#= render "layouts/menu"
+                = link_to '/', subdomain: false, protocol: 'http' do
+                  %span= "SublimeVideo"
+              = render "layouts/menu"
               = yield :header
     = yield :middle
 
@@ -40,24 +40,11 @@
       = render "layouts/docs/menu" if request.subdomain == 'docs'
       .content_wrapper= yield
       .spacer
-      
+
+    = 'assadasd'
+
     -#= render "layouts/footer"
     = yield :bottom
-
-    -#- if request.subdomain.blank? || %w[www docs].include?(request.subdomain)
-    -#  #popup_signup.popup{ style: "display:#{params[:p] == 'signup' ? 'block' : 'none'}" }
-    -#    .popup_wrap
-    -#      .lights
-    -#        .content= render template: '/my/users/new'
-    -#        = link_to "/", class: 'close', onclick: "return SublimeVideo.hidePopup('signup')" do
-    -#          %span Close
-    -#
-    -#  #popup_login.popup{ style: "display:#{params[:p] == 'login' ? 'block' : 'none'}" }
-    -#    .popup_wrap
-    -#      .lights
-    -#        .content= render template: '/my/users/sessions/new'
-    -#        = link_to "/", class: 'close', onclick: "return SublimeVideo.hidePopup('login')" do
-    -#          %span Close
 
     - if Rails.env.production?
       = render 'layouts/gosquared'

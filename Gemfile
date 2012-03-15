@@ -1,5 +1,7 @@
 source "http://rubygems.org"
 
+gem 'bundler'
+
 # Declare your gem's dependencies in sublimevideo_layout.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
 # development dependencies will be added by default to the :development group.
@@ -15,3 +17,25 @@ gemspec
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+group :development do
+  gem 'combustion', '~> 0.3.1'
+  gem 'haml-rails'
+  gem 'rack-livereload'
+end
+
+group :test do
+  gem 'rspec-rails'
+  gem 'capybara'
+end
+
+group :guard do
+  gem 'growl'
+  platforms :ruby do
+    gem 'rb-readline'
+  end
+
+  gem 'guard-pow'
+  gem 'guard-livereload'
+  gem 'guard-rspec'
+end
