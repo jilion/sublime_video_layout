@@ -7,14 +7,13 @@ require "sublimevideo_layout/version"
 Gem::Specification.new do |s|
   s.name        = "sublimevideo_layout"
   s.version     = SublimevideoLayout::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of SublimevideoLayout."
-  s.description = "TODO: Description of SublimevideoLayout."
+  s.authors     = ["Jilion"]
+  s.email       = ["info@jilion.com"]
+  s.homepage    = "http://jilion.com"
+  s.summary     = "Layout for all SublimeVideo applications."
+  s.description = "Layout for all SublimeVideo applications."
 
-  s.files = Dir["{app,config,db,lib,vendor}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
-  s.test_files = Dir["test/**/*"]
+  s.files = Dir["{app,config,db,lib,vendor}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
 
   s.add_dependency "rails", "~> 3.2.0"
   s.add_dependency "coffee-rails", "~> 3.2.0"
