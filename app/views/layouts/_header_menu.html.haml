@@ -1,21 +1,21 @@
 -# Default Menu
-- unless content_for?(:menu)
-  = content_for :menu do
+- unless content_for?(:header_menu)
+  = content_for :header_menu do
     %nav#menu
       %ul
-        %li= menu_link 'news'
-        %li= menu_link 'features'
-        %li= menu_link 'plans'
-        %li= menu_link 'demo'
-        %li= menu_link 'showcase', page: 'customer-showcase'
-        %li= menu_link 'help'
-        %li= link_to "login", '/?p=login', onclick: "return SublimeVideo.showPopup('login')"
-        %li.signup= link_to "sign up", '/?p=signup', onclick: "return SublimeVideo.showPopup('signup')"
+        = li_menu_link 'news'
+        = li_menu_link 'features'
+        = li_menu_link 'plans'
+        = li_menu_link 'demo'
+        = li_menu_link 'showcase', page: 'customer-showcase'
+        = li_menu_link 'help'
+        %li= link_to "login", custom_url('?p=login'), onclick: "return SublimeVideo.showPopup('login')"
+        %li.signup= link_to "sign up", custom_url('?p=login'), onclick: "return SublimeVideo.showPopup('signup')"
   
-= yield :menu
+= yield :header_menu
 
 - unless request.subdomain == 'my'
-  = content_for :bottom do
+  = content_for :javascript_bottom do
     #popup_signup.popup{ style: "display:#{params[:p] == 'signup' ? 'block' : 'none'}" }
       .popup_wrap
         .lights

@@ -30,20 +30,20 @@
           .stars
             .wrap
               %h1
-                = link_to '/', subdomain: false, protocol: 'http' do
+                = link_to custom_url('') do
                   %span= "SublimeVideo"
-              = render "layouts/menu"
+              = render "layouts/header_menu"
               = yield :header
 
     = yield :middle
 
     %section#content
-      = render "layouts/docs/menu" if request.subdomain == 'docs'
+      = yield :content_menu
       .content_wrapper= yield
       .spacer
 
-    -#= render "layouts/footer"
-    = yield :bottom
-
+    = render "layouts/footer"
+    
+    = yield :javascript_bottom
     - if Rails.env.production?
       = render 'layouts/gosquared'

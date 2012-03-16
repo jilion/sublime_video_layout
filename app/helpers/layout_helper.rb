@@ -14,18 +14,32 @@ module LayoutHelper
     title << "- #{@page_title}" if @page_title
     h(title.compact.join(' '))
   end
-  
-  def menu_link(name, options = {})
-    options[:page] ||= name
-    html_options = { onclick: "SublimeVideo.makeSticky(this, '#menu')" }
-    link_to_unless_current(name, options, html_options)
+
+  def li_menu_link(name, options = {})
+    url = custom_url(options[:page] || name)
+    li_options = { onclick: "SublimeVideo.makeSticky(this, '#menu')" }
+    li_options[:class] = 'active' if request.url == url
+    
+    content_tag :li, li_options do
+      link_to name, url
+    end
   end
-  
+
   def my_url(path)
-    scheme = %w[production staging].include?(Rails.env) ? 'https' : 'http'
-    "#{scheme}://my.sublimevideo.net/#{path}"
+    custom_url(path, subdomain: 'my', protocol: 'https')
   end
-  
+
+  def docs_url(path)
+    custom_url(path, subdomain: 'docs')
+  end
+
+  def custom_url(path, options = {})
+    protocol   = options[:protocol] || 'http'
+    protocol   = 'http' if %w[development test].include?(Rails.env)
+    subdomain  = "#{options[:subdomain]}." if options[:subdomain].present?
+    "#{protocol}://#{subdomain}#{request.domain}/#{path}"
+  end
+
   # def content_header(text, options = {})
   #   options.reverse_merge!(header_size: 2)
   #
