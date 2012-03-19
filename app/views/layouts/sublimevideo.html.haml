@@ -12,7 +12,7 @@
     - if !response.cache_control[:public] && !@page_caching
       = csrf_meta_tag
 
-    = stylesheet_link_tag 'sublimevideo'
+    = stylesheet_link_tag 'sublimevideo', 'application'
     %link{ rel: "shortcut icon", href: "http://sublimevideo.net/favicon.ico", type: "image/x-icon" }
 
     = render 'layouts/ie'
