@@ -29,7 +29,9 @@ group :test do
   gem 'capybara'
 end
 
-group :guard do
+group :tools do
+  gem 'gemfury'
+
   gem 'growl'
   platforms :ruby do
     gem 'rb-readline'
