@@ -10,8 +10,8 @@
         = li_menu_link 'showcase', page: 'customer-showcase'
         = li_menu_link 'help'
         %li= link_to "login", custom_url('?p=login'), onclick: "return SublimeVideo.showPopup('login')"
-        %li.signup= link_to "sign up", custom_url('?p=login'), onclick: "return SublimeVideo.showPopup('signup')"
-  
+        %li.signup= link_to "sign up", custom_url('?p=signup'), onclick: "return SublimeVideo.showPopup('signup')"
+
 = yield :header_menu
 
 - unless request.subdomain == 'my'
@@ -22,7 +22,7 @@
           .content= render template: '/users/new'
           = link_to "/", class: 'close', onclick: "return SublimeVideo.hidePopup('signup')" do
             %span Close
-  
+
     #popup_login.popup{ style: "display:#{params[:p] == 'login' ? 'block' : 'none'}" }
       .popup_wrap
         .lights
