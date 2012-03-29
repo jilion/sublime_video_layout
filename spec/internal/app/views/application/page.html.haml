@@ -9,6 +9,13 @@
     = label_tag :user_password, "Password", class: "icon"
     = password_field_tag "user[password]", nil, class: "text show_password", placeholder: "Password", required: true, id: :user_password
 
+  .entry.select
+    .left_field
+      %select
+        %option Foo
+        %option Bar
+  .spacer
+
   .break
   .entry.terms
     .checkbox_wrap
@@ -19,3 +26,20 @@
   .entry.submit.sign_up
     = submit_tag "Sign Up"
     .spacer
+
+%ul.sticky_items
+  %li
+    %a{ href: 'a' } demo
+  %li
+    %a{ href: 'a' } blog
+  %li
+    %a{ href: 'a' } help
+
+%a{ onclick: 'new SublimeVideo.UI.Flash({ message: "Foo Bar!", delay: 2 }).show(); return false;', href: 'a' }
+  Flash!
+
+%a{ onclick: 'new SublimeVideo.UI.SortLink(this).setupRemote(); return false;', href: 'a', data: { remote: true } }
+  Remote
+
+#table_spinner{ style: 'display:none;' }
+  TABLE SPINNER!!!!!!

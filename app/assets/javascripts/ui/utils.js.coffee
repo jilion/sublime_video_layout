@@ -7,7 +7,7 @@ class SublimeVideo.UI.Utils
 
   # Opens a new popup and store its reference in `SublimeVideo.UI.popup`
   #
-  # @param [Hash] options the options accepted by {SublimeVideo.UI.Popup}
+  # @param [Object] options the options accepted by {SublimeVideo.UI.Popup}
   # @see SublimeVideo.UI.Popup
   #
   @openPopup: (options) ->

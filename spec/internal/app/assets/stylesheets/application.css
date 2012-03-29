@@ -1,1 +1,41 @@
-/**/
+#flash {
+  position:absolute;
+  width:880px;
+  height:40px;
+  margin:0 auto;
+  left:0;
+  right:0;
+  top:120px;
+  overflow:hidden;
+}
+
+#flash.hidden {
+  top:40px;
+}
+
+#flash div {
+  margin:0;
+  padding:8px 12px 10px;
+}
+
+#flash .alert {
+  color:#6e0000;
+  @include gradient(#fccccc,#f8a1a1,#fcc1c1);
+}
+
+a.active {
+  color: green
+}
+
+ul.sticky_items li {
+  background-color:orange;
+}
+ul.sticky_items li a {
+  color:red;
+}
+ul.sticky_items li.active {
+  background-color:blue;
+}
+ul.sticky_items li a.active {
+  color:green;
+}

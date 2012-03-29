@@ -23,114 +23,42 @@ window.SublimeVideo =
   UI: {}
 
 jQuery(document).ready ->
+  # S2.Extensions.webkitCSSTransitions = true;
 
-  SublimeVideo.ShowPasswords = []
+  SublimeVideo.Misc.BrowserBugsFixer.fixAllBugs()
+
   jQuery('input.show_password[type=password]').each (index, input) ->
-    SublimeVideo.ShowPasswords.push new SublimeVideo.Form.ShowPassword(jQuery(this), index)
+    new SublimeVideo.Form.ShowPassword(jQuery(this), index)
 
   unless Modernizr.input.placeholder
-    SublimeVideo.PseudoPlaceholders = []
     jQuery('input[placeholder]').each ->
-      SublimeVideo.PseudoPlaceholders.push new SublimeVideo.Form.PseudoPlaceholder(jQuery(this))
+      new SublimeVideo.Form.PseudoPlaceholder(jQuery(this))
     jQuery('textarea[placeholder]').each ->
-      SublimeVideo.PseudoPlaceholders.push new SublimeVideo.Form.PseudoPlaceholder(jQuery(this))
+      new SublimeVideo.Form.PseudoPlaceholder(jQuery(this))
 
   jQuery('form').each ->
     new SublimeVideo.Form.SubmitManager jQuery(this)
 
-# document.observe("dom:loaded", function() {
-#   S2.Extensions.webkitCSSTransitions = true;
-# 
-#   // =================
-#   // = Flash notices =
-#   // =================
-# 
-#   $$('#flash .notice').each(function(element) {
-#     SublimeVideo.hideFlashMessageDelayed(element);
-#   });
-# 
-#   $$('.hidable_notice').each(function(element) {
-#     new HideableNoticeManager(element);
-#   });
-# 
-#   // =====================================
-#   // = Add site hanlder and Sites poller =
-#   // =====================================
-#   if ($("sites_table_wrap")) {
-#     SublimeVideo.sitesPoller = new SitesPoller();
-#   }
-# 
-#   // ===================================================
-#   // = Fix a <select> CSS bug in Safari (under v4.0.5) =
-#   // ===================================================
-#   var webkitVersionNumber = navigator.userAgent.match(/AppleWebKit\/([0-9]+)./);
-#   var isSafari405OrPrevious = navigator.userAgent.indexOf("Macintosh") > -1 &&
-#                               webkitVersionNumber &&
-#                               parseInt(webkitVersionNumber[1],10) <= 531; // NOTE: Safari 4.0.4 and 4.0.5 have the same webkit version number (531)
-#                                                                           // Safari 5.0 has webkit version 533
-#                                                                           // Safari 4.0.5 is the last version pre-5.0
-# 
-#   if (isSafari405OrPrevious) {
-#     $$('select').each(function(element){
-#       element.setStyle({ fontFamily:"Lucida Grande, Arial, sans-serif", fontSize:"15px" });
-#     });
-#   }
-# });
-# 
-# // ====================
-# // = Global functions =
-# // ====================
-# 
-# SublimeVideo.flashMessage = function(type, message) {
-#   var flashDiv = $("flash");
-#   if (flashDiv) flashDiv.remove();
-# 
-#   var noticeDiv = new Element("div", { className:type }).update(message);
-#   flashDiv = new Element("div", { id:"flash" }).insert(noticeDiv);
-#   $("content").insert({ top: flashDiv });
-# 
-#   SublimeVideo.hideFlashMessageDelayed(noticeDiv);
-# };
-# 
-# SublimeVideo.hideFlashMessageDelayed = function(flashEl) {
-#   setTimeout(function(){
-#     flashEl.morph('top:40px', { duration: 0.7 });
-#   }, 15000);
-# };
-# 
-# SublimeVideo.openPopup = function(itemId, idPrefix, url, className, anchorId) { // item can be site
-#   // if (!SublimeVideo.popupHandler) SublimeVideo.popupHandler = new PopupHandler();
-#   SublimeVideo.popupHandler = new PopupHandler();
-#   SublimeVideo.popupHandler.open(itemId, idPrefix, url, className, anchorId);
-# };
-# 
+  jQuery('ul.sticky_items').each ->
+    new SublimeVideo.UI.Menu(jQuery(this)).setupStickyItems()
+
+  # "My" app specific code
+  #
+  # ## Flash notices
+  # 
+  #   jQuery('#flash .notice').each ->
+  #     SublimeVideo.hideFlashMessageDelayed jQuery(this)
+  # 
+  #   jQuery('.hidable_notice').each ->
+  #     new HideableNoticeManager jQuery(this)
+  # 
+  # ## Sites poller
+  # SublimeVideo.sitesPoller = new SitesPoller() if jQuery('#sites_table_wrap')
+
 # // ====================
 # // = Onclick handlers =
 # // ====================
 # 
-# SublimeVideo.closePopup = function() {
-#   if (!SublimeVideo.popupHandler) SublimeVideo.popupHandler = new PopupHandler();
-#   SublimeVideo.popupHandler.close();
-#   return false;
-# };
-# 
-# SublimeVideo.remoteSortLink = function(element) {
-#   SublimeVideo.makeRemoteLinkSticky(element);
-#   SublimeVideo.showTableSpinner();
-# };
-# 
-# SublimeVideo.makeRemoteLinkSticky = function(element) {
-#   var container = element.up();
-#   container.select("a.active[data-remote]").each(function(el){
-#     el.removeClassName('active');
-#   });
-#   element.addClassName("active");
-# };
-# 
-# SublimeVideo.showTableSpinner = function() {
-#   var tableSpinner = $('table_spinner');
-#   if (tableSpinner) tableSpinner.show();
-# };
 # 
 # SublimeVideo.showLogin = function() {
 #   SublimeVideo.openPopup('popup', 'login', null, 'popup', null);
