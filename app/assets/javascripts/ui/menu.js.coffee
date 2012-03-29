@@ -8,7 +8,7 @@ class SublimeVideo.UI.Menu
 
   setupStickyItems: ->
     @element.find('a').each (index, el) =>
-      el.on 'click', this.stickyBehavior
+      el.on('click', this.stickyBehavior) unless el.hasClass 'no_sticky'
 
   stickyBehavior: (event) =>
     @element.find('.active').each -> jQuery(this).removeClass 'active'

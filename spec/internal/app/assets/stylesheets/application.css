@@ -1,4 +1,4 @@
-#flash {
+#test_app #flash {
   position:absolute;
   width:880px;
   height:40px;
@@ -9,33 +9,33 @@
   overflow:hidden;
 }
 
-#flash.hidden {
+#test_app #flash.hidden {
   top:40px;
 }
 
-#flash div {
+#test_app #flash div {
   margin:0;
   padding:8px 12px 10px;
 }
 
-#flash .alert {
+#test_app #flash .alert {
   color:#6e0000;
   @include gradient(#fccccc,#f8a1a1,#fcc1c1);
 }
 
-a.active {
+#test_app a.active {
   color: green
 }
 
-ul.sticky_items li {
+#test_app ul.sticky_items li {
   background-color:orange;
 }
-ul.sticky_items li a {
+#test_app ul.sticky_items li a {
   color:red;
 }
-ul.sticky_items li.active {
+#test_app ul.sticky_items li.active {
   background-color:blue;
 }
-ul.sticky_items li a.active {
+#test_app ul.sticky_items li a.active {
   color:green;
 }

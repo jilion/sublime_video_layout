@@ -2,15 +2,15 @@
 - unless content_for?(:header_menu)
   = content_for :header_menu do
     %nav#menu
-      %ul
+      %ul.sticky_items
         = li_menu_link 'news'
         = li_menu_link 'features'
         = li_menu_link 'plans'
         = li_menu_link 'demo'
         = li_menu_link 'showcase', page: 'customer-showcase'
         = li_menu_link 'help'
-        %li= link_to "login", custom_url('?p=login'), onclick: "return SublimeVideo.showPopup('login')"
-        %li.signup= link_to "sign up", custom_url('?p=signup'), onclick: "return SublimeVideo.showPopup('signup')"
+        %li= link_to "login", custom_url('?p=login'), onclick: "return SublimeVideo.showPopup('login')", class: 'no_sticky'
+        %li.signup= link_to "sign up", custom_url('?p=login'), onclick: "return SublimeVideo.showPopup('signup')", class: 'no_sticky'
 
 = yield :header_menu
 

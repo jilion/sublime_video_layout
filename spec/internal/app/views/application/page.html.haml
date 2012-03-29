@@ -1,45 +1,46 @@
 %h2= params[:page]
 
-= form_tag '', id: 'user_signup', class: "main_form", data: { remote: true, 'password-protected' => true } do
-  .entry.email
-    = label_tag :user_email, "Email", class: "icon"
-    = email_field_tag "user[email]", nil, class: "text", placeholder: "Email", required: true, id: :user_email
+#test_app
+  = form_tag '', id: 'user_signup', class: "main_form", data: { remote: true, 'password-protected' => true } do
+    .entry.email
+      = label_tag :user_email, "Email", class: "icon"
+      = email_field_tag "user[email]", nil, class: "text", placeholder: "Email", required: true, id: :user_email
 
-  .entry.password
-    = label_tag :user_password, "Password", class: "icon"
-    = password_field_tag "user[password]", nil, class: "text show_password", placeholder: "Password", required: true, id: :user_password
+    .entry.password
+      = label_tag :user_password, "Password", class: "icon"
+      = password_field_tag "user[password]", nil, class: "text show_password", placeholder: "Password", required: true, id: :user_password
 
-  .entry.select
-    .left_field
-      %select
-        %option Foo
-        %option Bar
-  .spacer
-
-  .break
-  .entry.terms
-    .checkbox_wrap
-      = check_box_tag "user[terms_and_conditions]", 1, false, id: :user_terms_and_conditions
-      = label_tag :user_terms_and_conditions, 
-        "I agree to the #{link_to("Terms & Conditions", my_url('terms'), onclick: "window.open(this); return false")}.".html_safe
-
-  .entry.submit.sign_up
-    = submit_tag "Sign Up"
+    .entry.select
+      .left_field
+        %select
+          %option Foo
+          %option Bar
     .spacer
 
-%ul.sticky_items
-  %li
-    %a{ href: 'a' } demo
-  %li
-    %a{ href: 'a' } blog
-  %li
-    %a{ href: 'a' } help
+    .break
+    .entry.terms
+      .checkbox_wrap
+        = check_box_tag "user[terms_and_conditions]", 1, false, id: :user_terms_and_conditions
+        = label_tag :user_terms_and_conditions, 
+          "I agree to the #{link_to("Terms & Conditions", my_url('terms'), onclick: "window.open(this); return false")}.".html_safe
 
-%a{ onclick: 'new SublimeVideo.UI.Flash({ message: "Foo Bar!", delay: 2 }).show(); return false;', href: 'a' }
-  Flash!
+    .entry.submit.sign_up
+      = submit_tag "Sign Up"
+      .spacer
 
-%a{ onclick: 'new SublimeVideo.UI.SortLink(this).setupRemote(); return false;', href: 'a', data: { remote: true } }
-  Remote
+  %ul.sticky_items
+    %li
+      %a{ href: 'a' } demo
+    %li
+      %a{ href: 'a' } blog
+    %li
+      %a{ href: 'a' } help
 
-#table_spinner{ style: 'display:none;' }
-  TABLE SPINNER!!!!!!
+  %a{ onclick: 'new SublimeVideo.UI.Flash({ message: "Foo Bar!", delay: 2 }).show(); return false;', href: 'a' }
+    Flash!
+
+  %a{ onclick: 'new SublimeVideo.UI.SortLink(this).setupRemote(); return false;', href: 'a', data: { remote: true } }
+    Remote
+
+  #table_spinner{ style: 'display:none;' }
+    TABLE SPINNER!!!!!!
