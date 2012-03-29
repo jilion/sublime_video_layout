@@ -17,6 +17,10 @@
 
     = render 'layouts/ie'
 
+    = javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'
+    :javascript
+      $.noConflict();
+
     - unless @no_sublimevideo_js
       = javascript_include_tag 'sublimevideo'
     = yield :javascript
@@ -43,7 +47,7 @@
       .spacer
 
     = render "layouts/footer"
-    
+
     = yield :javascript_bottom
     - if Rails.env.production?
       = render 'layouts/gosquared'

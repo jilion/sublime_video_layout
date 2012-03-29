@@ -8,7 +8,7 @@ document.observe "dom:loaded", ->
 
 SublimeVideo.showPopup = (name, successUrl = null) ->
   failurePath ?= ''
-  successUrl ?= "#{document.location.protocol}//my.#{SublimeVideo.topDomainHost()}/sites"
+  successUrl ?= "#{document.location.protocol}//my.#{SublimeVideo.Misc.Utils.topDomainHost()}/sites"
   if $("popup_#{name}")
     SublimeVideo.openSimplePopup("popup_#{name}")
     $("user_#{name}").insert({ top: new Element("input", { name: "success_url", type: 'hidden', value: successUrl }) })

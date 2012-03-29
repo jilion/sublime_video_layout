@@ -9,7 +9,7 @@ guard 'pow' do
   watch('Gemfile')
   watch('Gemfile.lock')
   # watch('config/application.rb')
-   
+
   watch(%r{app/views/.+})
   watch(%r{app/helpers/.+})
   watch(%r{spec/internal/app/.+})
@@ -34,5 +34,3 @@ guard 'rspec', :version => 2 do
   # Capybara request specs
   watch(%r{^app/views/(.+)/.*\.(erb|haml)$})          { |m| "spec/integration/#{m[1]}_spec.rb" }
 end
-
-
