@@ -21,3 +21,15 @@ class SublimeVideo.UI.Utils
     SublimeVideo.UI.popup.close()
 
     false
+
+  @openAccountPopup: (name, successUrl = null) ->
+    failurePath ?= ''
+
+    if el = jQuery("#popup_#{name}")
+      SublimeVideo.UI.popup = new SublimeVideo.UI.SimplePopup(element: el)
+      jQuery("#user_return_to").attr(value: successUrl) if successUrl?
+      jQuery("#popup_#{name}").find("#user_email").focus() if SublimeVideo.Misc.Utils.iOS
+
+      SublimeVideo.UI.popup.open()
+
+    false

@@ -1,16 +1,18 @@
 %h2.title= "Log in to SublimeVideo"
 
 = form_tag my_url('login'), id: 'user_login', class: "main_form" do
+  = hidden_field_tag 'user_return_to', my_url('sites')
+
   .entry.email
     = label_tag :user_email, "Email", class: "icon"
-    = email_field_tag "user[email]", nil, class: "text", placeholder: "Email", required: true, id: :user_email
+    = email_field_tag "user[email]", nil, class: "text", placeholder: "Email", required: true, id: 'user_email'
 
   .entry.password
     = label_tag :user_password, "Password", class: "icon"
-    = password_field_tag "user[password]", nil, class: "text", placeholder: "Password", required: true, id: :user_password
+    = password_field_tag "user[password]", nil, class: "text", placeholder: "Password", required: true, id: 'user_password'
     
   .checkbox_wrap
-    = check_box_tag "user[remember_me]", 1, id: :user_remember_me
+    = check_box_tag "user[remember_me]", 1, id: 'user_remember_me'
     = label_tag :user_remember_me, "Remember me"
 
   .entry.submit.login

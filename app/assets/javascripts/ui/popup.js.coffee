@@ -22,7 +22,7 @@ class SublimeVideo.UI.SimplePopup
   open: ->
     this.close()
 
-    sublimevideo.stop() if typeof(sublimevideo) is 'object' and SublimeVideo.iOS
+    sublimevideo.pause() if typeof(sublimevideo) is 'object' and SublimeVideo.Misc.Utils.iOS
 
     @element.show()
     this.startObservers()
@@ -69,7 +69,7 @@ class SublimeVideo.UI.Popup extends SublimeVideo.UI.SimplePopup
   open: ->
     this.close()
 
-    sublimevideo.stop() if typeof(sublimevideo) is 'object' and SublimeVideo.iOS
+    sublimevideo.pause() if typeof(sublimevideo) is 'object' and SublimeVideo.Misc.Utils.iOS
 
     unless @element?
       @element = jQuery '<div>'

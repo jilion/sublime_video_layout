@@ -14,7 +14,6 @@
 #= require_tree ./media
 #= require_tree ./misc
 #= require_tree ./ui
-#= require base_prototype
 
 window.SublimeVideo =
   Form: {}
@@ -26,6 +25,9 @@ jQuery(document).ready ->
   # S2.Extensions.webkitCSSTransitions = true;
 
   SublimeVideo.Misc.BrowserBugsFixer.fixAllBugs()
+
+  # Only one popup can be opened-up at a time
+  SublimeVideo.UI.popup = null
 
   jQuery('input.show_password[type=password]').each (index, input) ->
     new SublimeVideo.Form.ShowPassword(jQuery(this), index)
@@ -41,6 +43,9 @@ jQuery(document).ready ->
 
   jQuery('ul.sticky_items').each ->
     new SublimeVideo.UI.Menu(jQuery(this)).setupStickyItems()
+
+  if matches = document.location.search.match(/p=(login|signup)/)
+    SublimeVideo.UI.Utils.openAccountPopup(matches[1])
 
   # "My" app specific code
   #
