@@ -16,11 +16,10 @@ module SublimeVideoLayoutHelper
   end
 
   def li_menu_link(name, options = {})
-    url = custom_url(options[:page] || name)
-    li_options = { onclick: "SublimeVideo.makeSticky(this, '#menu')" }
-    li_options[:class] = 'active' if request.url == url
-
-    content_tag :li, li_options do
+    url = custom_url(options[:page] || name, options)
+    classes = Array(options[:class])
+    classes << 'active' if request.url == url
+    content_tag :li, { class: classes.join(' ') } do
       link_to name, url
     end
   end
@@ -37,7 +36,7 @@ module SublimeVideoLayoutHelper
     protocol   = options[:protocol] || 'http'
     protocol   = 'http' if %w[development test].include?(Rails.env)
     subdomain  = "#{options[:subdomain]}." if options[:subdomain].present?
-    "#{protocol}://#{subdomain}#{request.domain}/#{path}"
+    "#{protocol}://#{subdomain}#{request.domain}/#{path.sub(%r{\A/}, '')}"
   end
 
 end
