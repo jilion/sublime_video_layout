@@ -76,15 +76,19 @@ class SublimeVideo.UI.Popup extends SublimeVideo.UI.SimplePopup
 
     unless @element?
       @element = jQuery '<div>'
-                   id: "#{@options.id}"
-                   class: "#{@options.class} loading"
+                   id: "#{@options.id or ''}"
+                   class: "#{@options.class or ''} loading"
       @element.html("<div class='popup_wrap'>
                        <div class='lights'>
                          <div class='content'></div>
                        </div>
                        <a href='' onclick='return SublimeVideo.UI.Utils.closePopup()' class='close'><span>Close</span></a>
                      </div>")
-      this.setContent(@options.content) if @options.content
+      if @options.content
+        this.setContent(@options.content)
+      else if @options.anchor
+        this.setContent(@options.anchor.html())
+        @options.anchor.html('')
       jQuery('#content').append @element
 
     if @options.url?
@@ -99,9 +103,9 @@ class SublimeVideo.UI.Popup extends SublimeVideo.UI.SimplePopup
   close: ->
     this.stopObservers()
 
-    jQuery(@options.anchorId).html @element.find('.content').html() if @options.anchorId? && @element
-
-    jQuery(".#{@options.class}").each -> jQuery(this).remove()
+    if @element
+      @options.anchor.html @element.find('.content').html() if @options.anchor?
+      @element.remove()
 
     if @options.form?
       @options.form.find('input[type=submit]', 'button').each -> jQuery(this).removeAttr 'disabled'

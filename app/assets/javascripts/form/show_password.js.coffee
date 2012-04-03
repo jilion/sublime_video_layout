@@ -2,8 +2,7 @@
 #
 class SublimeVideo.Form.ShowPassword
   constructor: (@field, @index) ->
-    # @field                 = jQuery(passwordField)
-    @showPasswordCheckbox  = jQuery('<input />', type: 'checkbox', id: 'show_password_#{@index}')
+    @showPasswordCheckbox = jQuery('<input />', type: 'checkbox', id: 'show_password_#{@index}')
 
     this.storeThisInData()
     this.insertShowPasswordCheckbox()
