@@ -23,8 +23,6 @@ class SublimeVideo.UI.Utils
     false
 
   @openAccountPopup: (name, successUrl = null) ->
-    failurePath ?= ''
-
     if el = jQuery("#popup_#{name}")
       SublimeVideo.UI.popup = new SublimeVideo.UI.SimplePopup(element: el)
       jQuery("#user_return_to").attr(value: successUrl) if successUrl?
