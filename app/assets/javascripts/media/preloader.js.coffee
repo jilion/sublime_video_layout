@@ -1,18 +1,16 @@
-class SublimeVideo.Media.ImagePreloader
-  constructor: (imageUrl, callback, options = {}) ->
-    @callback = callback
-    @imageSrc = imageUrl
-    @options  = options
-    @problem  = false
+class SublimeVideo.Media.Preloader
+  constructor: (@src, @callback, @options = {}) ->
+    @problem = false
     this.preload()
 
+class SublimeVideo.Media.ImagePreloader extends SublimeVideo.Media.Preloader
   preload: ->
     @image = new Image()
 
     @image['onload']  = this.didComplete
     @image['onerror'] = this.didFail
     @image['onabort'] = this.didAbort
-    @image['src']     = @imageSrc
+    @image['src']     = @src
 
   didFail: =>
     @problem = true
@@ -25,13 +23,8 @@ class SublimeVideo.Media.ImagePreloader
   didComplete: =>
     @options['width']  = @image['width']
     @options['height'] = @image['height']
-    @callback(@problem, @imageSrc, @options)
+    @callback(@problem, @src, @options)
 
-class SublimeVideo.Media.VideoPreloader
-  constructor: (videoUrl, callback) ->
-     @callback = callback
-     @videoSrc = videoUrl
-     this.preload()
-
+class SublimeVideo.Media.VideoPreloader extends SublimeVideo.Media.Preloader
   preload: ->
-    SublimeVideoSizeChecker.getVideoSize @videoSrc, @callback
+    SublimeVideoSizeChecker.getVideoSize(@src, @callback)

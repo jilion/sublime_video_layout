@@ -27,15 +27,15 @@
   color: green
 }
 
-#test_app ul.sticky_items li {
+#test_app ul.sticky li {
   background-color:orange;
 }
-#test_app ul.sticky_items li a {
+#test_app ul.sticky li a {
   color:red;
 }
-#test_app ul.sticky_items li.active {
+#test_app ul.sticky li.active {
   background-color:blue;
 }
-#test_app ul.sticky_items li a.active {
+#test_app ul.sticky li a.active {
   color:green;
 }

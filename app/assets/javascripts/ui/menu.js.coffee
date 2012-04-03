@@ -11,8 +11,12 @@ class SublimeVideo.UI.Menu
       el = jQuery(el)
       el.on('click', this.stickyBehavior) unless el.hasClass 'no_sticky'
 
+  # @private
+  #
   stickyBehavior: (event) =>
-    @element.find('.active').each -> jQuery(this).removeClass 'active'
-    link = jQuery(event.target)
-    link.addClass 'active'
-    li.addClass 'active' if li = link.parent('li')
+    @element.find('.active').removeClass 'active'
+    link = jQuery(event.delegateTarget)
+    if li = link.parent('li')
+      li.addClass 'active'
+    else
+      link.addClass 'active'

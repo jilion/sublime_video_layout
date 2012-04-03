@@ -13,7 +13,7 @@ class SublimeVideo.Form.SubmitManager
   setupOnSubmitObservers: ->
     submitEvent = if Modernizr.hasEvent('submit') then 'submit' else 'emulated:submit'
     @form.on submitEvent, (event) =>
-      this.disableSubmitButton() if @form.data('remote')?
+      this.disableSubmitButton() if @form.attr('data-remote') is 'true'
       this.resetPseudoPlaceholders()
       return this.instanciatePasswordChecker(event) if @form.attr('data-password-protected') is 'true'
 
@@ -41,7 +41,7 @@ class SublimeVideo.Form.SubmitManager
 
   instanciatePasswordChecker: (event) ->
     event.stopPropagation() # don't submit form
-    new SublimeVideo.Form.PasswordChecker jQuery(event.target)
+    SublimeVideo.Form.passwordChecker = new SublimeVideo.Form.PasswordChecker jQuery(event.target)
 
     false
 

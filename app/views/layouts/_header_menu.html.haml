@@ -2,19 +2,19 @@
 - unless content_for?(:header_menu)
   = content_for :header_menu do
     %nav#menu
-      %ul.sticky_items
+      %ul.sticky
         = li_menu_link 'news'
         = li_menu_link 'features'
         = li_menu_link 'plans'
         = li_menu_link 'demo'
         = li_menu_link 'showcase', page: 'customer-showcase'
         = li_menu_link 'help'
-        %li= link_to "login", custom_url('?p=login'), onclick: "return SublimeVideo.UI.Utils.openAccountPopup('login')", class: 'no_sticky'
-        %li.signup= link_to "sign up", custom_url('?p=login'), onclick: "return SublimeVideo.UI.Utils.openAccountPopup('signup')", class: 'no_sticky'
+        %li= link_to 'login', custom_url('?p=login'), onclick: "return SublimeVideo.UI.Utils.openAccountPopup('login')", class: 'no_sticky'
+        %li.signup= link_to 'sign up', custom_url('?p=login'), onclick: "return SublimeVideo.UI.Utils.openAccountPopup('signup')", class: 'no_sticky'
 
 = yield :header_menu
 
-- unless request.subdomain == 'my'
+- if request.subdomain.blank? || request.subdomain == 'docs'
   = content_for :javascript_bottom do
     #popup_signup.popup{ style: "display:none" }
       .popup_wrap
@@ -29,4 +29,3 @@
           .content= render template: '/users/sessions/new'
           = link_to "/", class: 'close', onclick: "return SublimeVideo.UI.Utils.closePopup()" do
             %span Close
-

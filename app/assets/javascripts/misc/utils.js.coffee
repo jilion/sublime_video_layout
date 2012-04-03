@@ -4,3 +4,6 @@ class SublimeVideo.Misc.Utils
 
   @iOS: ->
     /i(p[oa]d|phone)/i.test(navigator.userAgent)
+
+  @capitalize: (str) ->
+    str.replace(/^\w/, ($0) -> $0.toUpperCase())

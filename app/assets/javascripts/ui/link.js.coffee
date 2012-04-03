@@ -6,12 +6,16 @@ class SublimeVideo.UI.SortLink
   #
   constructor: (element) ->
     @element = jQuery(element)
+    this.setupObserver()
 
-  setupRemote: ->
-    this.makeRemoteLinkSticky()
-    SublimeVideo.UI.Table.showSpinner()
+  setupObserver: ->
+    @element.on 'click', =>
+      this.stickyBehavior()
+      SublimeVideo.UI.Table.showSpinner()
+      history.pushState({ isHistory: true }, document.title, @element.href) if history && history.pushState
 
-  makeRemoteLinkSticky: ->
-    container = 
-    @element.parent().find('a.active[data-remote]').each -> jQuery(this).removeClass
+  # @private
+  #
+  stickyBehavior: ->
+    @element.parent().find('a.active').each -> jQuery(this).removeClass 'active'
     @element.addClass 'active'

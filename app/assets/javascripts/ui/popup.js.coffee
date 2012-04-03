@@ -49,19 +49,22 @@ class SublimeVideo.UI.SimplePopup
 #
 class SublimeVideo.UI.Popup extends SublimeVideo.UI.SimplePopup
   #
-  # @param [Object] options a set of options to customize the popup
+  # @param [Object] options a set of options to customize the popup. Default: `{ class: 'popup' }`
   # @option options [String] id the id of the popup (note that this id is also used as a class for
   #   the "content" div inside the popup element)
-  # @option options [Integer] numId a unique numerical id to prevent conflicts between several popups
-  #   (can be ommited if only one popup can be opened)
   # @option options [String] class the class to apply to the popup
   # @option options [jQuery Element] form the form from which originated the popup opening
   # @option options [jQuery Element] anchor the anchor element in which re-add popup content after closing
   # @option options [jQuery Element] url an url to GET in AJAX (not that the AJAX response must take care
+  # @option options [jQuery Element] content the content to put in the popup
   #   of populating the popup if needed)
   #
-  constructor: (@options = {}) ->
+  constructor: (@options = { class: 'popup' }) ->
     @element = null
+
+  setContent: (content) ->
+    @element.removeClass 'loading'
+    @element.find('.content').html(content)
 
   # Create the popup (if needed), append it to the `#content` div (if needed) and show it.
   # It also starts the observers that take care of the popup closing.
@@ -73,14 +76,15 @@ class SublimeVideo.UI.Popup extends SublimeVideo.UI.SimplePopup
 
     unless @element?
       @element = jQuery '<div>'
-                   id: "#{@options.id}#{if @options.numId? then "_#{@options.numId}" else ''}"
+                   id: "#{@options.id}"
                    class: "#{@options.class} loading"
       @element.html("<div class='popup_wrap'>
                        <div class='lights'>
-                         <div class='content #{@options.id}'></div>
+                         <div class='content'></div>
                        </div>
                        <a href='' onclick='return SublimeVideo.UI.Utils.closePopup()' class='close'><span>Close</span></a>
                      </div>")
+      this.setContent(@options.content) if @options.content
       jQuery('#content').append @element
 
     if @options.url?
