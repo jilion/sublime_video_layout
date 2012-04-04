@@ -1,4 +1,5 @@
 require 'haml'
+require 'jquery-rails'
 
 module SublimevideoLayout
   class Engine < ::Rails::Engine

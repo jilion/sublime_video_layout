@@ -1,5 +1,5 @@
-class SublimeVideo.UI.Utils
-  @makeSticky: (element, cssSelector) ->
+SublimeVideo.UI.Utils =
+  makeSticky: (element, cssSelector) ->
     $("#{cssSelector} .active").each -> jQuery(this).removeClass 'active'
 
     element.addClass 'active'
@@ -10,19 +10,19 @@ class SublimeVideo.UI.Utils
   # @param [Object] options the options accepted by {SublimeVideo.UI.Popup}
   # @see SublimeVideo.UI.Popup
   #
-  @openPopup: (options) ->
+  openPopup: (options) ->
     SublimeVideo.UI.popup = new SublimeVideo.UI.Popup(options)
     SublimeVideo.UI.popup.open()
 
   # Closes the currently opened `SublimeVideo.UI.popup`
   #
-  @closePopup: ->
+  closePopup: ->
     SublimeVideo.UI.popup = new SublimeVideo.UI.Popup() unless SublimeVideo.UI.popup?
     SublimeVideo.UI.popup.close()
 
     false
 
-  @openAccountPopup: (name, successUrl = null) ->
+  openAccountPopup: (name, successUrl = null) ->
     if el = jQuery("#popup_#{name}")
       SublimeVideo.UI.popup = new SublimeVideo.UI.SimplePopup(element: el)
       jQuery("#user_return_to").attr(value: successUrl) if successUrl?
