@@ -4,26 +4,26 @@
       .col
         %h4= "Product"
         %ul
-          %li= link_to "Home", custom_url('')
-          %li= link_to "Features", custom_url('features')
-          %li= link_to "Demo", custom_url('demo')
-          %li= link_to "Plans & Pricing", custom_url('plans')
+          %li= link_to "Home", layout_url('')
+          %li= link_to "Features", layout_url('features')
+          %li= link_to "Demo", layout_url('demo')
+          %li= link_to "Plans & Pricing", layout_url('plans')
           %li= link_to "Player Releases", docs_url('releases')
       .col
         %h4= "Community & Support"
         %ul
-          %li= link_to "Customer Showcase", custom_url('customer-showcase')
-          %li= link_to "Help", custom_url('help')
+          %li= link_to "Customer Showcase", layout_url('customer-showcase')
+          %li= link_to "Help", layout_url('help')
           %li= link_to "Documentation", docs_url('')
           %li= link_to "Community Forum", "http://getsatisfaction.com/sublimevideo", onclick: "window.open(this); return false"
       .col
         %h4= "Stay Connected"
         %ul
-          %li= link_to "News", custom_url('news')
+          %li= link_to "News", layout_url('news')
           %li= link_to "Blog", "http://blog.jilion.com/tags/sublimevideo", onclick: "window.open(this); return false"
           %li= link_to "Twitter", "http://twitter.com/jilion"
-          %li= link_to "Contact", custom_url('contact')
-          %li= link_to "About", custom_url('about')
+          %li= link_to "Contact", layout_url('contact')
+          %li= link_to "About", layout_url('about')
     
     .right
       %p.twitter

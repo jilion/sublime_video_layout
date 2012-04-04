@@ -23,13 +23,21 @@ module SublimeVideoLayoutHelper
       link_to name, url
     end
   end
+  
+  def layout_li_menu_link(name, options = {})
+    li_menu_link(name, options.merge(subdomain: false, protocol: 'http'))
+  end
+  
+  def layout_url(path)
+    custom_url(path, subdomain: false, protocol: 'http')
+  end
 
   def my_url(path)
     custom_url(path, subdomain: 'my', protocol: 'https')
   end
 
   def docs_url(path)
-    custom_url(path, subdomain: 'docs')
+    custom_url(path, subdomain: 'docs', protocol: 'http')
   end
 
   def custom_url(path, options = {})
