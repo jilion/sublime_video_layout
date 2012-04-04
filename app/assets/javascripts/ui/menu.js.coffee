@@ -20,3 +20,9 @@ class SublimeVideo.UI.Menu
       li.addClass 'active'
     else
       link.addClass 'active'
+      
+  setupLoggedInBehavior: ->
+    @cookie = new SublimeVideo.Misc.Cookie('l')
+    if @cookie.get() == '1'
+      @element.find('.unlogged').hide()
+      @element.find('.logged').show()

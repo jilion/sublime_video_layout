@@ -22,8 +22,6 @@ window.SublimeVideo =
   UI: {}
 
 jQuery(document).ready ->
-  # S2.Extensions.webkitCSSTransitions = true;
-
   SublimeVideo.Misc.BrowserBugsFixer.fixAllBugs()
 
   # Only one popup can be opened-up at a time
@@ -49,38 +47,7 @@ jQuery(document).ready ->
 
   jQuery('a.sort.sticky').each ->
     new SublimeVideo.UI.SortLink(jQuery(this))
+    
+  new SublimeVideo.UI.Menu(jQuery('#header_menu')).setupLoggedInBehavior()
 
 ddd = -> console.log.apply(console, arguments)
-
-# 
-# Element.addMethods({
-#   shake: function(element, options) {
-#     S2.Extensions.webkitCSSTransitions = false; //essential, cause webkit transitions in this case are less smooth
-# 
-#     element = $(element);
-#     var originalLeft = parseFloat(element.getStyle('left') || '0');
-#     var oldStyle = { left:originalLeft };
-#     element.makePositioned();
-# 
-#     var opts = { distance:15, duration:0.5 };
-#     Object.extend(opts, options);
-#     var distance = opts.distance;
-#     var duration = opts.duration;
-# 
-#     var split = parseFloat(duration) / 10.0;
-# 
-#     var shakeEffect = element.morph('left:' + (originalLeft+distance) + 'px', { duration:split
-#       }).morph('left:' + (originalLeft-distance) + 'px', { duration:split*2
-#         }).morph('left:' + (originalLeft+distance) + 'px', { duration:split*2
-#           }).morph('left:' + (originalLeft-distance) + 'px', { duration:split*2
-#             }).morph('left:' + (originalLeft+distance) + 'px', { duration:split*2
-#               }).morph('left:' + (originalLeft) + 'px', { duration:split*2, after: function() {
-#                 element.undoPositioned().setStyle(oldStyle);
-#                 }});
-# 
-#     return shakeEffect;
-#   },
-#   pulsate: function(element, options) {
-#   }
-# });
-# 
