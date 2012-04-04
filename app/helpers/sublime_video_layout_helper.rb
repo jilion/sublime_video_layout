@@ -33,7 +33,7 @@ module SublimeVideoLayoutHelper
   end
 
   def custom_url(path, options = {})
-    protocol   = options[:protocol] || (request.ssl? 'https' : 'http')
+    protocol   = options[:protocol] || (request.ssl? ? 'https' : 'http')
     protocol   = 'http' if %w[development test].include?(Rails.env)
     unless request.subdomain.blank? || !options[:subdomain]
       subdomain = "#{options[:subdomain] || request.subdomain}."
