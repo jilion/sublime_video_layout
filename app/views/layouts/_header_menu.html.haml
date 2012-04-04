@@ -3,19 +3,18 @@
   = content_for :header_menu do
     %nav#menu
       %ul.sticky#header_menu
-        = li_menu_link 'news', subdomain: false
-        = li_menu_link 'features', subdomain: false
-        = li_menu_link 'plans', subdomain: false
-        = li_menu_link 'demo', subdomain: false
-        = li_menu_link 'showcase', subdomain: false, path: 'customer-showcase'
-        = li_menu_link 'help', subdomain: false
+        = li_menu_link 'news', subdomain: false, protocol: 'http'
+        = li_menu_link 'features', subdomain: false, protocol: 'http'
+        = li_menu_link 'plans', subdomain: false, protocol: 'http'
+        = li_menu_link 'demo', subdomain: false, protocol: 'http'
+        = li_menu_link 'showcase', subdomain: false, protocol: 'http', path: 'customer-showcase'
+        = li_menu_link 'help', subdomain: false, protocol: 'http'
         - if request.subdomain == 'my'
           %li.unlogged= link_to 'login', my_url('login'), class: 'no_sticky'
           %li.unlogged.signup= link_to 'sign up', my_url('signup'), class: 'no_sticky'
         - else
           %li.unlogged= link_to 'login', custom_url('?p=login'), onclick: "return SublimeVideo.UI.Utils.openAccountPopup('login')", class: 'no_sticky'
           %li.unlogged.signup= link_to 'sign up', custom_url('?p=signup'), onclick: "return SublimeVideo.UI.Utils.openAccountPopup('signup')", class: 'no_sticky'
-        -# logged in cookie
         %li.logged.signup{ style: 'display:none;' }= link_to 'MySV', my_url('/'), class: 'no_sticky'
         %li.logged{ style: 'display:none;' }= link_to 'Logout', my_url('/logout'), class: 'no_sticky'
 
