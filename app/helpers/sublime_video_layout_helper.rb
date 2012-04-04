@@ -16,7 +16,7 @@ module SublimeVideoLayoutHelper
   end
 
   def li_menu_link(name, options = {})
-    url = custom_url(options[:page] || name, options)
+    url = custom_url(options[:path] || name, options)
     classes = Array(options[:class])
     classes << 'active' if request.url == url
     content_tag :li, { class: classes.join(' ') } do
@@ -33,9 +33,11 @@ module SublimeVideoLayoutHelper
   end
 
   def custom_url(path, options = {})
-    protocol   = options[:protocol] || 'http'
+    protocol   = options[:protocol] || (request.ssl? 'https' : 'http')
     protocol   = 'http' if %w[development test].include?(Rails.env)
-    subdomain  = "#{options[:subdomain]}." if options[:subdomain].present?
+    unless request.subdomain.blank? || !options[:subdomain]
+      subdomain = "#{options[:subdomain] || request.subdomain}."
+    end
     "#{protocol}://#{subdomain}#{request.domain}/#{path.sub(%r{\A/}, '')}"
   end
 
