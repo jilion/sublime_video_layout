@@ -5,9 +5,6 @@
 # the compiled file.
 #
 #= require modernizr
-#= require prototype
-#= require prototype_ujs
-#= require scriptaculous/s2
 #
 #= require_self
 #= require_tree ./form

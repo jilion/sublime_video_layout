@@ -1,5 +1,4 @@
 require 'haml'
-require 'prototype-rails'
 
 module SublimevideoLayout
   class Engine < ::Rails::Engine
