@@ -15,8 +15,10 @@
         - else
           %li.unlogged= link_to 'login', layout_url('?p=login'), onclick: "return SublimeVideo.UI.Utils.openAccountPopup('login')", class: 'no_sticky'
           %li.unlogged.signup= link_to 'sign up', layout_url('?p=signup'), onclick: "return SublimeVideo.UI.Utils.openAccountPopup('signup')", class: 'no_sticky'
-        %li.logged.signup{ style: 'display:none;' }= link_to 'MySV', my_url('/'), class: 'no_sticky'
-        %li.logged{ style: 'display:none;' }= link_to 'Logout', my_url('/logout'), class: 'no_sticky'
+        %li.logged{ style: 'display:none;' }= link_to 'My Sites', my_url('/'), class: 'no_sticky'
+        %li.logged.logout{ style: 'display:none;', title: "Logout" }
+          = link_to my_url('/logout'), class: 'no_sticky' do
+            %span= 'Logout'
 
 = yield :header_menu
 

@@ -137,7 +137,21 @@ header p.sub a {
   -webkit-font-smoothing:subpixel-antialiased;
 }
 
-#menu li.signup a:active {background-position:0 -30px;}
+#menu li.signup a:active {background-position:0 -30px}
+
+#menu li.logged a {
+  font-weight:700;
+}
+
+#menu li.logout a {
+  padding:0;
+  width:15px;
+  height:18px;
+  margin:5px 0 0 6px;
+  background:url(<%= asset_data_uri "logout.png" %>) no-repeat;
+}
+
+#menu li.logout span {display:none}
 
 footer {
   min-width:1000px;
