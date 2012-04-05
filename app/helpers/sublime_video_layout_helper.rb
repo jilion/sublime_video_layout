@@ -1,10 +1,7 @@
 module SublimeVideoLayoutHelper
 
   def body_class
-    klass = [request.subdomain]
-    klass << params[:page]
-    klass << @body_class
-    h(klass.compact.join(' '))
+    h([request.subdomain, @body_class].compact.join(' '))
   end
 
   def page_title
