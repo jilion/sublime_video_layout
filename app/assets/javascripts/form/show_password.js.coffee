@@ -2,7 +2,7 @@
 #
 class SublimeVideo.Form.ShowPassword
   constructor: (@field, @index) ->
-    @showPasswordCheckbox = jQuery('<input />', type: 'checkbox', id: 'show_password_#{@index}')
+    @showPasswordCheckbox = jQuery('<input />', type: 'checkbox', id: "show_password_#{@index}")
 
     this.storeThisInData()
     this.insertShowPasswordCheckbox()
@@ -18,7 +18,7 @@ class SublimeVideo.Form.ShowPassword
   #
   insertShowPasswordCheckbox: ->
     showPasswordWrap  = jQuery('<div>', class: 'checkbox_wrap')
-    showPasswordLabel = jQuery('<label />', for: 'show_password_#{@index}').text 'Show password'
+    showPasswordLabel = jQuery('<label />', for: "show_password_#{@index}").text 'Show password'
     showPasswordWrap.append(@showPasswordCheckbox).append(showPasswordLabel)
 
     this.injectShowPasswordCheckboxInDom(showPasswordWrap)
