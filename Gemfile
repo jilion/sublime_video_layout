@@ -2,11 +2,6 @@ source "http://rubygems.org"
 
 gem 'bundler'
 
-gem 'rails'
-gem 'jquery-rails'
-gem 'coffee-rails'
-gem 'haml'
-
 # Declare your gem's dependencies in sublimevideo_layout.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
 # development dependencies will be added by default to the :development group.
