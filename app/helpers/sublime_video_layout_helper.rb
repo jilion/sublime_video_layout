@@ -23,11 +23,11 @@ module SublimeVideoLayoutHelper
       link_to name, url
     end
   end
-  
+
   def layout_li_menu_link(name, options = {})
     li_menu_link(name, options.merge(subdomain: false, protocol: 'http'))
   end
-  
+
   def layout_url(path)
     custom_url(path, subdomain: false, protocol: 'http')
   end
@@ -43,8 +43,10 @@ module SublimeVideoLayoutHelper
   def custom_url(path, options = {})
     protocol   = options[:protocol] || (request.ssl? ? 'https' : 'http')
     protocol   = 'http' if %w[development test].include?(Rails.env)
-    unless request.subdomain.blank? || !options[:subdomain]
-      subdomain = "#{options[:subdomain] || request.subdomain}."
+    if options[:subdomain]
+      subdomain = "#{options[:subdomain]}."
+    elsif options[:subdomain] != false
+      subdomain = "#{request.subdomain}."
     end
     "#{protocol}://#{subdomain}#{request.domain}/#{path.sub(%r{\A/}, '')}"
   end
