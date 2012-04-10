@@ -48,5 +48,6 @@
     = render "layouts/footer"
 
     = yield :javascript_bottom
+
     - if Rails.env.production?
       = render 'layouts/gosquared'

@@ -13,6 +13,14 @@ window.SublimeVideo =
   Misc: {}
   UI: {}
 
+SublimeVideo.UI.prepareSortAndStickyLinks = ->
+  jQuery('a.sort.sticky').each ->
+    new SublimeVideo.UI.SortLink(jQuery(this))
+
+SublimeVideo.UI.prepareStickyMenus = ->
+  jQuery('ul.sticky').each ->
+    new SublimeVideo.UI.Menu(jQuery(this)).setupStickyItems()
+
 jQuery(document).ready ->
   SublimeVideo.Misc.BrowserBugsFixer.fixAllBugs()
 
@@ -32,14 +40,12 @@ jQuery(document).ready ->
       new SublimeVideo.Form.PseudoPlaceholder(jQuery(this))
 
   jQuery('form').each ->
-    new SublimeVideo.Form.SubmitManager jQuery(this)
+    new SublimeVideo.Form.SubmitManager(jQuery(this))
 
-  jQuery('ul.sticky').each ->
-    new SublimeVideo.UI.Menu(jQuery(this)).setupStickyItems()
+  SublimeVideo.UI.prepareStickyMenus()
 
-  jQuery('a.sort.sticky').each ->
-    new SublimeVideo.UI.SortLink(jQuery(this))
-    
+  SublimeVideo.UI.prepareSortAndStickyLinks()
+
   new SublimeVideo.UI.Menu(jQuery('#header_menu')).setupLoggedInBehavior()
 
 ddd = -> console.log.apply(console, arguments)
