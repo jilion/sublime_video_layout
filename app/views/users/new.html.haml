@@ -1,6 +1,6 @@
 %h2.title= "Create your account"
 
-= form_tag my_url('users/new'), id: 'user_signup', class: "main_form" do
+= form_tag my_url('signup'), id: 'user_signup', class: "main_form" do
   = hidden_field_tag 'user_return_to', my_url('sites')
 
   .entry.email
