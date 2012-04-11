@@ -11,5 +11,8 @@ module SublimevideoLayout
     initializer "static assets" do |app|
       app.middleware.insert_after Rack::Lock, ::ActionDispatch::Static, "#{root}/public"
     end
+    initializer 'helpers' do |app|
+      ActionView::Base.send :include, SublimeVideoLayoutHelper
+    end
   end
 end
