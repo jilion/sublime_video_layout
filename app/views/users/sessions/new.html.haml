@@ -1,7 +1,7 @@
 %h2.title= "Log in to SublimeVideo"
 
 = form_tag my_url('login'), id: 'user_login', class: "main_form" do
-  = hidden_field_tag 'user_return_to', my_url('sites')
+  = hidden_field_tag :user_return_to, params[:user_return_to] || my_url('sites')
 
   .entry.email
     = label_tag :user_email, "Email", class: "icon"
