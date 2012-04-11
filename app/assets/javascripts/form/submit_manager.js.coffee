@@ -18,18 +18,17 @@ class SublimeVideo.Form.SubmitManager
       return this.instanciatePasswordChecker(event) if @form.attr('data-password-protected') is 'true'
 
   setupOnClickObservers: ->
-    @form.find('input[type=submit]').each =>
+    @form.find('input[type=submit]').each (index, input) =>
       # when HTML5 form validation doesn't pass, the submit event is not fired
-      jQuery(this).on 'click', (event) =>
-        @form.find('input').each ->
-          if jQuery(this).validity
-            if jQuery(this).validity.valid
-              jQuery(this).removeClassName 'errors'
+      jQuery(input).on 'click', (event) =>
+        @form.find('input').each (index, input) ->
+          input = jQuery(input)
+          if input[0].validity
+            if input[0].validity.valid
+              input.removeClass 'errors'
             else
-              jQuery(this).addClassName 'errors'
-              event.stopPropagation()
-
-              false
+              input.addClass 'errors'
+              event.preventDefault()
 
   # Disable submit button for ajax forms to prevent double submissions (quickly click muliple times the form submit button)
   #
@@ -40,10 +39,8 @@ class SublimeVideo.Form.SubmitManager
       jQuery(this).attr 'disabled', 'disabled'
 
   instanciatePasswordChecker: (event) ->
-    event.stopPropagation() # don't submit form
     SublimeVideo.Form.passwordChecker = new SublimeVideo.Form.PasswordChecker jQuery(event.target)
-
-    false
+    event.preventDefault()
 
   # Reset pseudo-placeholders values (for browsers who don't support HTML5 placeholders)
   #
