@@ -1,3 +1,5 @@
+require 'site_token'
+
 module SublimeVideoLayoutHelper
 
   def body_class
@@ -46,6 +48,10 @@ module SublimeVideoLayoutHelper
       subdomain = "#{request.subdomain}."
     end
     "#{protocol}://#{subdomain}#{request.domain}/#{path.sub(%r{\A/}, '')}"
+  end
+
+  def sublimevideo_include_tag(ssl_request, name)
+    %(<script src="#{ssl_request ? "https://4076.voxcdn.com" : "http://cdn.sublimevideo.net"}/js/#{::SiteToken[name.to_sym]}.js" type="text/javascript"></script>)
   end
 
 end
