@@ -2,6 +2,7 @@
 
 #test_app
   = form_tag '', id: 'user_signup', class: "main_form", data: { remote: true, 'password-protected' => true } do
+    = text_field_tag(:user_return_to, (params[:user_return_to] || my_url('sites')))
     .entry.email
       = label_tag :user_email, "Email", class: "icon"
       = email_field_tag "user[email]", nil, class: "text", placeholder: "Email", required: true, id: :user_email

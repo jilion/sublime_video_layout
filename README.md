@@ -2,6 +2,16 @@
 
 This engine provides a common layout (HTML, CSS) and utility JavaScript classes for all SublimeVideo apps.
 
+### Deployement to http://gemfury.com/
+
+``` bash
+  bundle install
+  rake build
+  fury push pkg/sublimevideo_layout-X.Y.Z.gem
+```
+
+### JS documentation
+
 To generate the JS docs, run `gem install codo && codo ./app/assets/javascripts`
 
 ------------
