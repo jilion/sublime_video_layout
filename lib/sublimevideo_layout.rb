@@ -8,7 +8,7 @@ module SublimevideoLayout
       app.config.assets.precompile += %w[sublimevideo.css sublimevideo.js ie.css]
     end
     initializer 'static assets' do |app|
-      app.middleware.swap ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"
+      app.middleware.insert_before Rack::Lock, ::ActionDispatch::Static, "#{root}/public"
     end
     initializer 'helpers' do |app|
       ActionView::Base.send :include, SublimeVideoLayoutHelper
