@@ -1,6 +1,6 @@
-# The Flash create a new flash notice element and prepend it to the `#content` element.
+# The RemoteLink add a sticky behavior, shows a table spinner and push new state.
 #
-class SublimeVideo.UI.SortLink
+class SublimeVideo.UI.RemoteLink
   #
   # @param [DOM Element] element the element to which attach the behavior
   #
@@ -12,7 +12,7 @@ class SublimeVideo.UI.SortLink
     @element.on 'click', =>
       this.stickyBehavior()
       SublimeVideo.UI.Table.showSpinner()
-      history.pushState({ isHistory: true }, document.title, @element.href) if history && history.pushState
+      history.pushState({ isHistory: true }, document.title, @element.attr('href')) if history and history.pushState?
 
   # @private
   #

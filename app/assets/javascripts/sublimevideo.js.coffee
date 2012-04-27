@@ -14,8 +14,8 @@ window.SublimeVideo =
   UI: {}
 
 SublimeVideo.UI.prepareSortAndStickyLinks = ->
-  jQuery('a.sort.sticky').each ->
-    new SublimeVideo.UI.SortLink(jQuery(this))
+  jQuery('a.remote').each ->
+    new SublimeVideo.UI.RemoteLink(jQuery(this))
 
 SublimeVideo.UI.prepareStickyMenus = ->
   jQuery('ul.sticky').each ->
