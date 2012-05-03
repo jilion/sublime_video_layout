@@ -42,12 +42,13 @@ module SublimeVideoLayoutHelper
   def custom_url(path, options = {})
     protocol   = options[:protocol] || (request.ssl? ? 'https' : 'http')
     protocol   = 'http' if %w[development test].include?(Rails.env)
+    domain     = request ? request.domain : main_app.default_url_options[:host]
     if options[:subdomain]
       subdomain = "#{options[:subdomain]}."
     elsif options[:subdomain] != false
       subdomain = "#{request.subdomain}."
     end
-    "#{protocol}://#{subdomain}#{request.domain}/#{path.sub(%r{\A/}, '')}"
+    "#{protocol}://#{subdomain}#{domain}/#{path.sub(%r{\A/}, '')}"
   end
 
   def sublimevideo_include_tag(ssl_request, name)
