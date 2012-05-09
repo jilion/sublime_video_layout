@@ -13,7 +13,7 @@ window.SublimeVideo =
   Misc: {}
   UI: {}
 
-SublimeVideo.UI.prepareSortAndStickyLinks = ->
+SublimeVideo.UI.prepareRemoteLinks = ->
   jQuery('a.remote').each ->
     new SublimeVideo.UI.RemoteLink(jQuery(this))
 
@@ -44,7 +44,7 @@ jQuery(document).ready ->
 
   SublimeVideo.UI.prepareStickyMenus()
 
-  SublimeVideo.UI.prepareSortAndStickyLinks()
+  SublimeVideo.UI.prepareRemoteLinks()
 
   new SublimeVideo.UI.Menu(jQuery('#header_menu')).setupLoggedInBehavior()
 
