@@ -1,7 +1,8 @@
 %h2.title= "Create your account"
 
 = form_tag my_url('signup'), id: 'user_signup', class: "main_form" do
-  = hidden_field_tag :user_return_to, params[:user_return_to] || my_url('sites')
+  - if params[:user_return_to]
+    = hidden_field_tag :user_return_to, params[:user_return_to]
 
   .entry.email
     = label_tag :user_email, "Email", class: "icon"
