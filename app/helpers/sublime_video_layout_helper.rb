@@ -47,8 +47,9 @@ module SublimeVideoLayoutHelper
     elsif options[:subdomain] != false
       "#{request.subdomain}."
     end
+    port = request.port ? ":#{request.port}" : ''
 
-    "#{protocol}://#{subdomain}#{request.domain}/#{path.sub(%r{\A/}, '')}"
+    "#{protocol}://#{subdomain}#{request.domain}#{port}/#{path.sub(%r{\A/}, '')}"
   end
 
   def sublimevideo_include_tag(ssl_request, name)
