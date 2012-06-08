@@ -7,31 +7,75 @@ describe SublimeVideoLayoutHelper do
   end
 
   describe ".custom_url" do
-    let(:request) { stub(domain: 'example.com', ssl?: false, subdomain: '') }
-    before do
-      Helper.stub(:request) { request }
-      Rails.stub(:env) { 'development' }
+    context 'normal domain' do
+      let(:request) { stub(domain: 'example.com', ssl?: false, subdomain: '', port: nil) }
+      before do
+        Helper.stub(:request) { request }
+        Rails.stub(:env) { 'development' }
+      end
+
+      it "accepts custom subdomain" do
+        Helper.custom_url('path', subdomain: 'my').should eq('http://my.example.com/path')
+      end
+
+      it "overwrites subdomain" do
+        request.stub(subdomain: 'docs')
+        Helper.custom_url('path', subdomain: 'my').should eq('http://my.example.com/path')
+      end
+
+      it "keeps no subdomain" do
+        Helper.custom_url('path', subdomain: false).should eq('http://example.com/path')
+      end
+
+      it "remove subdomain" do
+        request.stub(subdomain: 'docs')
+        Helper.custom_url('path', subdomain: false).should eq('http://example.com/path')
+      end
+
+      it "keeps no subdomain" do
+        Helper.custom_url('path').should eq('http://example.com/path')
+      end
+
+      it "uses default subdomain" do
+        request.stub(subdomain: 'docs')
+        Helper.custom_url('path').should eq('http://docs.example.com/path')
+      end
     end
 
-    it "accepts custom subdomain" do
-      Helper.custom_url('path', subdomain: 'my').should eq('http://my.example.com/path')
-    end
+    context 'xip.io domain' do
+      let(:request) { stub(domain: 'xip.io', ssl?: false, subdomain: 'example.192.168.0.11', port: nil) }
+      before do
+        Helper.stub(:request) { request }
+        Rails.stub(:env) { 'development' }
+      end
 
-    it "overwrites subdomain" do
-      request.stub(subdomain: 'docs')
-      Helper.custom_url('path', subdomain: 'my').should eq('http://my.example.com/path')
-    end
+      it "accepts custom subdomain" do
+        Helper.custom_url('path', subdomain: 'my').should eq('http://my.example.192.168.0.11.xip.io/path')
+      end
 
-    it "remove subdomain" do
-      request.stub(subdomain: 'docs')
-      Helper.custom_url('path', subdomain: false).should eq('http://example.com/path')
-    end
+      it "overwrites subdomain" do
+        request.stub(subdomain: 'docs.example.192.168.0.11')
+        Helper.custom_url('path', subdomain: 'my').should eq('http://my.example.192.168.0.11.xip.io/path')
+      end
 
-    it "uses default subdomain" do
-      request.stub(subdomain: 'docs')
-      Helper.custom_url('path').should eq('http://docs.example.com/path')
-    end
+      it "keeps no subdomain" do
+        Helper.custom_url('path', subdomain: false).should eq('http://example.192.168.0.11.xip.io/path')
+      end
 
+      it "remove subdomain" do
+        request.stub(subdomain: 'docs.example.192.168.0.11')
+        Helper.custom_url('path', subdomain: false).should eq('http://example.192.168.0.11.xip.io/path')
+      end
+
+      it "keeps no subdomain" do
+        Helper.custom_url('path').should eq('http://example.192.168.0.11.xip.io/path')
+      end
+
+      it "uses default subdomain" do
+        request.stub(subdomain: 'docs.example.192.168.0.11')
+        Helper.custom_url('path').should eq('http://docs.example.192.168.0.11.xip.io/path')
+      end
+    end
   end
 
   describe "sublimevideo_include_tag" do
