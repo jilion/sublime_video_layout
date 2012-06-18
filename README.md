@@ -7,6 +7,7 @@ This engine provides a common layout (HTML, CSS) and utility JavaScript classes 
 ``` bash
   bundle install
   rake build
+  gem install gemfury
   fury push pkg/sublimevideo_layout-X.Y.Z.gem
 ```
 
