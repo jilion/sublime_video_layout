@@ -40,6 +40,17 @@ describe SublimeVideoLayoutHelper do
         request.stub(subdomain: 'docs')
         Helper.custom_url('path').should eq('http://docs.example.com/path')
       end
+
+      it "keeps the current port" do
+        request.stub(port: 3000)
+        Helper.custom_url('path').should eq('http://example.com:3000/path')
+      end
+
+      it "doesn't keep the current port if Rails.env is production" do
+        Rails.stub(:env) { 'production' }
+        request.stub(port: 3000)
+        Helper.custom_url('path').should eq('http://example.com/path')
+      end
     end
 
     context 'xip.io domain' do

@@ -47,7 +47,8 @@ module SublimeVideoLayoutHelper
     elsif options[:subdomain] != false
       request_subdomain ? "#{request_subdomain}." : ''
     end
-    port = request.port ? ":#{request.port}" : ''
+    # handles port 3000 etc... but don't do this in staging/prod since it would use port 80 for HTTPS pages!
+    port = Rails.env == 'development' && request.port ? ":#{request.port}" : ''
 
     "#{protocol}://#{subdomain}#{request_domain}#{port}/#{path.sub(%r{\A/}, '')}"
   end
