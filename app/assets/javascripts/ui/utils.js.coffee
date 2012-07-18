@@ -30,6 +30,6 @@ SublimeVideo.UI.Utils =
 
       SublimeVideo.UI.popup.open()
 
-      _gaq.push(['_trackEvent', 'SignUp', 'Clicked', undefined, 1, true]) if name is 'signup' and _gaq
+      _gaq.push(['_trackEvent', 'SignUp', 'Clicked', undefined, 1, true]) if _gaq? and name is 'signup'
 
     false
