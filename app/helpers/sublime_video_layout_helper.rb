@@ -40,7 +40,7 @@ module SublimeVideoLayoutHelper
   end
 
   def custom_url(path, options = {})
-    "#{protocol}://#{subdomain}#{request_domain}#{port}/#{path.sub(%r{\A/}, '')}"
+    "#{protocol(options)}://#{subdomain(options)}#{request_domain}#{port}/#{path.sub(%r{\A/}, '')}"
   end
 
   def sublimevideo_include_tag(ssl_request, name)
@@ -48,6 +48,19 @@ module SublimeVideoLayoutHelper
   end
 
   private
+
+  def protocol(options)
+    return 'http' if %w[development test].include?(Rails.env)
+    options[:protocol] || (request && request.ssl? ? 'https' : 'http')
+  end
+
+  def subdomain(options)
+    if options[:subdomain]
+      "#{options[:subdomain]}."
+    elsif options[:subdomain] != false
+      request_subdomain ? "#{request_subdomain}." : ''
+    end
+  end
 
   def request_subdomain
     if request.domain == 'xip.io'
@@ -69,19 +82,6 @@ module SublimeVideoLayoutHelper
       subdomains.join('.') << '.xip.io'
     else
       request.domain
-    end
-  end
-
-  def protocol
-    return 'http' if %w[development test].include?(Rails.env)
-    options[:protocol] || (request && request.ssl? ? 'https' : 'http')
-  end
-
-  def subdomain
-    if options[:subdomain]
-      "#{options[:subdomain]}."
-    elsif options[:subdomain] != false
-      request_subdomain ? "#{request_subdomain}." : ''
     end
   end
 
