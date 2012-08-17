@@ -1,0 +1,17 @@
+!!! 5
+%html{ "xmlns" => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", "lang" => "en" }
+  %head
+    %title= page_title
+    %meta{ "http-equiv" => "Content-Type", content: "text/html;charset=UTF-8" }
+
+    = stylesheet_link_tag 'sublimevideo', 'application'
+    %link{ rel: "shortcut icon", href: "http://sublimevideo.net/favicon.ico", type: "image/x-icon" }
+
+    = render 'layouts/typekit'
+
+  %body
+    .content_wrapper= yield
+    .spacer
+
+    - if Rails.env.production?
+      = render 'layouts/gosquared'

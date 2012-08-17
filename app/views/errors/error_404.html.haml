@@ -1,0 +1,5 @@
+- @page_title = "Page Not Found"
+
+%section.box
+  %p Sorry, the page you were looking for doesn't exist.
+  %p= raw "Go back to #{link_to "#{subdomain}#{domain}", root_path, class: 'hl'} or #{link_to 'contact us', layout_url('contact')} about a problem."

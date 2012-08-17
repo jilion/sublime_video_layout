@@ -40,7 +40,7 @@ module SublimeVideoLayoutHelper
   end
 
   def custom_url(path, options = {})
-    "#{protocol(options)}://#{subdomain(options)}#{request_domain}#{port}/#{path.sub(%r{\A/}, '')}"
+    "#{protocol(options)}://#{subdomain(options)}#{domain}#{port}/#{path.sub(%r{\A/}, '')}"
   end
 
   def sublimevideo_include_tag(ssl_request, name)
@@ -49,17 +49,21 @@ module SublimeVideoLayoutHelper
 
   private
 
-  def protocol(options)
+  def protocol(options = {})
     return 'http' if %w[development test].include?(Rails.env)
     options[:protocol] || (request && request.ssl? ? 'https' : 'http')
   end
 
-  def subdomain(options)
+  def subdomain(options = {})
     if options[:subdomain]
       "#{options[:subdomain]}."
     elsif options[:subdomain] != false
       request_subdomain ? "#{request_subdomain}." : ''
     end
+  end
+
+  def domain(options = {})
+    request_domain
   end
 
   def request_subdomain
