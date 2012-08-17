@@ -40,16 +40,6 @@ module SublimeVideoLayoutHelper
   end
 
   def custom_url(path, options = {})
-    protocol  = options[:protocol] || (request.ssl? ? 'https' : 'http')
-    protocol  = 'http' if %w[development test].include?(Rails.env)
-    subdomain = if options[:subdomain]
-      "#{options[:subdomain]}."
-    elsif options[:subdomain] != false
-      request_subdomain ? "#{request_subdomain}." : ''
-    end
-    # handles port 3000 etc... but don't do this in staging/prod since it would use port 80 for HTTPS pages!
-    port = Rails.env == 'development' && request.port ? ":#{request.port}" : ''
-
     "#{protocol}://#{subdomain}#{request_domain}#{port}/#{path.sub(%r{\A/}, '')}"
   end
 
@@ -80,6 +70,24 @@ module SublimeVideoLayoutHelper
     else
       request.domain
     end
+  end
+
+  def protocol
+    return 'http' if %w[development test].include?(Rails.env)
+    options[:protocol] || (request && request.ssl? ? 'https' : 'http')
+  end
+
+  def subdomain
+    if options[:subdomain]
+      "#{options[:subdomain]}."
+    elsif options[:subdomain] != false
+      request_subdomain ? "#{request_subdomain}." : ''
+    end
+  end
+
+  def port
+    # handles port 3000 etc... but don't do this in staging/prod since it would use port 80 for HTTPS pages!
+    Rails.env == 'development' && request && request.port ? ":#{request.port}" : ''
   end
 
 end
