@@ -40,7 +40,7 @@ module SublimeVideoLayoutHelper
   end
 
   def custom_url(path, options = {})
-    "#{protocol(options)}://#{subdomain(options)}#{domain}#{port}/#{path.sub(%r{\A/}, '')}"
+    "#{protocol(options)}://#{subdomain(options)}#{domain(options)}#{port}/#{path.sub(%r{\A/}, '')}"
   end
 
   def sublimevideo_include_tag(ssl_request, name)
@@ -58,12 +58,16 @@ module SublimeVideoLayoutHelper
     if options[:subdomain]
       "#{options[:subdomain]}."
     elsif options[:subdomain] != false
-      request_subdomain ? "#{request_subdomain}." : ''
+      (request_subdomain ? "#{request_subdomain}." : '') rescue ''
     end
   end
 
   def domain(options = {})
-    request_domain
+    if options[:domain]
+      options[:domain]
+    else
+      request_domain rescue 'sublimevideo.net'
+    end
   end
 
   def request_subdomain
