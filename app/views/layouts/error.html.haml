@@ -3,15 +3,15 @@
   %head
     %title= page_title
     %meta{ "http-equiv" => "Content-Type", content: "text/html;charset=UTF-8" }
+    %meta{ name: "robots", content: "noindex,nofollow" }
 
-    = stylesheet_link_tag 'sublimevideo', 'application'
+    = stylesheet_link_tag 'errors'
     %link{ rel: "shortcut icon", href: "http://sublimevideo.net/favicon.ico", type: "image/x-icon" }
 
     = render 'layouts/typekit'
 
   %body
-    .content_wrapper= yield
-    .spacer
+    #global= yield
 
     - if Rails.env.production?
       = render 'layouts/gosquared'

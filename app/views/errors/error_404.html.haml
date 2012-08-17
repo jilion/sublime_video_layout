@@ -1,5 +1,9 @@
-- @page_title = "Page Not Found"
+- @page_title = "The page you were looking for doesn't exist. (404)"
 
-%section.box
+= image_tag "errors/404.png", alt: "SublimeVideo 404"
+
+#content
   %p Sorry, the page you were looking for doesn't exist.
-  %p= raw "Go back to #{link_to "#{subdomain}#{domain}", root_path, class: 'hl'} or #{link_to 'contact us', layout_url('contact')} about a problem."
+  %p= raw "Go back to #{link_to "#{subdomain}#{domain}", root_path} or #{link_to 'contact us', layout_url('contact')} about a problem."
+  = link_to "http://sublimevideo.net", class: "sublimevideo" do
+    %span SublimeVideo

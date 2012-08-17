@@ -1,0 +1,54 @@
+@import "css3";
+
+* {
+  margin:0;
+  padding:0;
+}
+
+body {
+  font-family:proxima-nova-1,proxima-nova-2, Helvetica, Arial, sans-serif;
+  font-size:26px;
+  background:#b0c2d8;
+  text-rendering:optimizeLegibility;
+  text-align:center;
+  color:#596e85;
+  line-height:42px;
+  text-shadow:rgba(255,255,255,0.25) 0 1px 0;
+/*  -webkit-font-smoothing:antialiased;*/
+}
+
+#global {
+  width:974px;
+  margin:0 auto;
+}
+
+#content {
+  position:relative;
+  z-index:2;
+  top:-160px;
+}
+
+a.sublimevideo {
+  display:block;
+  margin:60px auto 0;
+  width:278px;
+  height:38px;
+  background:url(<%= asset_data_uri "errors/sublimevideo.png" %>) no-repeat;
+  border:none;
+}
+
+a.sublimevideo span {display:none}
+
+a {
+  font-weight:600;
+  color:#283a4e;
+  text-decoration:none;
+  border-bottom:1px solid #77889c;
+}
+
+img {
+  border:none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+}
