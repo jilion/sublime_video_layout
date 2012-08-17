@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+  <title>SublimeVideo - HTML5 Video Player</title>
+  <meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+  <script src="//use.typekit.com/vcc7hji.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    //<![CDATA[
+      try { Typekit.load(); } catch(e) { }
+    //]]>
+  </script>
+  <style type="text/css" media="screen">
+    * {
+      margin:0;
+      padding:0;
+    }
+
+    body {
+      font-family:proxima-nova-1,proxima-nova-2, Helvetica, Arial, sans-serif;
+      font-size:26px;
+      background:#b0c2d8;
+      text-rendering:optimizeLegibility;
+      text-align:center;
+      color:#596e85;
+      line-height:42px;
+      text-shadow:rgba(255,255,255,0.25) 0 1px 0;
+    }
+
+    #global {
+      width:888px;
+      margin:0 auto;
+    }
+
+    #content {
+      position:relative;
+      z-index:2;
+      top:-80px;
+      padding:0 140px;
+    }
+
+    #global img {
+      position:relative;
+/*      top:-50px;*/
+    }
+
+    a.sublimevideo {
+      display:block;
+      margin:60px auto 0;
+      width:278px;
+      height:38px;
+      background:url("sublimevideo.png") no-repeat;
+      border:none;
+    }
+
+    a.sublimevideo span {display:none}
+
+    a {
+      font-weight:600;
+      color:#283a4e;
+      text-decoration:none;
+      border-bottom:1px solid #77889c;
+    }
+
+    img {
+      border:none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -webkit-user-drag: none;
+    }
+  </style>
+</head>
+<body>
+  <div id='global'>
+    <img alt="SublimeVideo Error" src="error.png" />
+    <div id='content'>
+      <p>Sorry, an issue has just occured, we've been informed and will have a look into it.</p>
+      <p>Please try again later.</p>
+      <a href="http://sublimevideo.net" class="sublimevideo"><span>SublimeVideo</span></a>
+    </div>
+  </div>
+</body>
+</html>
