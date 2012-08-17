@@ -16,8 +16,8 @@ module SublimevideoLayout
         ActionController::Base.send :include, SublimevideoLayout::ErrorHandler
       end
     end
-    # initializer 'helpers' do |app|
-    #   ActionView::Base.send :include, SublimeVideoLayoutHelper
-    # end
+    initializer 'helpers' do |app|
+      ActionView::Base.send :include, SublimeVideoLayoutHelper
+    end
   end
 end
