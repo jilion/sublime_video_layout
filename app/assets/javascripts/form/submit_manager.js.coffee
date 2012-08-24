@@ -21,7 +21,7 @@ class SublimeVideo.Form.SubmitManager
     @form.find('input[type=submit]').each (index, input) =>
       # when HTML5 form validation doesn't pass, the submit event is not fired
       jQuery(input).on 'click', (event) =>
-        @form.find('input').each (index, input) ->
+        @form.find('input,textarea').each (index, input) ->
           input = jQuery(input)
           if input[0].validity
             if input[0].validity.valid

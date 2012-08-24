@@ -12,6 +12,10 @@
       = label_tag :user_password, "Password", class: "icon"
       = password_field_tag "user[password]", nil, class: "text show_password", placeholder: "Password", required: true, id: :user_password
 
+    .entry.message
+      = label_tag :message, "Description of your issue or question", class: "icon"
+      = text_area_tag 'user[message]', "", class: "text", placeholder: "Description of your issue or question", required: true
+    
     .entry.select
       .left_field
         %select
