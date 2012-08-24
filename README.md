@@ -4,11 +4,13 @@ This engine provides a common layout (HTML, CSS) and utility JavaScript classes 
 
 ### Deployement to http://gemfury.com/
 
+Update `VERSION` in `lib/sublimevideo_layout/version.rb` to `X.Y.Z` and then run the following commands:
+
 ``` bash
-  bundle install
-  rake build
-  gem install gemfury
-  fury push pkg/sublimevideo_layout-X.Y.Z.gem
+> bundle install
+> rake build
+sublimevideo_layout X.Y.Z built to pkg/sublimevideo_layout-X.Y.Z.gem
+> bundle exec fury push pkg/sublimevideo_layout-X.Y.Z.gem
 ```
 
 ### JS documentation
