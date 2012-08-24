@@ -1,0 +1,10 @@
+{
+	"folders":
+	[
+		{
+			"path": "~/Jilion/Products/SublimeVideo/sublimevideo_layout",
+      "name": "SublimeVideoLayout",
+      "folder_exclude_patterns": ["vendor/cache", "vendor/ruby"]
+		}
+	]
+}
