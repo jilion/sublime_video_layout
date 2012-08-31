@@ -21,7 +21,7 @@ SublimeVideo.UI.prepareStickyMenus = ->
   jQuery('ul.sticky').each ->
     new SublimeVideo.UI.Menu(jQuery(this)).setupStickyItems()
 
-jQuery(document).ready ->
+SublimeVideo.documentReady = ->
   SublimeVideo.Misc.BrowserBugsFixer.fixAllBugs()
 
   # Only one popup can be opened-up at a time
@@ -47,5 +47,8 @@ jQuery(document).ready ->
   SublimeVideo.UI.prepareRemoteLinks()
 
   new SublimeVideo.UI.Menu(jQuery('#header_menu')).setupLoggedInBehavior()
+
+jQuery(document).ready ->
+  SublimeVideo.documentReady()
 
 ddd = -> console.log.apply(console, arguments)
