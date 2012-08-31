@@ -19,6 +19,8 @@ module SublimevideoLayout
     end
 
     def render_500(exception)
+      Notify.send(exception) if defined?(Notify)
+
       respond_to do |format|
         format.html { render template: 'errors/error_500', layout: 'layouts/error', status: 500 }
         format.all  { render nothing: true, status: 500 }
