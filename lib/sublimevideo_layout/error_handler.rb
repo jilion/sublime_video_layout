@@ -14,7 +14,7 @@ module SublimevideoLayout
     def render_404(exception)
       respond_to do |format|
         format.html { render template: 'errors/error_404', layout: 'layouts/error', status: 404 }
-        format.all  { render nothing: true, status: 404 }
+        format.any  { render nothing: true, status: 404 }
       end
     end
 
@@ -23,7 +23,7 @@ module SublimevideoLayout
 
       respond_to do |format|
         format.html { render template: 'errors/error_500', layout: 'layouts/error', status: 500 }
-        format.all  { render nothing: true, status: 500 }
+        format.any  { render nothing: true, status: 500 }
       end
     end
 
