@@ -17,7 +17,7 @@ module SublimeVideoLayoutHelper
   def li_menu_link(name, options = {})
     url = custom_url(options[:path] || name, options)
     classes = Array(options[:class])
-    classes << 'active' if URI(request.url) == URI(url)
+    classes << 'active' if URI(request.url).to_s.match(/#{URI(url).to_s}($|\?.*)/)
     content_tag :li, { class: classes.join(' ') } do
       link_to name, url
     end
