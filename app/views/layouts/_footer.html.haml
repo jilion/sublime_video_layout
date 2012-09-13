@@ -22,6 +22,9 @@
           %li= link_to "News", layout_url('news')
           %li= link_to "Blog", "http://blog.jilion.com/tags/sublimevideo", onclick: "window.open(this); return false"
           %li= link_to "Contact Us", layout_url('contact')
+          %li.jobs
+            = link_to "Jobs", "http://jilion.com/jobs"
+            %span.note= "Join the Team!"
     
     .right
       %p.twitter
