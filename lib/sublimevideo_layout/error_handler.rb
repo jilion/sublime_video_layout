@@ -11,14 +11,14 @@ module SublimevideoLayout
 
     private
 
-    def render_404(exception)
+    def render_404(exception = nil)
       respond_to do |format|
         format.html { render template: 'errors/error_404', layout: 'layouts/error', status: 404 }
         format.any  { render nothing: true, status: 404 }
       end
     end
 
-    def render_500(exception)
+    def render_500(exception = nil)
       Notify.send(exception) if defined?(Notify)
 
       respond_to do |format|
