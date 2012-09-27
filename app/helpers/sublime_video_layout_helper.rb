@@ -17,7 +17,7 @@ module SublimeVideoLayoutHelper
   def li_menu_link(name, options = {})
     url = custom_url(options[:path] || name, options)
     classes = Array(options[:class])
-    classes << 'active' if URI(request.url).to_s.match(/#{URI(url).to_s}($|\?.*)/)
+    classes << 'active' if request.url.match(/#{url}($|\?.*)/)
     content_tag :li, { class: classes.join(' ') } do
       link_to name, url
     end
@@ -95,7 +95,7 @@ module SublimeVideoLayoutHelper
 
   def port
     # handles port 3000 etc... but don't do this in staging/prod since it would use port 80 for HTTPS pages!
-    Rails.env == 'development' && request && request.port ? ":#{request.port}" : ''
+    Rails.env == 'development' && request && request.port && request.port != 80 ? ":#{request.port}" : ''
   end
 
 end
