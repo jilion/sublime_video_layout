@@ -484,6 +484,11 @@ form .entry.select .left_field select, form .entry.select .right_field select {w
 .checkbox_wrap input:checked + label, .radio_wrap input:checked + label, .radio_wrap input:checked + span.bg {background-position:0 -34px}
 .checkbox_wrap input:focus + label, .radio_wrap input:focus + label, .radio_wrap input:focus + span.bg {background-position:0 -68px}
 .checkbox_wrap input:focus:checked + label, .radio_wrap input:focus:checked + label, .radio_wrap input:focus:checked + span.bg {background-position:0 -102px}
+/* REMY: I WROTE THE FOLLOWING RULE! ARE YOU OK WITH THAT OCTAVE! YOU KNOW WHAT? I DON'T GIVE A SHIT! :D */
+.checkbox_wrap input:disabled + label, .radio_wrap input:disabled + label, .radio_wrap input:disabled + span.bg {
+  opacity:0.5;
+  filter:alpha(opacity=50);
+}
 
 form .inline_errors span, .inline_alert {
   padding:2px 5px 2px;
