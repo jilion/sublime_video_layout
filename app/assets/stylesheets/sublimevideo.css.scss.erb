@@ -15,7 +15,7 @@ body {
 header {
   min-width:1000px;
   height:583px;
-  background:url(<%= asset_data_uri "header_repeat.png" %>) repeat-x;
+  background:url(<%= asset_path "header_repeat.png" %>) repeat-x;
 }
 
 header .lights {
@@ -25,7 +25,7 @@ header .lights {
 
 header .shadow {
   height:583px;
-  background:url(<%= asset_data_uri "header_inner_shadow.png" %>) bottom repeat-x;
+  background:url(<%= asset_path "header_inner_shadow.png" %>) bottom repeat-x;
 }
 
 header .stars {
@@ -43,7 +43,7 @@ header h1 a {
   display:block;
   width:312px;
   height:51px;
-  background:url(<%= asset_data_uri 'sublimevideo_logo.png' %>) no-repeat;
+  background:url(<%= asset_path 'sublimevideo_logo.png' %>) no-repeat;
 }
 
 header h1 a span {display:none}
@@ -116,12 +116,12 @@ header p.sub a {
 }
 
 #menu li a.user .icon {
-  background:url(<%= asset_data_uri "user_header_icon.png" %>) no-repeat 0 2px;
+  background:url(<%= asset_path "user_header_icon.png" %>) no-repeat 0 2px;
   padding:0 0 0 20px;
 }
 
 #menu li.active a.user .icon {
-  background:url(<%= asset_data_uri "user_header_icon_active.png" %>) no-repeat 0 2px;
+  background:url(<%= asset_path "user_header_icon_active.png" %>) no-repeat 0 2px;
 }
 
 #menu li.signup a {
@@ -132,7 +132,7 @@ header p.sub a {
   font-weight:500;
   color:#fff;
   text-shadow:#000 0 1px 2px;
-  background:url(<%= asset_data_uri "header_signup_btn.png" %>) no-repeat;
+  background:url(<%= asset_path "header_signup_btn.png" %>) no-repeat;
   text-align:center;
   -webkit-font-smoothing:subpixel-antialiased;
 }
@@ -148,7 +148,7 @@ header p.sub a {
   width:15px;
   height:18px;
   margin:5px 0 0 6px;
-  background:url(<%= asset_data_uri "logout.png" %>) no-repeat;
+  background:url(<%= asset_path "logout.png" %>) no-repeat;
 }
 
 #menu li.logout span {display:none}
@@ -156,7 +156,7 @@ header p.sub a {
 footer {
   min-width:1000px;
   height:331px;
-  background:#24334b url(<%= asset_data_uri "footer_texture.png" %>) repeat-x;
+  background:#24334b url(<%= asset_path "footer_texture.png" %>) repeat-x;
   text-shadow:#000 0 -1px 0;
   color:#9eb5ce;
   -webkit-font-smoothing:antialiased;
@@ -206,7 +206,7 @@ footer .col li.jobs span.note {
   display:block;
   width:82px;
   height:45px;
-  background:url(<%= asset_data_uri "jobs_highlight_note.png" %>) no-repeat 0;
+  background:url(<%= asset_path "jobs_highlight_note.png" %>) no-repeat 0;
   position:absolute;
   top:12px;
   left:36px;
@@ -225,7 +225,7 @@ footer .right {
 footer p.twitter {
   margin:0 0 0;
   padding:4px 0 0 42px;
-  background:url(<%= asset_data_uri "twitter.png" %>) no-repeat;
+  background:url(<%= asset_path "twitter.png" %>) no-repeat;
 }
 
 footer p.twitter a {
@@ -299,7 +299,7 @@ footer .newsletter button span {
   position:relative;
   top:1px;
   text-indent:-999px;
-  background:url(<%= asset_data_uri "newsletter_btn_arrow.png" %>) no-repeat;
+  background:url(<%= asset_path "newsletter_btn_arrow.png" %>) no-repeat;
 }
 
 footer p.service_by {
@@ -309,7 +309,7 @@ footer p.service_by {
 
 footer a.jilion {
   display:inline-block;
-  background:url(<%= asset_data_uri "jilion.png" %>) no-repeat;
+  background:url(<%= asset_path "jilion.png" %>) no-repeat;
   width:67px;
   height:19px;
   position:relative;
@@ -324,7 +324,7 @@ footer .footer_break {
   width:669px;
   height:14px;
   margin:0 auto;
-  background:url(<%= asset_data_uri "footer_break.png" %> );
+  background:url(<%= asset_path "footer_break.png" %> );
 }
 
 footer p.copyright {
@@ -432,7 +432,7 @@ form .entry.select select {
   color:#4a648e;
   padding:0 24px 0 10px;
   text-shadow:rgba(255,255,255,0.8) 0 1px 0;
-  background:url(<%= asset_data_uri "custom_select.png" %>) no-repeat right top;
+  background:url(<%= asset_path "custom_select.png" %>) no-repeat right top;
   border:1px solid #335994;
   @include border-radius(5px);
   @include box-shadow((inset rgba(255,255,255,0.8) 0 1px 0, rgba(255,255,255,0.3) 0 1px 0));
@@ -469,7 +469,7 @@ form .entry.select .left_field select, form .entry.select .right_field select {w
   height:24px;
   padding:9px 0 0 38px;
   left:-6px;
-  background:url(<%= asset_data_uri "custom_checkbox.png" %>) no-repeat;
+  background:url(<%= asset_path "custom_checkbox.png" %>) no-repeat;
 }
 
 .radio_wrap span.bg, .radio_wrap label {
@@ -478,7 +478,7 @@ form .entry.select .left_field select, form .entry.select .right_field select {w
   height:24px;
   padding:9px 0 0 38px;
   left:-6px;
-  background:url(<%= asset_data_uri "custom_radio.png" %>) no-repeat;
+  background:url(<%= asset_path "custom_radio.png" %>) no-repeat;
 }
 
 .checkbox_wrap input:checked + label, .radio_wrap input:checked + label, .radio_wrap input:checked + span.bg {background-position:0 -34px}
@@ -517,7 +517,7 @@ form .inline_errors.plan span, #content form .entry.card .inline_errors span, fo
 form .site label.icon {
   width:20px;
   height:21px;
-  background:url(<%= asset_data_uri "fields/domain_icon.png" %>) no-repeat;
+  background:url(<%= asset_path "fields/domain_icon.png" %>) no-repeat;
   top:12px;
   left:10px;
 }
@@ -525,7 +525,7 @@ form .site label.icon {
 form .entry.password label.icon {
   width:16px;
   height:21px;
-  background:url(<%= asset_data_uri "fields/password_icon.png" %>) no-repeat;
+  background:url(<%= asset_path "fields/password_icon.png" %>) no-repeat;
   top:10px;
   left:12px;
 }
@@ -533,7 +533,7 @@ form .entry.password label.icon {
 form .entry.email label.icon {
   width:20px;
   height:21px;
-  background:url(<%= asset_data_uri "fields/email_icon.png" %>) no-repeat;
+  background:url(<%= asset_path "fields/email_icon.png" %>) no-repeat;
   top:12px;
   left:10px;
 }
@@ -541,7 +541,7 @@ form .entry.email label.icon {
 form .name label.icon {
   width:18px;
   height:18px;
-  background:url(<%= asset_data_uri "fields/user_icon.png" %>) no-repeat;
+  background:url(<%= asset_path "fields/user_icon.png" %>) no-repeat;
   top:12px;
   left:12px;
 }
@@ -549,7 +549,7 @@ form .name label.icon {
 form .entry.card_number label.icon {
   width:20px;
   height:16px;
-  background:url(<%= asset_data_uri "fields/card_icon.png" %>) no-repeat;
+  background:url(<%= asset_path "fields/card_icon.png" %>) no-repeat;
   top:14px;
   left:12px;
 }
@@ -557,7 +557,7 @@ form .entry.card_number label.icon {
 form .entry.path label.icon {
   width:11px;
   height:19px;
-  background:url(<%= asset_data_uri "fields/path_icon.png" %>) no-repeat;
+  background:url(<%= asset_path "fields/path_icon.png" %>) no-repeat;
   top:12px;
   left:14px;
 }
@@ -565,7 +565,7 @@ form .entry.path label.icon {
 form .entry.ticket_subject label.icon {
   width:21px;
   height:19px;
-  background:url(<%= asset_data_uri "fields/ticket_icon.png" %>) no-repeat;
+  background:url(<%= asset_path "fields/ticket_icon.png" %>) no-repeat;
   top:12px;
   left:12px;
 }
@@ -663,7 +663,7 @@ ul.form_list li a {
   right:0;
   margin:0 auto;
   width:512px;
-  background:#8ea6c2 url(<%= asset_data_uri "back_texture_my.png" %>);
+  background:#8ea6c2 url(<%= asset_path "back_texture_my.png" %>);
   @include border-radius(5px);
   @include box-shadow((inset rgba(255,255,255,0.6) 0 1px 0, #000d20 0 10px 40px));
 }
@@ -678,7 +678,7 @@ ul.form_list li a {
   display:block;
   width:18px;
   height:19px;
-  background:url(<%= asset_data_uri "close_popup.png" %>) no-repeat;
+  background:url(<%= asset_path "close_popup.png" %>) no-repeat;
   position:absolute;
   top:5px;
   right:5px;
@@ -697,7 +697,7 @@ ul.form_list li a {
 .popup .break {
   width:413px;
   height:21px;
-  background:url(<%= asset_data_uri "popup_break.png" %>) no-repeat;
+  background:url(<%= asset_path "popup_break.png" %>) no-repeat;
   margin:0 auto;
 }
 
@@ -727,7 +727,7 @@ form .entry.sign_up input {
   text-align:center;
   width:150px;
   height:56px;
-  background:url(<%= asset_data_uri "popup_sign_up_btn.png" %>) no-repeat;
+  background:url(<%= asset_path "popup_sign_up_btn.png" %>) no-repeat;
   color:#fff;
   font-family:inherit;
   font-size:29px;
