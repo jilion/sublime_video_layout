@@ -1,5 +1,5 @@
 - @ie_min ||= 7
-= surround "<!--[if lte IE #{@ie_min}]>".html_safe, "<![endif]-->".html_safe do
+= surround "<!--[if lt IE #{@ie_min}]>".html_safe, "<![endif]-->".html_safe do
   %meta{ "http-equiv" => "Refresh", content: "0;url=http://jilion.com/ie" }
   %style{ type: "text/css", media: "screen" }
     == body {background:#fff;display:none;}
