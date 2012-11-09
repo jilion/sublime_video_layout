@@ -11,7 +11,7 @@ module SublimevideoLayout
       app.middleware.insert_before Rack::Lock, ::ActionDispatch::Static, "#{root}/public"
     end
     initializer 'helpers' do |app|
-      ActionView::Base.send :include, SublimeVideoLayoutHelper
+      ActionView::Base.send :include, SublimevideoLayout::EngineHelper
     end
   end
 end
