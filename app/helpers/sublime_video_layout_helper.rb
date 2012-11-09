@@ -43,8 +43,10 @@ module SublimeVideoLayoutHelper
     "#{protocol(options)}://#{subdomain(options)}#{domain(options)}#{port}/#{path.sub(%r{\A/}, '')}"
   end
 
-  def sublimevideo_include_tag(ssl_request, name)
-    %(<script src="//cdn.sublimevideo.net/js/#{::SiteToken[name.to_sym]}.js" type="text/javascript"></script>)
+  def sublimevideo_include_tag(name, options = {})
+    { host: 'cdn.sublimevideo.net', stage: nil }.merge!(options)
+
+    %(<script src="//#{options[:host]}/js/#{::SiteToken[name.to_sym]}#{'-' + options[:stage] if options[:stage]}.js" type="text/javascript"></script>)
   end
 
   private
