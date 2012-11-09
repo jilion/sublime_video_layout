@@ -1,9 +1,9 @@
 require 'fast_spec_helper'
-require File.expand_path('app/helpers/sublimevideo_layout/engine_helper')
+require File.expand_path('app/helpers/sublime_video_layout/engine_helper')
 
-describe SublimevideoLayout::EngineHelper do
+describe SublimeVideoLayout::EngineHelper do
   class Helper
-    extend SublimevideoLayout::EngineHelper
+    extend SublimeVideoLayout::EngineHelper
   end
 
   describe ".custom_url" do

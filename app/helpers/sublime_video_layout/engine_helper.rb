@@ -1,6 +1,6 @@
 require 'site_token'
 
-module SublimevideoLayout
+module SublimeVideoLayout
   module EngineHelper
 
     def body_class
@@ -47,7 +47,12 @@ module SublimevideoLayout
     def sublimevideo_include_tag(name, options = {})
       { host: 'cdn.sublimevideo.net', stage: nil }.merge!(options)
 
-      %(<script src="//#{options[:host]}/js/#{::SiteToken[name.to_sym]}#{'-' + options[:stage] if options[:stage]}.js" type="text/javascript"></script>)
+      filename = "#{::SiteToken[name.to_sym]}#{'-' + options[:stage] if options[:stage]}.js"
+      parts = ['<script']
+      parts << %(src="//#{options[:host]}/js/#{filename}")
+      parts << 'type="text/javascript"></script>'
+
+      parts.join(' ').html_safe
     end
 
     private

@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'bundler'
-gem 'rake'
 
 gemspec
 
@@ -19,11 +18,8 @@ end
 group :tools do
   gem 'gemfury'
 
-  gem 'growl'
-  platforms :ruby do
-    gem 'coolline'
-  end
-
+  gem 'rb-fsevent'
+  gem 'ruby_gntp'
   gem 'guard-pow'
   gem 'guard-livereload'
   gem 'guard-rspec'

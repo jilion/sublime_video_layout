@@ -2,7 +2,7 @@
 	"folders":
 	[
 		{
-			"path": "~/Jilion/Products/SublimeVideo/sublimevideo_layout",
+			"path": "~/Jilion/Products/SublimeVideo/sublime_video_layout",
       "folder_exclude_patterns": ["vendor/cache", "vendor/ruby"]
 		}
 	]
