@@ -90,20 +90,25 @@ describe SublimeVideoLayout::EngineHelper do
   end
 
   describe "sublimevideo_include_tag" do
+    it { Helper.sublimevideo_include_tag(true, 'my').should eq %(<script src="//cdn.sublimevideo.net/js/#{::SiteToken[:my]}.js" type="text/javascript"></script>) }
+    it { Helper.sublimevideo_include_tag(false, :docs).should eq %(<script src="//cdn.sublimevideo.net/js/#{::SiteToken[:docs]}.js" type="text/javascript"></script>) }
+  end
+
+  describe "sublimevideo_loader_tag" do
     it {
-      Helper.sublimevideo_include_tag('my').should
+      Helper.sublimevideo_loader_tag('my').should
         eq %(<script src="//cdn.sublimevideo.net/js/#{::SiteToken[:my]}.js" type="text/javascript"></script>)
     }
     it {
-      Helper.sublimevideo_include_tag(:docs).should
+      Helper.sublimevideo_loader_tag(:docs).should
         eq %(<script src="//cdn.sublimevideo.net/js/#{::SiteToken[:docs]}.js" type="text/javascript"></script>)
     }
     it {
-      Helper.sublimevideo_include_tag(:docs, stage: 'alpha').should
+      Helper.sublimevideo_loader_tag(:docs, stage: 'alpha').should
         eq %(<script src="//cdn.sublimevideo.net/js/#{::SiteToken[:docs]}-alpha.js" type="text/javascript"></script>)
     }
     it {
-      Helper.sublimevideo_include_tag(:docs, host: 'cdn.sublimevideo-staging.net').should
+      Helper.sublimevideo_loader_tag(:docs, host: 'cdn.sublimevideo-staging.net').should
         eq %(<script src="//cdn.sublimevideo-staging.net/js/#{::SiteToken[:docs]}.js" type="text/javascript"></script>)
     }
   end

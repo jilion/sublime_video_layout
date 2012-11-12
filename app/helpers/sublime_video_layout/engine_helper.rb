@@ -44,7 +44,12 @@ module SublimeVideoLayout
       "#{protocol(options)}://#{subdomain(options)}#{domain(options)}#{port}/#{path.sub(%r{\A/}, '')}"
     end
 
-    def sublimevideo_include_tag(name, options = {})
+    # @deprecated
+    def sublimevideo_include_tag(ssl_request, name)
+      %(<script src="//cdn.sublimevideo.net/js/#{::SiteToken[name.to_sym]}.js" type="text/javascript"></script>)
+    end
+
+    def sublimevideo_loader_tag(name, options = {})
       { host: 'cdn.sublimevideo.net', stage: nil }.merge!(options)
 
       filename = "#{::SiteToken[name.to_sym]}#{'-' + options[:stage] if options[:stage]}.js"
@@ -52,7 +57,7 @@ module SublimeVideoLayout
       parts << %(src="//#{options[:host]}/js/#{filename}")
       parts << 'type="text/javascript"></script>'
 
-      parts.join(' ').html_safe
+      parts.join(' ')
     end
 
     private
