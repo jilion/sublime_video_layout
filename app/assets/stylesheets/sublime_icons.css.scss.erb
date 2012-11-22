@@ -1,0 +1,36 @@
+@font-face {
+	font-family: 'SublimeIcons';
+	src:url(<%= asset_path "SublimeIcons.eot" %>);
+	src:url(<%= asset_path "SublimeIcons.eot?#iefix" %>) format('embedded-opentype'),
+		url(<%= asset_path "SublimeIcons.svg#SublimeIcons" %>) format('svg'),
+		url(<%= asset_path "SublimeIcons.woff" %>) format('woff'),
+		url(<%= asset_path "SublimeIcons.ttf" %>) format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before {
+	font-family: 'SublimeIcons';
+	content: attr(data-icon);
+	speak: none;
+	font-weight: normal;
+	-webkit-font-smoothing: antialiased;
+}
+
+/* Use the following CSS code if you want to have a class per icon */
+[class^="icon-"]:before, [class*=" icon-"]:before {
+	font-family:'SublimeIcons';
+	font-style:normal;
+	speak:none;
+	font-weight: normal;
+	-webkit-font-smoothing: antialiased;
+}
+.icon-arrow:before {
+	content: "\5b";
+  font-size:75%;
+}
+.icon-arrow-down:before {
+	content: "\21";
+  font-size:25%;
+}

@@ -1,3 +1,7 @@
+/*
+*= require 'sublime_icons'
+*/
+
 @import "css3";
 
 * {
@@ -14,8 +18,8 @@ body {
 
 header {
   min-width:1000px;
-  height:583px;
-  background:url(<%= asset_path "header_repeat.png" %>) repeat-x;
+  height:665px;
+  background:url(<%= asset_path "header_repeat.png" %>) repeat-x center;
 }
 
 header .lights {
@@ -35,15 +39,18 @@ header .stars {
 header .wrap {
   width:960px;
   margin:0 auto;
-  padding:34px 20px 0;
+  padding:22px 20px 0;
   position:relative;
 }
 
 header h1 a {
   display:block;
-  width:312px;
-  height:51px;
-  background:url(<%= asset_path 'sublimevideo_logo.png' %>) no-repeat;
+  width:382px;
+  height:78px;
+  background:url(<%= asset_path 'sublimevideo_logo@2x.png' %>) no-repeat;
+  background-size:100%;
+  position:relative;
+  z-index:3;
 }
 
 header h1 a span {display:none}
@@ -74,6 +81,7 @@ header p.sub a {
   position:absolute;
   top:50px;
   right:0;
+  z-index:3;
 }
 
 #menu ul {
@@ -84,7 +92,11 @@ header p.sub a {
   float:left;
 }
 
-#menu li a {
+#menu li.popup_wrap {
+  position:relative;
+}
+
+#menu li a, #menu li strong.trigger {
   display:block;
   padding:6px 10px 3px;
   color:#cde5fe;
@@ -152,6 +164,70 @@ header p.sub a {
 }
 
 #menu li.logout span {display:none}
+
+#menu li strong.trigger {
+  display:inline-block;
+  font-weight:normal;
+  background:#0d131b;
+  padding:6px 6px 5px 8px;
+  cursor:pointer;
+  @include border-radius(4px);
+}
+
+#menu li strong.trigger span.icon-arrow-down {
+  position:relative;
+  top:-3px;
+}
+
+#menu li ul.popup {
+  display:none;
+  width:170px;
+  height:93px;
+  position:absolute;
+  z-index:999;
+  top:30px;
+  left:0;
+  @include gradient(#27354a,#19212e,#202b3c);
+  @include border-radius(4px);
+  @include box-shadow((inset #41597c 0 1px 0, #000 0 5px 25px));
+}
+
+#menu li.popup_wrap:hover ul.popup {display:block}
+
+#menu li ul.popup li {
+  float:none;
+  display:block;
+  height:30px;
+  border-top:1px solid #000;
+  @include box-shadow(inset rgba(161,195,255,0.16) 0 1px 0);
+}
+
+#menu li ul.popup li:first-child {
+  border-top:none;
+  @include box-shadow(none);
+}
+
+#menu li ul.popup li a {
+  height:20px;
+  padding:6px 10px 3px;
+  text-transform:none;
+  letter-spacing:0;
+  font-size:15px;
+  font-weight:600;
+  text-shadow:rgba(0,0,0,0.7) 0 -1px 0;
+}
+
+#menu li ul.popup li a:hover {
+  background:rgba(12,17,25,0.6);
+}
+
+#menu li ul.popup li:first-child a {
+  @include border-radius(4px 4px 0 0);
+}
+
+#menu li ul.popup li:last-child a {
+  @include border-radius(0 0 4px 4px);
+}
 
 footer {
   min-width:1000px;

@@ -3,9 +3,15 @@
   = content_for :header_menu do
     %nav#menu
       %ul.sticky#header_menu
-        = layout_li_menu_link 'why?', path: 'why'
-        = layout_li_menu_link 'features'
-        = layout_li_menu_link 'plans'
+        %li.popup_wrap
+          %strong.trigger
+            = "Solutions"
+            %span.icon-arrow-down
+          %ul.popup
+            = layout_li_menu_link 'SublimeVideo Player', path: 'sublime-video-player'
+            = layout_li_menu_link 'Horizon Framework', path: 'horizon-framework'
+            = layout_li_menu_link 'Tailor-Made Players', path: 'tailor-made-players'
+        = layout_li_menu_link 'pricing'
         = layout_li_menu_link 'showcase', path: 'customer-showcase'
         = layout_li_menu_link 'news'
         = layout_li_menu_link 'help'
