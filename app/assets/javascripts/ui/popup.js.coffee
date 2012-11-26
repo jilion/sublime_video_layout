@@ -75,7 +75,7 @@ class SublimeVideo.UI.Popup extends SublimeVideo.UI.SimplePopup
     sublimevideo.pause() if typeof(sublimevideo) is 'object' and SublimeVideo.Misc.Utils.iOS()
 
     unless @element?
-      @element = jQuery '<div>'
+      @element = $ '<div>'
                    id: "#{@options.id or ''}"
                    class: "#{@options.class or ''} loading"
       @element.html("<div class='popup_wrap'>
@@ -89,7 +89,7 @@ class SublimeVideo.UI.Popup extends SublimeVideo.UI.SimplePopup
       else if @options.anchor
         this.setContent(@options.anchor.html())
         @options.anchor.html('')
-      jQuery('#content').append @element
+      $('#content').append @element
 
     if @options.url?
       # the called method will take care of replacing the wrap div with the response content
@@ -108,4 +108,4 @@ class SublimeVideo.UI.Popup extends SublimeVideo.UI.SimplePopup
       @element.remove()
 
     if @options.form?
-      @options.form.find('input[type=submit]', 'button').each -> jQuery(this).removeAttr 'disabled'
+      @options.form.find('input[type=submit]', 'button').each -> $(this).removeAttr 'disabled'
