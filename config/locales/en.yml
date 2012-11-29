@@ -9,3 +9,6 @@ en:
     sales:
       email:      "sales@sublimevideo.net"
       email_full: "SublimeVideo Sales <sales@sublimevideo.net>"
+    press:
+      email:      "press@sublimevideo.net"
+      email_full: "SublimeVideo Press <press@sublimevideo.net>"
