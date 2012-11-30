@@ -18,8 +18,11 @@ end
 group :tools do
   gem 'gemfury'
 
-  gem 'rb-fsevent'
+  # Guard
   gem 'ruby_gntp'
+  gem 'rb-fsevent'
+  gem 'rb-readline'
+
   gem 'guard-pow'
   gem 'guard-livereload'
   gem 'guard-rspec'

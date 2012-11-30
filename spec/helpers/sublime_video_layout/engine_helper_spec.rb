@@ -95,22 +95,21 @@ describe SublimeVideoLayout::EngineHelper do
   end
 
   describe "sublimevideo_loader_tag" do
-    it {
-      Helper.sublimevideo_loader_tag('my').should
-        eq %(<script src="//cdn.sublimevideo.net/js/#{::SiteToken[:my]}.js" type="text/javascript"></script>)
-    }
-    it {
-      Helper.sublimevideo_loader_tag(:docs).should
-        eq %(<script src="//cdn.sublimevideo.net/js/#{::SiteToken[:docs]}.js" type="text/javascript"></script>)
-    }
-    it {
-      Helper.sublimevideo_loader_tag(:docs, stage: 'alpha').should
-        eq %(<script src="//cdn.sublimevideo.net/js/#{::SiteToken[:docs]}-alpha.js" type="text/javascript"></script>)
-    }
-    it {
-      Helper.sublimevideo_loader_tag(:docs, host: 'cdn.sublimevideo-staging.net').should
-        eq %(<script src="//cdn.sublimevideo-staging.net/js/#{::SiteToken[:docs]}.js" type="text/javascript"></script>)
-    }
+    it 'accepts subdomain as a string' do
+      Helper.sublimevideo_loader_tag('my').should eq %(<script src="//cdn.sublimevideo.net/js/#{::SiteToken[:my]}.js" type="text/javascript"></script>)
+    end
+
+    it 'accepts subdomain as a symbol' do
+      Helper.sublimevideo_loader_tag(:docs).should eq %(<script src="//cdn.sublimevideo.net/js/#{::SiteToken[:docs]}.js" type="text/javascript"></script>)
+    end
+
+    it 'accepts a stage' do
+      Helper.sublimevideo_loader_tag(:docs, stage: 'alpha').should eq %(<script src="//cdn.sublimevideo.net/js/#{::SiteToken[:docs]}-alpha.js" type="text/javascript"></script>)
+    end
+
+    it 'accepts a host' do
+      Helper.sublimevideo_loader_tag(:docs, host: 'cdn.sublimevideo-staging.net').should eq %(<script src="//cdn.sublimevideo-staging.net/js/#{::SiteToken[:docs]}.js" type="text/javascript"></script>)
+    end
   end
 
 end

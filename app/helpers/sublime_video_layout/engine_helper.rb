@@ -50,7 +50,7 @@ module SublimeVideoLayout
     end
 
     def sublimevideo_loader_tag(name, options = {})
-      { host: 'cdn.sublimevideo.net', stage: nil }.merge!(options)
+      options = { host: 'cdn.sublimevideo.net', stage: nil }.merge(options)
 
       filename = "#{::SiteToken[name.to_sym]}#{'-' + options[:stage] if options[:stage]}.js"
       parts = ['<script']
