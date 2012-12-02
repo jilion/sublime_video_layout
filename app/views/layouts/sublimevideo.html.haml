@@ -9,7 +9,7 @@
     %meta{ content: 'http://sublimevideo.net', property: 'og:url' }
     %meta{ content: 'http://media.jilion.s3.amazonaws.com/facebook/sublimevideo_facebook.png', property: 'og:image' }
     %meta{ content: "SublimeVideo is the world's first cloud-based HTML5 video player; a universal and pain-free solution that allows video to play flawlessly on any device or browser.", property: 'og:description'}
-    - if !response.cache_control[:public] && !@page_caching
+    - if !response.cache_control[:public]
       = csrf_meta_tag
 
     = stylesheet_link_tag 'application'
