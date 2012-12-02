@@ -44,11 +44,6 @@ module SublimeVideoLayout
       "#{protocol(options)}://#{subdomain(options)}#{domain(options)}#{port}/#{path.sub(%r{\A/}, '')}"
     end
 
-    # @deprecated
-    def sublimevideo_include_tag(ssl_request, name)
-      %(<script src="//cdn.sublimevideo.net/js/#{::SiteToken[name.to_sym]}.js" type="text/javascript"></script>)
-    end
-
     def sublimevideo_loader_tag(name, options = {})
       options = { host: 'cdn.sublimevideo.net', stage: nil }.merge(options)
 
