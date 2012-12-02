@@ -29,7 +29,7 @@
 = yield :header_menu
 
 - if request.subdomain.blank? || request.subdomain == 'docs'
-  = content_for :javascript_bottom do
+  = content_for :bottom do
     #popup_signup.popup{ style: "display:none" }
       .popup_wrap
         .lights
