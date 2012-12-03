@@ -22,8 +22,7 @@
     = javascript_include_tag "//use.typekit.com/vcc7hji.js"
     = yield :javascript
     = javascript_include_tag 'application'
-    = render 'layouts/typekit'
-
+    = javascript_tag "try { Typekit.load(); } catch(e) { }"
 
   %body{ class: body_class }
     %div{ "data-pjax-container" => true }
