@@ -16,7 +16,7 @@
   .entry.terms
     .checkbox_wrap
       = check_box_tag "user[terms_and_conditions]", 1, false, id: 'user_terms_and_conditions'
-      = label_tag :user_terms_and_conditions, 
+      = label_tag :user_terms_and_conditions,
         "I agree to the #{link_to("Terms & Conditions", my_url('terms'), onclick: "window.open(this); return false")}.".html_safe
 
   .entry.submit.sign_up
