@@ -12,6 +12,10 @@ module SiteToken
     def [](name)
       TOKENS[name]
     end
+
+    def tokens
+      TOKENS.values
+    end
   end
 
 end
