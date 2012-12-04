@@ -2,25 +2,24 @@
   .wrap
     %nav
       .col
-        %h4= "Product"
+        %h4 Solutions
         %ul
-          %li= link_to "Why SublimeVideo?", layout_url('why')
-          %li= link_to "Features", layout_url('features')
-          %li= link_to "Plans & Pricing", layout_url('plans')
-          %li= link_to "Customer Showcase", layout_url('customer-showcase')
+          %li= link_to "SublimeVideo Player", layout_url('sublime-video-player')
+          %li= link_to "Horizon Framework", layout_url('horizon-framework')
+          %li= link_to "Tailor-Made Players", layout_url('tailor-made-players')
+          %li= link_to "Testimonials", layout_url('testimonials')
       .col
-        %h4= "Support"
+        %h4 Support
         %ul
           %li= link_to "Help", layout_url('help')
           %li= link_to "Documentation", docs_url('')
           %li= link_to "Forum", "http://getsatisfaction.com/sublimevideo", onclick: "window.open(this); return false"
           %li= link_to "Player Releases", docs_url('releases')
       .col
-        %h4= "Company"
+        %h4 Company
         %ul
           %li= link_to "About", layout_url('about')
           %li= link_to "News", layout_url('news')
-          %li= link_to "Blog", "http://blog.jilion.com/tags/sublimevideo", onclick: "window.open(this); return false"
           %li= link_to "Contact Us", layout_url('contact')
           %li.jobs
             = link_to "Jobs", "http://jilion.com/jobs"
@@ -34,7 +33,7 @@
       .newsletter
         %form{ action: "http://jilion.createsend.com/t/r/s/shylrr/", method: "post", id: "subForm" }
           %p
-            %label{ for: "shylrr-shylrr" }= "Subscribe for news & exclusive promotions"
+            %label{ for: "shylrr-shylrr" } Subscribe for news
           .field_wrap
             %input.field{ type: "text", name: "cm-shylrr-shylrr", id: "shylrr-shylrr", size: "25", placeholder: "Email" }
             %button{ type: "submit" }
