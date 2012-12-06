@@ -27,7 +27,7 @@ guard 'pow' do
   watch(%r{spec/internal/app/.+})
 end
 
-guard 'livereload', host: 'sublimevideo-layout.dev' do
+guard 'livereload', host: 'sublime-video-layout.dev' do
   watch(%r{(app|spec/internal/app)/views/.+\.(erb|haml|slim)})
   watch(%r{(app|spec/internal/app)/helpers/.+\.rb})
   watch(%r{spec/internal/public/.+\.(css|js|html)})

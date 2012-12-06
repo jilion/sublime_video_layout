@@ -26,6 +26,7 @@ class SublimeVideo.Form.SubmitManager
           if input[0].validity
             if input[0].validity.valid
               input.removeClass 'errors'
+              input.siblings('.inline_errors').remove()
             else
               input.addClass 'errors'
               event.preventDefault()
