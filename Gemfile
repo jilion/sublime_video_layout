@@ -5,7 +5,7 @@ gem 'bundler'
 gemspec
 
 group :development do
-  gem 'combustion', '~> 0.3.1'
+  gem 'combustion'
   gem 'haml-rails'
   gem 'rack-livereload'
 end
