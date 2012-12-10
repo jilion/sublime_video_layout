@@ -23,7 +23,7 @@ SublimeVideo.UI.prepareStickyMenus = ->
 
 SublimeVideo.UI.updateActiveItemMenus = ->
   jQuery('ul.sticky').each ->
-    new SublimeVideo.UI.menu(jQuery(this)).updateActiveItem()
+    new SublimeVideo.UI.Menu(jQuery(this)).updateActiveItem()
 
 SublimeVideo.documentReady = ->
   SublimeVideo.Misc.BrowserBugsFixer.fixAllBugs()

@@ -1,6 +1,6 @@
 # The Flash create a new flash notice element and prepend it to the `#content` element.
 #
-class SublimeVideo.UI.menu
+class SublimeVideo.UI.Menu
   #
   # @param [jQuery Element] element the menu (ul) element
   #
