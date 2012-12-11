@@ -6,7 +6,8 @@ module SiteToken
       badged: 't0cf1489',
       my:     'mtrrhukx',
       docs:   'z2g631ff',
-      test:   'mtf8cxlm'
+      test:   'mtf8cxlm',
+      gruber: 's96w44sn',
     }
 
     def [](name)
