@@ -21,8 +21,7 @@ module Rack
         [302, headers.merge('Location' => '/'), ['Redirected to /']]
       else
         request = ActionDispatch::Request.new(env)
-        param_or_cookie = request.cookie_jar[:maintenance] || request.POST['maintenance_code']
-        if param_or_cookie == ENV['MAINTENANCE_CODE']
+        if request.cookie_jar[:maintenance] == ENV['MAINTENANCE_CODE']
           @app.call(env)
         else
           [302, {'Location' => '/maintenance'}, ['Redirected to /maintenance']]
