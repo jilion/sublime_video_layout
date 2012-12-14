@@ -21,8 +21,7 @@ module Rack
         [302, headers.merge('Location' => '/'), ['Redirected to /']]
       else
         request = ActionDispatch::Request.new(env)
-        if request.cookie_jar[:maintenance] == ENV['MAINTENANCE_CODE'] || env['HTTP_HOST'] == "admin.#{@domain}"
-          || env['HTTP_HOST'] == "api.#{@domain}" || env['REQUEST_METHOD'] != 'GET'
+        if request.cookie_jar[:maintenance] == ENV['MAINTENANCE_CODE'] || env['HTTP_HOST'] == "admin.#{@domain}" || env['HTTP_HOST'] == "api.#{@domain}" || env['REQUEST_METHOD'] != 'GET'
           @app.call(env)
         else
           [302, {'Location' => '/maintenance'}, ['Redirected to /maintenance']]
