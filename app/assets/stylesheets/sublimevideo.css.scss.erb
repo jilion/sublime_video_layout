@@ -50,7 +50,15 @@ header h1 a {
   background:url(<%= asset_path 'sublimevideo_logo@2x.png' %>) no-repeat;
   background-size:100%;
   position:relative;
-  z-index:3;
+  z-index:3;  
+}
+
+@media \0screen {
+  header h1 a {
+    background: no-repeat center center fixed;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="<%= asset_path 'sublimevideo_logo@2x.png' %>",sizingMethod='scale');
+    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='<%= asset_path 'sublimevideo_logo@2x.png' %>', sizingMethod='scale')";    
+  }
 }
 
 header h1 a span {display:none}
