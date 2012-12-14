@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'SublimeIcons';
-	src:url("/assets/SublimeIcons.eot");
-	src:url("/assets/SublimeIcons.eot?#iefix") format('embedded-opentype'),
-		url("/assets/SublimeIcons.svg#SublimeIcons") format('svg'),
-		url("/assets/SublimeIcons.woff") format('woff'),
-		url("/assets/SublimeIcons.ttf") format('truetype');
+	src:url(<%= asset_data_uri "SublimeIcons.eot" %>);
+	src:url(<%= asset_data_uri "SublimeIcons.eot?#iefix" %>) format('embedded-opentype'),
+		url(<%= asset_data_uri "SublimeIcons.svg#SublimeIcons" %>) format('svg'),
+		url(<%= asset_data_uri "SublimeIcons.woff" %>) format('woff'),
+		url(<%= asset_data_uri "SublimeIcons.ttf" %>) format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
