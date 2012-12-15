@@ -8,7 +8,7 @@ class SublimeVideo.Misc.BrowserBugsFixer
     isSafari405OrPrevious = navigator.userAgent.indexOf("Macintosh") > -1 and webkitVersionNumber and parseInt(webkitVersionNumber[1],10) <= 531;
 
     if isSafari405OrPrevious
-      jQuery('select').each ->
-        jQuery(this).css
+      $('select').each ->
+        $(this).css
           'font-family': 'Lucida Grande, Arial, sans-serif'
           'font-size': '15px'

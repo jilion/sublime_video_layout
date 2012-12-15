@@ -5,7 +5,7 @@ class SublimeVideo.UI.RemoteLink
   # @param [DOM Element] element the element to which attach the behavior
   #
   constructor: (element) ->
-    @element = jQuery(element)
+    @element = $(element)
     this.setupObserver()
 
   setupObserver: ->
@@ -17,5 +17,5 @@ class SublimeVideo.UI.RemoteLink
   # @private
   #
   stickyBehavior: ->
-    @element.parent().find('a.active').each -> jQuery(this).removeClass 'active'
+    @element.parent().find('a.active').each -> $(this).removeClass 'active'
     @element.addClass 'active'

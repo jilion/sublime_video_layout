@@ -13,17 +13,19 @@ window.SublimeVideo =
   Misc: {}
   UI: {}
 
+$.fn.exists = -> @length > 0
+
 SublimeVideo.UI.prepareRemoteLinks = ->
-  jQuery('a.remote').each ->
-    new SublimeVideo.UI.RemoteLink(jQuery(this))
+  $('a.remote').each ->
+    new SublimeVideo.UI.RemoteLink($(this))
 
 SublimeVideo.UI.prepareStickyMenus = ->
-  jQuery('ul.sticky').each ->
-    new SublimeVideo.UI.Menu(jQuery(this)).setupStickyItems()
+  $('ul.sticky').each ->
+    new SublimeVideo.UI.Menu($(this)).setupStickyItems()
 
 SublimeVideo.UI.updateActiveItemMenus = ->
-  jQuery('ul.sticky').each ->
-    new SublimeVideo.UI.Menu(jQuery(this)).updateActiveItem()
+  $('ul.sticky').each ->
+    new SublimeVideo.UI.Menu($(this)).updateActiveItem()
 
 SublimeVideo.documentReady = ->
   SublimeVideo.Misc.BrowserBugsFixer.fixAllBugs()
@@ -34,25 +36,23 @@ SublimeVideo.documentReady = ->
   if matches = document.location.search.match(/p=(login|signup)/)
     SublimeVideo.UI.Utils.openAccountPopup(matches[1])
 
-  jQuery('input.show_password[type=password]').each (index, input) ->
-    new SublimeVideo.Form.ShowPassword(jQuery(this), index)
+  $('input.show_password[type=password]').each (index, input) ->
+    new SublimeVideo.Form.ShowPassword($(this), index)
 
   unless Modernizr.input.placeholder
-    jQuery('input[placeholder]').each ->
-      new SublimeVideo.Form.PseudoPlaceholder(jQuery(this))
-    jQuery('textarea[placeholder]').each ->
-      new SublimeVideo.Form.PseudoPlaceholder(jQuery(this))
+    $('input[placeholder]').each ->
+      new SublimeVideo.Form.PseudoPlaceholder($(this))
+    $('textarea[placeholder]').each ->
+      new SublimeVideo.Form.PseudoPlaceholder($(this))
 
-  jQuery('form').each ->
-    new SublimeVideo.Form.SubmitManager(jQuery(this))
+  $('form').each ->
+    new SublimeVideo.Form.SubmitManager($(this))
 
   SublimeVideo.UI.prepareStickyMenus()
 
   SublimeVideo.UI.prepareRemoteLinks()
 
-  new SublimeVideo.UI.Menu(jQuery('#header_menu')).setupLoggedInBehavior()
+  new SublimeVideo.UI.Menu($('#header_menu')).setupLoggedInBehavior()
 
-jQuery(document).ready ->
+$(document).ready ->
   SublimeVideo.documentReady()
-
-ddd = -> console.log.apply(console, arguments)

@@ -5,7 +5,7 @@ class SublimeVideo.Form.PasswordChecker
   #
   constructor: (@originForm) ->
     passwordState = if @originForm.data('password-state') then " #{@originForm.data('password-state')}" else ''
-    passwordCheckerForm = jQuery('<form>'
+    passwordCheckerForm = $('<form>'
       id: 'password_checker_form'
       action: '/password/validate'
       method: 'post'
@@ -23,4 +23,4 @@ class SublimeVideo.Form.PasswordChecker
       class: 'popup'
       form: @originForm
       content: passwordCheckerForm
-    jQuery('#password_check').focus()
+    $('#password_check').focus()

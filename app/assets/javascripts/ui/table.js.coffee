@@ -4,4 +4,5 @@ SublimeVideo.UI.Table =
   # Shows a spinner
   #
   showSpinner: ->
-    tableSpinner.show() if (tableSpinner = jQuery('#table_spinner')).length > 0
+    if ($tableSpinner = $('#table_spinner')).exists()
+      $tableSpinner.show()

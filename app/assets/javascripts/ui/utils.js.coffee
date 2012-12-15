@@ -1,9 +1,10 @@
 SublimeVideo.UI.Utils =
   makeSticky: (element, cssSelector) ->
-    $("#{cssSelector} .active").each -> jQuery(this).removeClass 'active'
+    $("#{cssSelector} .active").each -> $(this).removeClass 'active'
 
     element.addClass 'active'
-    if li = element.parent 'li' then li.addClass 'active'
+    if $li = element.parent('li')
+      $li.addClass 'active'
 
   # Opens a new popup and store its reference in `SublimeVideo.UI.popup`
   #

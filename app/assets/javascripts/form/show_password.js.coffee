@@ -2,7 +2,7 @@
 #
 class SublimeVideo.Form.ShowPassword
   constructor: (@field, @index) ->
-    @showPasswordCheckbox = jQuery('<input />', type: 'checkbox', id: "show_password_#{@index}")
+    @showPasswordCheckbox = $('<input />', type: 'checkbox', id: "show_password_#{@index}")
 
     this.storeThisInData()
     this.insertShowPasswordCheckbox()
@@ -17,8 +17,8 @@ class SublimeVideo.Form.ShowPassword
   # @private
   #
   insertShowPasswordCheckbox: ->
-    showPasswordWrap  = jQuery('<div>', class: 'checkbox_wrap')
-    showPasswordLabel = jQuery('<label />', for: "show_password_#{@index}").text 'Show password'
+    showPasswordWrap  = $('<div>', class: 'checkbox_wrap')
+    showPasswordLabel = $('<label />', for: "show_password_#{@index}").text 'Show password'
     showPasswordWrap.append(@showPasswordCheckbox).append(showPasswordLabel)
 
     this.injectShowPasswordCheckboxInDom(showPasswordWrap)
@@ -66,7 +66,7 @@ class SublimeVideo.Form.ShowPassword
 
     # We can't simply modify the type attribute of the field (from 'password' to 'text'), because IE doesn't support this
     # cf: http://www.alistapart.com/articles/the-problem-with-passwords
-    newField = jQuery '<input />'
+    newField = $ '<input />'
       id:          @field.attr 'id'
       name:        @field.attr 'name'
       value:       @field.attr 'value'
@@ -84,7 +84,7 @@ class SublimeVideo.Form.ShowPassword
     this.storeThisInData() # store this in the new field
     pseudoPlaceholderObject.fieldDidChange(newField) if pseudoPlaceholderObject
 
-    if @field.attr('id') is 'user_password' and jQuery('current_password_wrap').length
+    if @field.attr('id') is 'user_password' and $('current_password_wrap').length
       SublimeVideo.currentPasswordHandler.setupField @field
 
     @field

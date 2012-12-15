@@ -20,16 +20,16 @@ class SublimeVideo.Form.SubmitManager
   setupOnClickObservers: ->
     @form.find('input[type=submit]').each (index, input) =>
       # when HTML5 form validation doesn't pass, the submit event is not fired
-      jQuery(input).on 'click', (event) =>
+      $(input).on 'click', (event) =>
         @form.find('input,textarea').each (index, input) ->
-          input = jQuery(input)
-          if input[0].validity
-            if input[0].validity.valid
-              input.removeClass 'errors'
-              input.siblings('.inline_errors').remove()
+          $input = $(input)
+          if $input[0].validity
+            if $input[0].validity.valid
+              $input.removeClass 'errors'
+              $input.siblings('.inline_errors').remove()
             else
-              input.addClass 'errors'
               event.preventDefault()
+              $input.addClass 'errors'
 
   # Disable submit button for ajax forms to prevent double submissions (quickly click muliple times the form submit button)
   #
@@ -37,14 +37,14 @@ class SublimeVideo.Form.SubmitManager
   #  If we'll have some ajax forms that won't reload themselves, the code below must be updated)
   disableSubmitButton: ->
     @form.find('input[type=submit]', 'button').each ->
-      jQuery(this).attr 'disabled', 'disabled'
+      $(this).attr 'disabled', 'disabled'
 
   instanciatePasswordChecker: (event) ->
-    SublimeVideo.Form.passwordChecker = new SublimeVideo.Form.PasswordChecker jQuery(event.target)
     event.preventDefault()
+    SublimeVideo.Form.passwordChecker = new SublimeVideo.Form.PasswordChecker $(event.target)
 
   # Reset pseudo-placeholders values (for browsers who don't support HTML5 placeholders)
   #
   resetPseudoPlaceholders: ->
     @form.find('input.placeholder').each ->
-      jQuery(this).attr 'value', ''
+      $(this).attr 'value', ''

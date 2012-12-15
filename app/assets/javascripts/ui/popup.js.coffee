@@ -9,11 +9,11 @@ class SublimeVideo.UI.SimplePopup
     @element = @options.element
 
   startObservers: ->
-    jQuery(document).on 'keydown', { popup: this }, this.keyDown
+    $(document).on 'keydown', { popup: this }, this.keyDown
     @element.on 'click', { popup: this }, this.click
 
   stopObservers: ->
-    jQuery(document).off 'keydown', this.keyDown
+    $(document).off 'keydown', this.keyDown
     @element.off('click', this.click) if @element?
 
   # It closes the popup if it's open, stop the current video playing with SublimeVideo on iOS,
