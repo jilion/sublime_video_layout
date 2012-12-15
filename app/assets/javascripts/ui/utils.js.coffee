@@ -24,12 +24,11 @@ SublimeVideo.UI.Utils =
     false
 
   openAccountPopup: (name, successUrl = null) ->
-    if el = jQuery("#popup_#{name}")
-      SublimeVideo.UI.popup = new SublimeVideo.UI.SimplePopup(element: el)
-      jQuery("#user_return_to").attr(value: successUrl) if successUrl?
-      jQuery("#popup_#{name}").find("#user_email").focus() if SublimeVideo.Misc.Utils.iOS()
-
+    if ($el = $("#popup_#{name}")).exists()
+      SublimeVideo.UI.popup = new SublimeVideo.UI.SimplePopup(element: $el)
+      $("#user_return_to").attr(value: successUrl) if successUrl?
       SublimeVideo.UI.popup.open()
+      $("#popup_#{name}").find("#user_email").focus() if SublimeVideo.Misc.Utils.iOS()
 
       _gaq.push(['_trackEvent', 'SignUp', 'Clicked', undefined, 1, true]) if _gaq? and name is 'signup'
 

@@ -27,6 +27,12 @@ SublimeVideo.UI.updateActiveItemMenus = ->
   $('ul.sticky').each ->
     new SublimeVideo.UI.Menu($(this)).updateActiveItem()
 
+SublimeVideo.UI.prepareSignupAndLoginPopup = ->
+  $.each ['signup', 'login'], (index, action) ->
+    $("##{action}_button").on 'click', (event) ->
+      event.preventDefault()
+      SublimeVideo.UI.Utils.openAccountPopup(action)
+
 SublimeVideo.documentReady = ->
   SublimeVideo.Misc.BrowserBugsFixer.fixAllBugs()
 
@@ -35,6 +41,8 @@ SublimeVideo.documentReady = ->
 
   if matches = document.location.search.match(/p=(login|signup)/)
     SublimeVideo.UI.Utils.openAccountPopup(matches[1])
+
+  SublimeVideo.UI.prepareSignupAndLoginPopup()
 
   $('input.show_password[type=password]').each (index, input) ->
     new SublimeVideo.Form.ShowPassword($(this), index)

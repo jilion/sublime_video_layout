@@ -16,13 +16,22 @@ class SublimeVideo.UI.SimplePopup
     $(document).off 'keydown', this.keyDown
     @element.off('click', this.click) if @element?
 
+  pauseVideos: ->
+    sublime_api = if sublime?
+      sublime
+    else
+      sublimevideo
+
+    sublime_api.ready ->
+      sublimevideo.pause() if SublimeVideo.Misc.Utils.iOS()
+
   # It closes the popup if it's open, stop the current video playing with SublimeVideo on iOS,
   # shows the popup (simply shows `@element`) and starts the observers that take care of the popup closing.
   #
   open: ->
     this.close()
 
-    sublimevideo.pause() if typeof(sublimevideo) is 'object' and SublimeVideo.Misc.Utils.iOS()
+    this.pauseVideos()
 
     @element.show()
     this.startObservers()
@@ -72,7 +81,7 @@ class SublimeVideo.UI.Popup extends SublimeVideo.UI.SimplePopup
   open: ->
     this.close()
 
-    sublimevideo.pause() if typeof(sublimevideo) is 'object' and SublimeVideo.Misc.Utils.iOS()
+    this.pauseVideos()
 
     unless @element?
       @element = $ '<div>'
