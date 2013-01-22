@@ -1,32 +1,35 @@
 !!! 5
 %html
   %head
+    = render 'layouts/ie'
+
     %meta{ charset: 'utf-8' }
     %meta{ content: 'SublimeVideo - HTML5 Video Player', property: 'og:title' }
     %meta{ content: 'product', property: 'og:type' }
     %meta{ content: 'http://sublimevideo.net', property: 'og:url' }
     %meta{ content: 'http://media.jilion.s3.amazonaws.com/facebook/sublimevideo_facebook.png', property: 'og:image' }
     %meta{ content: "SublimeVideo is the world's first cloud-based HTML5 video player; a universal and pain-free solution that allows video to play flawlessly on any device or browser.", property: 'og:description'}
+    = yield :meta
     - if !response.cache_control[:public]
       = csrf_meta_tag
 
     %title= page_title
 
+    = yield :css
     = stylesheet_link_tag 'application'
-    %link{ rel: "shortcut icon", href: "http://sublimevideo.net/favicon.ico", type: "image/x-icon" }
+    %link{ rel: 'shortcut icon', href: 'http://sublimevideo.net/favicon.ico', type: 'image/x-icon' }
 
-    = render 'layouts/ie'
 
-    = javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js'
-    = javascript_include_tag '//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js'
-    = javascript_include_tag "//use.typekit.com/vcc7hji.js"
+    = javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'
+    = javascript_include_tag '//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js'
+    = javascript_include_tag '//use.typekit.com/vcc7hji.js'
     = yield :javascript
     = javascript_include_tag 'application'
-    = javascript_tag "try { Typekit.load(); } catch(e) { }"
+    = javascript_tag 'try {Typekit.load();} catch(e) {}'
 
   %body{ class: body_class }
-    %div{ "data-pjax-container" => true }
-      %div{ "data-body-class" => body_class }
+    %div{ 'data-pjax-container' => true }
+      %div{ 'data-body-class' => body_class }
       %header
         .lights
           .shadow
@@ -34,8 +37,8 @@
               .wrap
                 %h1
                   = link_to layout_url('') do
-                    %span= "SublimeVideo"
-                = render "layouts/header_menu"
+                    %span= 'SublimeVideo'
+                = render 'layouts/header_menu'
                 = yield :header
 
       = yield :middle
@@ -45,7 +48,7 @@
         .content_wrapper= yield
         .spacer
       = yield :highlights
-      = render "layouts/footer"
+      = render 'layouts/footer'
 
       = yield :bottom
       = yield :javascript_bottom
