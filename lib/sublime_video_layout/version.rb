@@ -1,3 +1,3 @@
 module SublimeVideoLayout
-  VERSION = '2.5.16'
+  VERSION = '2.5.17'
 end
