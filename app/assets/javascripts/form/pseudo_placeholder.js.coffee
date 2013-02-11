@@ -87,7 +87,4 @@ class SublimeVideo.Form.PseudoPlaceholder
         this.storeSelfReferenceAndObservers() # since we have a new field
 
         # refocus (the newly create field)
-        if $.browser.msie
-          setTimeout((=> @field.focus()), 0)
-        else
-          @field.focus()
+        setTimeout((=> @field.focus()), 0) # msie hack
