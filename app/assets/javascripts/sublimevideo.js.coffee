@@ -1,6 +1,5 @@
 #= require modernizr
 #= require jquery_ujs
-#= require mousetrap.min
 #
 #= require_self
 #= require_tree ./form
