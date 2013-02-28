@@ -91,7 +91,7 @@ class SublimeVideo.UI.Popup extends SublimeVideo.UI.SimplePopup
                        <div class='lights'>
                          <div class='content'></div>
                        </div>
-                       <a href='' onclick='return SublimeVideo.UI.Utils.closePopup()' data-skip-pjax class='close'><span>Close</span></a>
+                       <a href='' onclick='return SublimeVideo.UI.Utils.closePopup()' data-no-turbolink class='close'><span>Close</span></a>
                      </div>")
       if @options.content
         this.setContent(@options.content)
