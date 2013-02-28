@@ -11,14 +11,14 @@ class SublimeVideo.Form.ShowPassword
   # @private
   #
   storeThisInData: ->
-    @field.data 'showPasswordObject', this # so that the placeholderManager can eventually pick this up
+    @field.data('showPasswordObject', this) # so that the placeholderManager can eventually pick this up
 
   #
   # @private
   #
   insertShowPasswordCheckbox: ->
     showPasswordWrap  = $('<div>', class: 'checkbox_wrap')
-    showPasswordLabel = $('<label />', for: "show_password_#{@index}").text 'Show password'
+    showPasswordLabel = $('<label />', for: "show_password_#{@index}").text('Show password')
     showPasswordWrap.append(@showPasswordCheckbox).append(showPasswordLabel)
 
     this.injectShowPasswordCheckboxInDom(showPasswordWrap)
@@ -28,7 +28,7 @@ class SublimeVideo.Form.ShowPassword
   # @private
   #
   attachEventHandlerToCheckbox: ->
-    @showPasswordCheckbox.on 'click', this.togglePasswordVisibility
+    @showPasswordCheckbox.on('click', this.togglePasswordVisibility)
 
   #
   # @private
@@ -36,16 +36,16 @@ class SublimeVideo.Form.ShowPassword
   injectShowPasswordCheckboxInDom: (showPasswordWrap) ->
     errorMessage = @field.parent('form').find('.inline_errors').first()
     if errorMessage.length
-      errorMessage.after showPasswordWrap
+      errorMessage.after(showPasswordWrap)
     else
-      @field.after showPasswordWrap
+      @field.after(showPasswordWrap)
     @showPasswordCheckbox.checked = false # Firefox reload ;-)
 
   #
   # @private
   #
   showPassword: ->
-    @showPasswordCheckbox and @showPasswordCheckbox.attr 'checked'
+    @showPasswordCheckbox and @showPasswordCheckbox.prop('checked')
 
   #
   # @private
@@ -66,17 +66,18 @@ class SublimeVideo.Form.ShowPassword
 
     # We can't simply modify the type attribute of the field (from 'password' to 'text'), because IE doesn't support this
     # cf: http://www.alistapart.com/articles/the-problem-with-passwords
-    newField = $ '<input />'
+    newField = $('<input />',
       id:          @field.attr 'id'
       name:        @field.attr 'name'
-      value:       @field.attr 'value'
+      value:       @field.val()
       size:        @field.size()
       placeholder: @field.attr 'placeholder'
       required:    @field.attr 'required'
       class:       @field.attr 'class'
-      type:        fieldType
+      type:        fieldType)
 
-    pseudoPlaceholderObject = @field.data('pseudoPlaceholderObject') if @field.data 'pseudoPlaceholderObject'
+    if @field.data 'pseudoPlaceholderObject'
+      pseudoPlaceholderObject = @field.data('pseudoPlaceholderObject')
 
     @field.removeData() # Removes eventual observers and storage keys
     @field.replaceWith newField
@@ -84,7 +85,7 @@ class SublimeVideo.Form.ShowPassword
     this.storeThisInData() # store this in the new field
     pseudoPlaceholderObject.fieldDidChange(newField) if pseudoPlaceholderObject
 
-    if @field.attr('id') is 'user_password' and $('current_password_wrap').length
-      SublimeVideo.currentPasswordHandler.setupField @field
+    if @field.attr('id') is 'user_password' and $('current_password_wrap').exists()
+      SublimeVideo.currentPasswordHandler.setupField(@field)
 
     @field
