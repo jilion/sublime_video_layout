@@ -9,28 +9,28 @@ class SublimeVideo.UI.Menu
   setupStickyItems: ->
     @element.find('a').each (index, el) =>
       $el = $(el)
-      $el.on('click', this.stickyBehavior) unless $el.hasClass 'no_sticky'
+      unless $el.hasClass('no_sticky')
+        $el.on('click', this.stickyBehavior)
 
   updateActiveItem: ->
     @element.find('.active').removeClass('active')
     @element.find('li').each (index, el) =>
       $li = $(el)
-      $a = $li.find('a').first()
-      if $a.attr('href') == location.href
+      if $li.find('a').first().attr('href') is location.href
         $li.addClass 'active'
 
   # @private
   #
   stickyBehavior: (event) =>
-    @element.find('.active').removeClass 'active'
+    @element.find('.active').removeClass('active')
     $link = $(event.delegateTarget)
     if $li = $link.parent('li')
-      $li.addClass 'active'
+      $li.addClass('active')
     else
-      $link.addClass 'active'
+      $link.addClass('active')
 
   setupLoggedInBehavior: ->
     @cookie = new SublimeVideo.Misc.Cookie('l')
-    if @cookie.get() == '1'
+    if @cookie.get() is '1'
       @element.find('.unlogged').hide()
       @element.find('.logged').show()

@@ -5,12 +5,8 @@ class SublimeVideo.Form.PasswordChecker
   #
   constructor: (@originForm) ->
     passwordState = if @originForm.data('password-state') then " #{@originForm.data('password-state')}" else ''
-    passwordCheckerForm = $('<form>'
-      id: 'password_checker_form'
-      action: '/password/validate'
-      method: 'post'
-      'data-remote': 'true'
-    ).html("<p class='desc'>Your#{passwordState} password is needed to perform this action:</p>" +
+    passwordCheckerForm = $('<form>', id: 'password_checker_form', action: '/password/validate', method: 'post', 'data-remote': 'true')
+    passwordCheckerForm.html("<p class='desc'>Your#{passwordState} password is needed to perform this action:</p>" +
     "<div class='entry password'>" +
     "<label for='password_check' class='icon'>#{passwordState} Password</label>" +
     "<input type='password' id='password_check' name='password' placeholder='Your#{passwordState} password' class='text' />" +
@@ -18,9 +14,5 @@ class SublimeVideo.Form.PasswordChecker
     "<div class='spacer'></div>" +
     "</div>")
 
-    SublimeVideo.UI.Utils.openPopup
-      id: 'password_checker'
-      class: 'popup'
-      form: @originForm
-      content: passwordCheckerForm
+    SublimeVideo.UI.Utils.openPopup(id: 'password_checker', class: 'popup', form: @originForm, content: passwordCheckerForm)
     $('#password_check').focus()

@@ -30,7 +30,8 @@ class SublimeVideo.Form.PseudoPlaceholder
   fieldDidChange: (field) ->
     @field = field
     # Firefox set the value with the placeholder when reloading the page, so clear this shit!
-    @field.attr('value', '') if @field.attr('value') is @field.attr('placeholder')
+    if @field.val() is @field.attr('placeholder')
+      @field.val('')
     this.setupPseudoPlaceholder()
 
   #
@@ -39,18 +40,18 @@ class SublimeVideo.Form.PseudoPlaceholder
   # @param [String] value the new value for the 'value' attribute
   #
   setValueAndToggleClass: (value) ->
-    @field.attr 'value', value
+    @field.val(value)
     if value is ''
-      @field.removeClass 'placeholder'
+      @field.removeClass('placeholder')
     else
-      @field.addClass 'placeholder'
+      @field.addClass('placeholder')
 
   # This stores a reference to this object into `@field` and register observers on focus & blur.
   #
   # @private
   #
   storeSelfReferenceAndObservers: ->
-    @field.data 'pseudoPlaceholderObject', this
+    @field.data('pseudoPlaceholderObject', this)
     @field.on 'focus', this.clearPseudoPlaceholder
     @field.on 'blur',  this.setupPseudoPlaceholder
 
@@ -64,11 +65,11 @@ class SublimeVideo.Form.PseudoPlaceholder
   setupPseudoPlaceholder: =>
     this.storeSelfReferenceAndObservers()
 
-    if @field.attr('value') is ''
+    if @field.val() is ''
       if @field.data('showPasswordObject') and @field.attr('type') is 'password'
         @field.data('showPasswordObject').toggleField(type: 'text')
       else
-        this.setValueAndToggleClass @field.attr('placeholder')
+        this.setValueAndToggleClass(@field.attr('placeholder'))
 
   # This method clear the value and class of the field if its value is equal to the placeholder.
   #
@@ -78,7 +79,7 @@ class SublimeVideo.Form.PseudoPlaceholder
   #
   clearPseudoPlaceholder: =>
     if @field.attr('value') is @field.attr('placeholder')
-      this.setValueAndToggleClass ''
+      this.setValueAndToggleClass('')
 
       if @field.data('showPasswordObject')
         showPasswordObject = @field.data('showPasswordObject')

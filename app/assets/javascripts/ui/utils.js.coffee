@@ -1,12 +1,5 @@
 SublimeVideo.UI.Utils =
-  makeSticky: (element, cssSelector) ->
-    $("#{cssSelector} .active").each -> $(this).removeClass 'active'
-
-    element.addClass 'active'
-    if $li = element.parent('li')
-      $li.addClass 'active'
-
-  # Opens a new popup and store its reference in `SublimeVideo.UI.popup`
+  # Opens a new popup and stores its reference in `SublimeVideo.UI.popup`
   #
   # @param [Object] options the options accepted by {SublimeVideo.UI.Popup}
   # @see SublimeVideo.UI.Popup
@@ -18,18 +11,31 @@ SublimeVideo.UI.Utils =
   # Closes the currently opened `SublimeVideo.UI.popup`
   #
   closePopup: ->
-    SublimeVideo.UI.popup = new SublimeVideo.UI.Popup() unless SublimeVideo.UI.popup?
+    unless SublimeVideo.UI.popup?
+      SublimeVideo.UI.popup = new SublimeVideo.UI.Popup()
     SublimeVideo.UI.popup.close()
 
     false
 
-  openAccountPopup: (name, successUrl = null) ->
-    if ($el = $("#popup_#{name}")).exists()
+  # Opens a new login or signup popup and stores its reference in `SublimeVideo.UI.popup`
+  #
+  # @param [String] type the type of popup ('login' or 'signup')
+  # @param [String] successUrl the URL to which redirect the user once login/signup succeeds (default: null)
+  # @see SublimeVideo.UI.Popup
+  #
+  openAccountPopup: (type, successUrl = null) ->
+    if ($el = $("#popup_#{type}")).exists()
       SublimeVideo.UI.popup = new SublimeVideo.UI.SimplePopup(element: $el)
-      $("#user_return_to").attr(value: successUrl) if successUrl?
-      SublimeVideo.UI.popup.open()
-      $("#popup_#{name}").find("#user_email").focus() if SublimeVideo.Misc.Utils.iOS()
 
-      _gaq.push(['_trackEvent', 'SignUp', 'Clicked', undefined, 1, true]) if _gaq? and name is 'signup'
+      if successUrl?
+        $("#user_return_to").val(successUrl)
+
+      SublimeVideo.UI.popup.open()
+
+      if SublimeVideo.Misc.Utils.iOS()
+        $("#popup_#{type}").find("#user_email").focus()
+
+      if _gaq? and type is 'signup'
+        _gaq.push(['_trackEvent', 'SignUp', 'Clicked', undefined, 1, true])
 
     false

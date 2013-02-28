@@ -9,6 +9,4 @@ class SublimeVideo.Misc.BrowserBugsFixer
 
     if isSafari405OrPrevious
       $('select').each ->
-        $(this).css
-          'font-family': 'Lucida Grande, Arial, sans-serif'
-          'font-size': '15px'
+        $(this).css('font-family': 'Lucida Grande, Arial, sans-serif', 'font-size': '15px')

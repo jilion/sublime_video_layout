@@ -13,9 +13,12 @@ class SublimeVideo.Form.SubmitManager
   setupOnSubmitObservers: ->
     submitEvent = if Modernizr.hasEvent('submit') then 'submit' else 'emulated:submit'
     @form.on submitEvent, (event) =>
-      this.disableSubmitButton() if @form.attr('data-remote') is 'true'
+      if @form.data('remote') is 'true' or @form.hasClass('disableable')
+        this.disableSubmitButton()
       this.resetPseudoPlaceholders()
-      return this.instanciatePasswordChecker(event) if @form.attr('data-password-protected') is 'true'
+
+      if @form.data('password-protected') is 'true'
+        this.instanciatePasswordChecker(event)
 
   setupOnClickObservers: ->
     @form.find('input[type=submit]').each (index, input) =>
@@ -25,19 +28,19 @@ class SublimeVideo.Form.SubmitManager
           $input = $(input)
           if $input[0].validity
             if $input[0].validity.valid
-              $input.removeClass 'errors'
+              $input.removeClass('errors')
               $input.siblings('.inline_errors').remove()
             else
               event.preventDefault()
-              $input.addClass 'errors'
+              $input.addClass('errors')
 
   # Disable submit button for ajax forms to prevent double submissions (quickly click muliple times the form submit button)
   #
   # (PAY ATTENTION: this considers that the ajax call will re-render the entire form hence re-enabling the submit button.
   #  If we'll have some ajax forms that won't reload themselves, the code below must be updated)
   disableSubmitButton: ->
-    @form.find('input[type=submit]', 'button').each ->
-      $(this).attr 'disabled', 'disabled'
+    @form.find('input[type=submit], button[type=submit]').each ->
+      $(this).prop('disabled', true)
 
   instanciatePasswordChecker: (event) ->
     event.preventDefault()
@@ -47,4 +50,4 @@ class SublimeVideo.Form.SubmitManager
   #
   resetPseudoPlaceholders: ->
     @form.find('input.placeholder').each ->
-      $(this).attr 'value', ''
+      $(this).val('')

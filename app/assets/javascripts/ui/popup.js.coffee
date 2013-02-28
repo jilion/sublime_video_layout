@@ -9,11 +9,11 @@ class SublimeVideo.UI.SimplePopup
     @element = @options.element
 
   startObservers: ->
-    $(document).on 'keydown', { popup: this }, this.keyDown
-    @element.on 'click', { popup: this }, this.click
+    $(document).on('keydown', { popup: this }, this.keyDown)
+    @element.on('click', { popup: this }, this.click)
 
   stopObservers: ->
-    $(document).off 'keydown', this.keyDown
+    $(document).off('keydown', this.keyDown)
     @element.off('click', this.click) if @element?
 
   pauseVideos: ->
@@ -51,7 +51,8 @@ class SublimeVideo.UI.SimplePopup
   # @private
   #
   click: (event) ->
-    if event.target is event.data.popup.element[0] then event.data.popup.close()
+    if event.target is event.data.popup.element[0]
+      event.data.popup.close()
 
 #
 # Handles creation and behavior of SV pop-up (used for showing the embed code and the usage, asking the password..)
@@ -72,7 +73,7 @@ class SublimeVideo.UI.Popup extends SublimeVideo.UI.SimplePopup
     @element = null
 
   setContent: (content) ->
-    @element.removeClass 'loading'
+    @element.removeClass('loading')
     @element.find('.content').html(content)
 
   # Create the popup (if needed), append it to the `#content` div (if needed) and show it.
@@ -84,9 +85,7 @@ class SublimeVideo.UI.Popup extends SublimeVideo.UI.SimplePopup
     this.pauseVideos()
 
     unless @element?
-      @element = $ '<div>'
-                   id: "#{@options.id or ''}"
-                   class: "#{@options.class or ''} loading"
+      @element = $('<div>', id: "#{@options.id or ''}", class: "#{@options.class or ''} loading")
       @element.html("<div class='popup_wrap'>
                        <div class='lights'>
                          <div class='content'></div>
@@ -98,11 +97,11 @@ class SublimeVideo.UI.Popup extends SublimeVideo.UI.SimplePopup
       else if @options.anchor
         this.setContent(@options.anchor.html())
         @options.anchor.html('')
-      $('#content').append @element
+      $('#content').append(@element)
 
     if @options.url?
       # the called method will take care of replacing the wrap div with the response content
-      new Ajax.Request @options.url, method: 'get'
+      new Ajax.Request(@options.url, method: 'get')
 
     this.startObservers()
 
@@ -113,8 +112,10 @@ class SublimeVideo.UI.Popup extends SublimeVideo.UI.SimplePopup
     this.stopObservers()
 
     if @element
-      @options.anchor.html @element.find('.content').html() if @options.anchor?
+      if @options.anchor?
+        @options.anchor.html(@element.find('.content').html())
       @element.remove()
 
     if @options.form?
-      @options.form.find('input[type=submit]', 'button').each -> $(this).removeAttr 'disabled'
+      @options.form.find('input[type=submit]', 'button').each ->
+        $(this).prop('disabled', false)

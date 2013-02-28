@@ -12,10 +12,13 @@ class SublimeVideo.UI.RemoteLink
     @element.on 'click', =>
       this.stickyBehavior()
       SublimeVideo.UI.Table.showSpinner()
-      history.pushState({ isHistory: true }, document.title, @element.attr('href')) if history and history.pushState?
+
+      if history and history.pushState?
+        history.pushState({ isHistory: true }, document.title, @element.attr('href'))
 
   # @private
   #
   stickyBehavior: ->
-    @element.parent().find('a.active').each -> $(this).removeClass 'active'
-    @element.addClass 'active'
+    @element.parent().find('a.active').each ->
+      $(this).removeClass('active')
+    @element.addClass('active')

@@ -6,11 +6,12 @@ class SublimeVideo.Misc.Cookie
   # @return [String] the cookie value or `null` if no cookie with this name exists
   #
   get: ->
-    escapedName = this.escapedAndAssignName()
+    escapedName = this._escapedAndAssignName()
     if document.cookie.indexOf(escapedName) >= 0
-      cookies = document.cookie.split /\s*;\s*/
+      cookies = document.cookie.split(/\s*;\s*/)
       for cookie in cookies
-        if cookie.indexOf(escapedName) is 0 then return unescape cookie.substring(escapedName.length, cookie.length)
+        if cookie.indexOf(escapedName) is 0
+          return unescape(cookie.substring(escapedName.length, cookie.length))
 
     null
 
@@ -26,7 +27,7 @@ class SublimeVideo.Misc.Cookie
   # @return [String] the cookie value
   #
   set: (value, options = {}) ->
-    newcookie = [this.escapedAndAssignName() + escape(value)]
+    newcookie = [this._escapedAndAssignName() + escape(value)]
     if options
       if options.expires then newcookie.push "expires=" + options.expires.toGMTString()
       if options.path    then newcookie.push "path=#{options.path}"
@@ -37,5 +38,5 @@ class SublimeVideo.Misc.Cookie
   #
   # @private
   #
-  escapedAndAssignName: ->
+  _escapedAndAssignName: ->
     escape(@name) + '='
