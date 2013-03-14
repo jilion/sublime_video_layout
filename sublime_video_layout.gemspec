@@ -15,8 +15,8 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,db,lib,public,vendor/assets}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
 
-  s.add_dependency "rails"
-  s.add_dependency "jquery-rails"
-  s.add_dependency "coffee-rails"
-  s.add_dependency "haml"
+  s.add_dependency 'rails', '>= 3.2.12'
+  s.add_dependency 'jquery-rails'
+  s.add_dependency 'coffee-rails'
+  s.add_dependency 'haml'
 end
