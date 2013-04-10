@@ -1,16 +1,16 @@
 source 'https://rubygems.org'
 
-gem 'bundler'
-
 gemspec
 
+gem 'bundler'
+
 group :development do
-  gem 'combustion'
   gem 'haml-rails'
   gem 'rack-livereload'
 end
 
 group :test do
+  gem 'combustion'
   gem 'rspec-rails'
   gem 'capybara'
 end
@@ -21,7 +21,6 @@ group :tools do
   # Guard
   gem 'ruby_gntp'
   gem 'rb-fsevent'
-  gem 'rb-readline'
 
   gem 'guard-pow'
   gem 'guard-livereload'
