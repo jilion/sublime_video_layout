@@ -46,15 +46,6 @@ class SublimeVideo.Form.PseudoPlaceholder
     else
       @field.addClass('placeholder')
 
-  # This stores a reference to this object into `@field` and register observers on focus & blur.
-  #
-  # @private
-  #
-  storeSelfReferenceAndObservers: ->
-    @field.data('pseudoPlaceholderObject', this)
-    @field.on 'focus', this.clearPseudoPlaceholder
-    @field.on 'blur',  this.setupPseudoPlaceholder
-
   # Copy 'placeholder' attribute to 'value' attribute if it's empty.
   #
   # @note If it's a password field this will also take care to initially
@@ -71,6 +62,15 @@ class SublimeVideo.Form.PseudoPlaceholder
       else
         this.setValueAndToggleClass(@field.attr('placeholder'))
 
+  # This stores a reference to this object into `@field` and register observers on focus & blur.
+  #
+  # @private
+  #
+  storeSelfReferenceAndObservers: ->
+    @field.data('pseudoPlaceholderObject', this)
+    @field.on('focus', this.clearPseudoPlaceholder)
+    @field.on('blur',  this.setupPseudoPlaceholder)
+
   # This method clear the value and class of the field if its value is equal to the placeholder.
   #
   # @note It automatically replaces the field with a password field if needed.
@@ -78,7 +78,7 @@ class SublimeVideo.Form.PseudoPlaceholder
   # @private
   #
   clearPseudoPlaceholder: =>
-    if @field.attr('value') is @field.attr('placeholder')
+    if @field.val() is @field.attr('placeholder')
       this.setValueAndToggleClass('')
 
       if @field.data('showPasswordObject')
