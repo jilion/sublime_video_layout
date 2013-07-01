@@ -27,9 +27,10 @@ html
     = javascript_tag 'try {Typekit.load();} catch(e) {}'
 
   body
-    section#page
-      = render 'layouts/header'
-      = yield
+    section#wrap
+      section#page
+        = render 'layouts/header'
+        = yield
     = render 'layouts/footer'
     = yield :bottom
     = yield :javascript_bottom
