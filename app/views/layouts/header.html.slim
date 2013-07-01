@@ -1,0 +1,21 @@
+header.l-dark class=@header_class
+  h1.site-logo
+    = link_to layout_url('') do
+      = image_tag "global/sublimevideo.svg", alt:"SublimeVideo", width:"260"
+      - if @header_class == 'l-mini'
+        span.site-logo-label Demo
+  .nav.l-inline.main-nav
+    ul
+      li= link_to 'Features & Pricing', page_path('features'), class: ('is-active' if params[:page] == 'features')
+      li.l-popup
+        a href="" onclick="return false"
+          ' Resources
+          small.icon-uniF48B
+        ul.l-stacked
+          li= link_to 'Demos', page_path('demos')
+          li= link_to 'Documentation', docs_url('')
+          li= link_to 'Forum', 'https://getsatisfaction.com/sublimevideo'
+          li= link_to 'Support', page_path('help')
+      li= link_to 'Sign Up', my_url('signup'), class: 'btn orange'
+      li= link_to 'Login', my_url('login')
+  .spacer

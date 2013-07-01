@@ -1,0 +1,37 @@
+doctype html
+html
+  head
+    meta name="viewport" content="initial-scale=1.0,width=device-width"
+    meta charset='utf-8'
+    meta content='SublimeVideo - HTML5 Video Player' property='og:title'
+    meta content='product' property='og:type'
+    meta content='http://sublimevideo.net' property='og:url'
+    meta content='http://media.jilion.s3.amazonaws.com/facebook/sublimevideo_facebook.png' property='og:image'
+    meta content="SublimeVideo is the world's first cloud-based HTML5 video player; a universal and pain-free solution that allows video to play flawlessly on any device or browser." property='og:description'
+    meta content='469681536424865' property='fb:app_id'
+    = yield :meta
+    - if !response.cache_control[:public]
+      = csrf_meta_tag
+
+    title= page_title
+
+    = yield :css
+    = stylesheet_link_tag 'application'
+    = stylesheet_link_tag "//fast.fonts.com/cssapi/408c56a9-a5bb-46f5-b6cf-20bc44f6bd24.css"
+
+    link rel='shortcut icon' href='http://sublimevideo.net/favicon.ico' type='image/x-icon'
+
+    = javascript_include_tag '//use.typekit.com/ohx8nqt.js'
+    = yield :javascript
+    = javascript_include_tag 'application'
+    = javascript_tag 'try {Typekit.load();} catch(e) {}'
+
+  body
+    section#page
+      = render 'layouts/header'
+      = yield
+    = render 'layouts/footer'
+    = yield :bottom
+    = yield :javascript_bottom
+    - if Rails.env.production?
+      = render 'layouts/gosquared'

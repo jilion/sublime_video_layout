@@ -4,13 +4,16 @@ gemspec
 
 gem 'bundler'
 
+group :development, :test do
+  gem 'combustion'
+end
+
 group :development do
   gem 'haml-rails'
   gem 'rack-livereload'
 end
 
 group :test do
-  gem 'combustion'
   gem 'rspec-rails'
   gem 'capybara'
 end
