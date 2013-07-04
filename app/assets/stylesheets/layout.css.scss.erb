@@ -1,0 +1,135 @@
+@import "bourbon";
+
+$darkblue:#1f3044;
+
+#wrap {
+  min-height:700px;
+}
+
+#page {
+  width:100%;
+}
+
+header {
+  padding:27px 30px 25px;
+}
+
+@media screen and (min-width: 900px) {
+  header.l-mini {
+    padding:12px 10px 8px;
+  }
+}
+
+.l-dark {
+  background:$darkblue;
+  color:#505b78;
+}
+
+.l-dark a {
+  color:#7690B3;
+}
+
+.l-dark a:hover {
+  color:#fff;
+}
+
+.l-full-width-wrap {
+  width:90%;
+  margin:0 auto;
+  max-width:1100px;
+}
+
+.l-inline {
+  display:inline-block;
+}
+
+.l-inline ul > li {
+  display:inline-block;
+}
+
+.l-stacked > * {
+  display:block;
+}
+
+.l-popup {
+  position:relative;
+}
+
+.l-grid > li {
+  display: inline-block;
+  margin: 0 10px 10px 0;
+  // IE7 hack to mimic inline-block on block elements
+  *display: inline;
+  *zoom: 1;
+}
+
+.l-center {
+  text-align:center;
+}
+
+.l-separator {
+  display:block;
+  height:1px;
+  background:#c7d2e2;
+  margin:1.3em 0;
+}
+
+.l-normal {
+  font-size:1em;
+  line-height:inherit;
+  padding:0.3em 0;
+}
+
+.l-text {
+  font-size:1.3em;
+  line-height:1.6em;
+  padding:0.3em 0;
+}
+
+.l-text-list {
+  font-size:1.3em;
+  line-height:1.4em;
+  padding:0;
+}
+
+.l-text-list > li {
+  padding:0 0 0.5em;
+}
+
+.l-text-list > li:before {
+  @include inline-block;
+  content:"\e004";
+  font-family:'SV-Icons';
+  font-size:0.4em;
+  padding-right:1.5em;
+  position:relative;
+  top:-0.4em;
+}
+
+.l-height-padding {
+  padding:1em 0;
+}
+
+.l-no-padding {
+  padding:0;
+}
+
+.l-height-margin {
+  height:20px;
+}
+
+.l-scrollable {
+  overflow:auto;
+  -webkit-transition-property:top, bottom;
+  transition-property:top, bottom;
+  -webkit-transition-duration:.2s, .2s;
+  transition-duration:.2s, .2s;
+  -webkit-transition-timing-function:linear, linear;
+  transition-timing-function:linear, linear;
+  -webkit-overflow-scrolling:touch;
+}
+
+footer {
+  position:relative;
+  padding:20px 0 50px;
+}
