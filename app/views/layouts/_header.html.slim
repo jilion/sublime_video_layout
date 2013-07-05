@@ -2,8 +2,8 @@ header.l-dark class=@header_class
   h1.site-logo
     = link_to layout_url('') do
       = image_tag "global/sublimevideo.svg", alt:"SublimeVideo", width:"260"
-      - if @header_class == 'l-mini'
-        span.site-logo-label Demo
+    - if @header_class == 'l-mini'
+      span.site-logo-label = @page_category
   .nav.l-inline.main-nav
     ul
       li= link_to 'Features & Pricing', page_path('features'), class: ('is-active' if params[:page] == 'features')
