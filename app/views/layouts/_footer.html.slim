@@ -1,0 +1,55 @@
+footer.l-dark
+  .l-full-width-wrap
+    .footer-links
+      nav.footer-col
+        h5 Product
+        ul
+          li= link_to 'Features', page_path('features')
+          li= link_to 'Pricing', page_path('features', anchor: 'add-ons')
+          li= link_to 'Testimonials', page_path('testimonials')
+          li= link_to 'Horizon Framework', page_path('horizon-framework')
+      nav.footer-col
+        h5 Support
+        ul
+          li= link_to 'Documentation', docs_url('')
+          li= link_to 'Forum', 'https://getsatisfaction.com/sublimevideo'
+          li= link_to 'Support', page_path('help')
+          li= link_to 'Player Releases', docs_url('releases')
+      nav.footer-col
+        h5 Company
+        ul
+          li= link_to 'About', page_path('about')
+          li= link_to 'Blog', 'http://blog.jilion.com'
+          li= link_to 'News', page_path('news')
+          li= link_to 'Contact', page_path('contact')
+          li= link_to 'Jobs', 'http://jilion.com/jobs'
+      .spacer
+    .footer-text
+      p.l-normal
+        ' Follow
+        = link_to '@jilion', 'https://twitter.com/jilion'
+        '  on Twitter for the latest news. SublimeVideo is a service by
+        = link_to 'Jilion', 'http://jilion.com'
+        | .
+      .footer-subscribe
+        .createsend-button style="height:27px;display:inline-block;" data-listid="r/64/FCC/FFA/240AA5F75D854EF5"
+        javascript:
+          (function () { var e = document.createElement('script'); e.type = 'text/javascript'; e.async = true; e.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://btn.createsend1.com/js/sb.min.js?v=2'; e.className = 'createsend-script'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(e, s); })();
+      .footer-networks
+        a.twitter-share-button href="http://twitter.com/share" data-url="http://sublimevideo.net" data-text="Check out SublimeVideo HTML5 Video Player by @Jilion -" data-count="horizontal" data-related="jilion:Follow @Jilion for the latest news!" Tweet
+        script src="//platform.twitter.com/widgets.js"
+        iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fsublimevideo&send=false&layout=button_count&width=130&show_faces=false&action=like&colorscheme=dark&font&height=21&appId=194063487384384" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"
+        .g-plusone data-size='small' data-href='http://sublimevideo.net'
+        javascript:
+          (function() {
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+            po.src = 'https://apis.google.com/js/plusone.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+          })();
+
+    .spacer
+  p.footer-copyright
+    = link_to 'Terms & Conditions', my_url('terms')
+    '  |
+    = link_to 'Privacy Policy', my_url('privacy')
+    '  | Copyright © 2013 Jilion® — SublimeVideo and Jilion are registered trademarks.
