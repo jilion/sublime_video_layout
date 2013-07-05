@@ -11,12 +11,12 @@ $darkblue:#1f3044;
 }
 
 header {
-  padding:27px 30px 25px;
+  padding:25px 30px;
 }
 
 @media screen and (min-width: 900px) {
   header.l-mini {
-    padding:12px 10px 8px;
+    padding:8px 10px;
   }
 }
 
@@ -89,7 +89,7 @@ header {
 .l-text-list {
   font-size:1.3em;
   line-height:1.4em;
-  padding:0;
+  padding:0.3em 0;
 }
 
 .l-text-list > li {
@@ -104,6 +104,29 @@ header {
   padding-right:1.5em;
   position:relative;
   top:-0.4em;
+}
+
+.l-li-logo {
+  @include inline-block;
+  width:3.5em;
+  vertical-align:middle;
+  margin:0 1em 0 0;
+}
+
+.l-date {
+  @include inline-block;
+  margin:0 0 0 0.6em;
+  font-style:normal;
+  font-size:0.75em;
+}
+
+.l-date > small {
+  font-size:0.9em;
+  margin-right:0.4em;
+}
+
+.l-normal-font {
+  font-size:1.1em;
 }
 
 .l-height-padding {
