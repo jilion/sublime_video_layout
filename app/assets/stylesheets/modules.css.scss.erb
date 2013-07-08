@@ -463,7 +463,6 @@ section.features {
   width:240px;
   max-height:800px;
   background:#BBCCE2;
-  @include box-shadow(inset 0px 0 16px rgba(0,0,0,0.5));
   @media screen and (max-width: 900px) {
     max-height:none;
     height:100%;
@@ -471,6 +470,18 @@ section.features {
     top:0;
     left:0;
     z-index:0;
+  }
+}
+
+.two-col-shadow {
+  width:240px;
+  position:absolute;
+  top:0;
+  left:0;
+  bottom:0;
+  pointer-events:none;
+  @include box-shadow(inset 0px 0 16px rgba(0,0,0,0.5));
+  @media screen and (max-width: 900px) {
     @include box-shadow(inset -6px 0 10px rgba(0,0,0,0.2));
   }
 }
@@ -500,6 +511,26 @@ section.features {
   border-color:transparentize(lighten($darkblue, 65%),0.9) !important;
 }
 
+.two-col-search-form {
+  position:relative;
+}
+
+.two-col-search-form .icon-search {
+  position:absolute;
+  top:15px;
+  left:5px;
+  font-size:1em;
+}
+
+.two-col-search-form input[type=text] {
+  width:240px;
+  padding-left:32px;
+  margin:0;
+  @include border-top-radius(0);
+  @include border-bottom-radius(0);
+  @include box-shadow(none);
+}
+
 .two-col-menu-title {
   color:transparentize($darkblue,0.3);
   font-size:0.7em;
@@ -520,6 +551,7 @@ section.features {
 
 .two-col-header {
   @include display-box;
+  @include box-pack(justify);
   background:#fff;
   height:50px;
 //  padding:0.7em 0;
@@ -531,12 +563,9 @@ section.features {
 }
 
 .two-col-title {
-  @include box-flex(1);
   font-size:1.2em;
-//  float:left;
   padding:0em 0.8em 0 0;
   line-height:50px;
-//  width:400px;
   white-space:nowrap;
   overflow: hidden;
   text-overflow:ellipsis;
@@ -564,10 +593,8 @@ section.features {
   padding-left:0.8em;
 }
 
+
 .two-col-actions-menu {
-  @include box-flex(1);
-  max-width:318px;
-  min-width:318px;
   @media screen and (max-width:900px) {
     max-width:none;
     min-width:0;
@@ -604,6 +631,7 @@ section.features {
   max-width:1000px;
   max-height:800px;
   padding:0 2em 1.5em;
+  font-size:0.9em;
   @media screen and (max-width:568px) {
     padding:1em;
   }

@@ -7,10 +7,12 @@
       h3.two-col-title
         a.icon-list href=""
         strong= @page_title
-      .spacer-iphone
+      / .spacer-iphone
       - unless @disable_two_col_actions_menu
-        ul.two-col-actions-menu= render partial: 'layouts/two_col_actions_menu'
-        .spacer
+        ul.two-col-actions-menu
+          = render partial: 'layouts/two_col_actions_menu'
+        / .spacer
     .two-col-content.l-scrollable
       = yield
       .spacer
+  .two-col-shadow
