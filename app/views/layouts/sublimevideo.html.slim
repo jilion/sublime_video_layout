@@ -32,7 +32,11 @@ html
       section#page
         = render 'layouts/header'
         = yield :header
-        = yield
+        - if @global_layout
+          = render layout: "layouts/#{@global_layout}" do
+            = yield
+        - else
+          = yield
     = render 'layouts/footer'
     = yield :bottom
     = yield :javascript_bottom

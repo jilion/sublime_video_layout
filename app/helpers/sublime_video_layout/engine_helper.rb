@@ -10,7 +10,8 @@ module SublimeVideoLayout
     def page_title
       title = []
       title << "[#{Rails.env.upcase}]" unless Rails.env.production?
-      title << (@page_title_prefix || "SublimeVideo - HTML5 Video Player")
+      title << 'SublimeVideo '
+      title << @page_category || '- HTML5 Video Player'
       title << "- #{@page_title}" if @page_title
       h(title.compact.join(' '))
     end

@@ -1,0 +1,16 @@
+.two-col-wrapper
+  .two-col-sidebar.l-scrollable
+    ul.l-stacked= render partial: 'layouts/two_col_sidebar'
+
+  .two-col-container#two-col-container
+    .two-col-header
+      h3.two-col-title
+        a.icon-list href=""
+        strong= @page_title
+      .spacer-iphone
+      - unless @disable_two_col_actions_menu
+        ul.two-col-actions-menu= render partial: 'layouts/two_col_actions_menu'
+        .spacer
+    .two-col-content.l-scrollable
+      = yield
+      .spacer
