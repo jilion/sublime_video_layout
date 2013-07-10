@@ -1,5 +1,5 @@
 .two-col-wrapper
-  .two-col-sidebar.l-scrollable
+  .two-col-sidebar
     ul.l-stacked= render partial: 'layouts/two_col_sidebar'
     .two-col-shadow
   .two-col-container#two-col-container
@@ -12,6 +12,6 @@
         ul.two-col-actions-menu
           = render partial: 'layouts/two_col_actions_menu'
         / .spacer
-    .two-col-content.l-scrollable
+    .two-col-content
       = yield
       .spacer

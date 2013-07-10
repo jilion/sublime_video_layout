@@ -454,14 +454,13 @@ section.features {
 // Two columns layout
 
 .two-col-wrapper {
-  position:relative;
   @include display-box;
+  position:relative;
 }
 
 .two-col-sidebar {
 //  @include box-flex(1);
   width:240px;
-  max-height:800px;
   background:#BBCCE2;
   @media screen and (max-width: 900px) {
     max-height:none;
@@ -547,10 +546,10 @@ section.features {
   background-color:#eef2f6;
   position:relative;
   z-index:1;
-  max-height:800px;
-  @media screen and (max-width: 900px) {
-    max-height:none;
-  }
+//  max-height:800px;
+//  @media screen and (max-width: 900px) {
+//    max-height:none;
+//  }
 }
 
 .two-col-header {
@@ -632,12 +631,12 @@ section.features {
 
 .two-col-content {
   max-width:1000px;
-  max-height:729px;
+//  max-height:729px;
   padding:0 2em 20px;
   font-size:0.9em;
-  @media screen and (max-width: 900px) {
-    max-height:none;
-  }
+//  @media screen and (max-width: 900px) {
+//    max-height:none;
+//  }
   @media screen and (max-width:568px) {
     padding:1em;
   }
