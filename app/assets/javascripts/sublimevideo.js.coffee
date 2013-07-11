@@ -1,7 +1,8 @@
 #= require modernizr
 #= require jquery
 #= require jquery_ujs
-#
+#= require flexie.min
+
 #= require_self
 #= require_tree ./form
 #= require_tree ./media
