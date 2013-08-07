@@ -24,6 +24,8 @@ html
     = javascript_include_tag '//use.typekit.com/ohx8nqt.js'
     = yield :javascript
     = javascript_include_tag 'application'
+    /[if lte IE 9]
+      = javascript_include_tag 'flexie'
     = javascript_tag 'try {Typekit.load();} catch(e) {}'
 
   body
