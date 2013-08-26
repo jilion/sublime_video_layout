@@ -30,6 +30,8 @@ SublimeVideo.UI.updateActiveItemMenus = ->
 
 SublimeVideo.documentReady = ->
   SublimeVideo.Misc.BrowserBugsFixer.fixAllBugs()
+  gapi.plusone.go()
+  $(document).bind 'page:load', -> gapi.plusone.go()
 
   # Only one popup can be opened-up at a time
   SublimeVideo.UI.popup = null

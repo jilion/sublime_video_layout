@@ -10,18 +10,20 @@ html
     meta content="SublimeVideo is the world's first cloud-based HTML5 video player; a universal and pain-free solution that allows video to play flawlessly on any device or browser." property='og:description'
     meta content='469681536424865' property='fb:app_id'
     = yield :meta
-    - if !response.cache_control[:public]
+    - unless response.cache_control[:public]
       = csrf_meta_tag
 
     title= page_title
 
     = yield :css
     = stylesheet_link_tag 'application'
-    = stylesheet_link_tag "//fast.fonts.com/cssapi/408c56a9-a5bb-46f5-b6cf-20bc44f6bd24.css"
+    = stylesheet_link_tag '//fast.fonts.com/cssapi/408c56a9-a5bb-46f5-b6cf-20bc44f6bd24.css'
 
     link rel='shortcut icon' href='http://sublimevideo.net/favicon.ico' type='image/x-icon'
 
     = javascript_include_tag '//use.typekit.com/ohx8nqt.js'
+    script type='text/javascript' src='https://apis.google.com/js/plusone.js' parsetags='explicit'
+
     = yield :javascript
     = javascript_include_tag 'application'
     /[if lte IE 9]
