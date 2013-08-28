@@ -79,7 +79,7 @@ code {
   font-size:0.85em;
 }
 
-input[type=text] {
+input[type=text], textarea {
   @include inline-block;
   min-width:40%;
   padding:0.2em 0.4em;
@@ -96,9 +96,16 @@ input[type=text] {
   @include box-shadow(transparentize($darkblue,0.92) 0 2px 0);
 }
 
-input[type=text]:focus {
+input[type=text]:focus, textarea:focus {
   outline:none;
   border:3px solid transparentize($darkblue,0.6);
+}
+
+textarea {
+  display:block;
+  font-size:1.1em;
+  min-height:7em;
+  margin:0.3em 0;
 }
 
 ::-webkit-input-placeholder {
@@ -115,6 +122,29 @@ input[type=text]:focus {
 
 :-ms-input-placeholder {
    color:#7690B3;
+}
+
+input[type=radio] {
+  @include inline-block;
+  margin:0 0.8em 0 0;
+  position:relative;
+  top:-0.2em;
+}
+
+input[type=file] {
+  display:block;
+  margin:1em 0;
+}
+
+select {
+  min-width:40%;
+  font-size:inherit;
+  font-family:inherit;
+}
+
+label {
+  @include inline-block;
+  margin:0.5em 0 0;
 }
 
 .spacer {
