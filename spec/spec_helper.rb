@@ -1,8 +1,9 @@
 require 'rubygems'
 require 'bundler'
 
-Bundler.require :default, :development, :test
+Bundler.setup :default, :development, :test
 
+require 'combustion'
 require 'capybara/rspec'
 
 Combustion.initialize! :action_controller, :action_view, :sprockets

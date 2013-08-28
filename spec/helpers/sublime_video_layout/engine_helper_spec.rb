@@ -8,7 +8,7 @@ describe SublimeVideoLayout::EngineHelper do
 
   describe ".custom_url" do
     context 'normal domain' do
-      let(:request) { stub(domain: 'example.com', ssl?: false, subdomain: '', port: nil) }
+      let(:request) { double(domain: 'example.com', ssl?: false, subdomain: '', port: nil) }
       before do
         Helper.stub(:request) { request }
         Rails.stub(:env) { 'development' }
@@ -54,7 +54,7 @@ describe SublimeVideoLayout::EngineHelper do
     end
 
     context 'xip.io domain' do
-      let(:request) { stub(domain: 'xip.io', ssl?: false, subdomain: 'example.192.168.0.11', port: nil) }
+      let(:request) { double(domain: 'xip.io', ssl?: false, subdomain: 'example.192.168.0.11', port: nil) }
       before do
         Helper.stub(:request) { request }
         Rails.stub(:env) { 'development' }
@@ -87,11 +87,6 @@ describe SublimeVideoLayout::EngineHelper do
         Helper.custom_url('path').should eq('http://docs.example.192.168.0.11.xip.io/path')
       end
     end
-  end
-
-  describe "sublimevideo_include_tag" do
-    it { Helper.sublimevideo_include_tag(true, 'my').should eq %(<script src="//cdn.sublimevideo.net/js/#{::SiteToken[:my]}.js" type="text/javascript"></script>) }
-    it { Helper.sublimevideo_include_tag(false, :docs).should eq %(<script src="//cdn.sublimevideo.net/js/#{::SiteToken[:docs]}.js" type="text/javascript"></script>) }
   end
 
   describe "sublimevideo_loader_tag" do
