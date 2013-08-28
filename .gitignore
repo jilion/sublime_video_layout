@@ -1,4 +1,3 @@
-.bundle/
 log/*.log
 pkg/
 log/*.log
@@ -7,5 +6,6 @@ tmp/
 tmp
 Gemfile.lock
 doc/*
+!.bundle/
 *.sublime-project
 !.sublime-project
