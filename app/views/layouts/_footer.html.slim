@@ -5,7 +5,6 @@ footer.l-dark
         h5 Product
         ul
           li= link_to 'Features', layout_url('features')
-          li= link_to 'Pricing', layout_url('features#add-ons')
           li= link_to 'Testimonials', layout_url('testimonials')
           li= link_to 'Technology', layout_url('framework')
       nav.footer-col
@@ -13,7 +12,6 @@ footer.l-dark
         ul
           li= link_to 'Documentation', docs_url('')
           li= link_to 'Forum', 'https://getsatisfaction.com/sublimevideo'
-          li= link_to 'Support', layout_url('help')
           li= link_to 'Player Releases', docs_url('releases')
       nav.footer-col
         h5 Company
@@ -22,7 +20,6 @@ footer.l-dark
           li= link_to 'Blog', 'http://blog.jilion.com'
           li= link_to 'News', layout_url('news')
           li= link_to 'Contact', layout_url('contact')
-          / li= link_to 'Jobs', 'http://jilion.com/jobs'
       .spacer
     .footer-text
       p.l-normal
@@ -43,4 +40,4 @@ footer.l-dark
     = link_to 'Terms & Conditions', my_url('terms')
     '  |
     = link_to 'Privacy Policy', my_url('privacy')
-    '  | Copyright © 2013 Jilion® — SublimeVideo and Jilion are registered trademarks.
+    = " | Copyright © #{Time.now.utc.year} Jilion® — SublimeVideo and Jilion are registered trademarks."

@@ -6,7 +6,7 @@ header.l-dark class=@header_class
       span.site-logo-label = @page_category
   .nav.l-inline.main-nav
     ul
-      li= link_to 'Features & Pricing', layout_url('features'), class: ('is-active' if params[:page] == 'features')
+      li= link_to 'Features', layout_url('features'), class: ('is-active' if params[:page] == 'features')
       li.l-popup
         a href="" onclick="return false"
           ' Resources
