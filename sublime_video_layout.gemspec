@@ -19,7 +19,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'jquery-rails'
   s.add_dependency 'jquery-ui-rails'
   s.add_dependency 'coffee-rails'
-  s.add_dependency 'haml'
   s.add_dependency 'slim'
   s.add_dependency 'bourbon'
 end

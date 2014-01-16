@@ -1,4 +1,4 @@
-%h2= params[:page]
+h2= params[:page]
 
 #test_app
   = form_tag '', id: 'user_signup', class: "main_form", data: { remote: true, 'password-protected' => true } do
@@ -15,12 +15,12 @@
     .entry.message
       = label_tag :message, "Description of your issue or question", class: "icon"
       = text_area_tag 'user[message]', "", class: "text", placeholder: "Description of your issue or question", required: true
-    
+
     .entry.select
       .left_field
-        %select
-          %option Foo
-          %option Bar
+        select
+          option Foo
+          option Bar
     .spacer
 
     .break
@@ -34,16 +34,16 @@
       = submit_tag "Sign Up"
       .spacer
 
-  %ul.sticky
-    %li
-      %a{ href: 'a', onclick: 'return false;' } demo
-    %li
-      %a{ href: 'b', onclick: 'return false;' } blog
-    %li
-      %a{ href: 'c', class: 'no_sticky', onclick: 'return false;' } help
+  ul.sticky
+    li
+      a href='a' onclick='return false;' demo
+    li
+      a href='b' onclick='return false;' blog
+    li
+      a href='c' class='no_sticky' onclick='return false;' help
 
-  %a{ href: 'a', class: 'sort sticky', onclick: 'return false;' }
+  a href='a' class='sort sticky' onclick='return false;'
     Sticky
 
-  #table_spinner{ style: 'display:none;' }
+  #table_spinner style='display:none;'
     TABLE SPINNER!!!!!!

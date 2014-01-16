@@ -1,0 +1,80 @@
+doctype html
+html
+  head
+    meta name="Content-Type" content="text/html;charset=UTF-8"
+    title SublimeVideo
+
+    = javascript_include_tag '//use.typekit.com/vcc7hji.js'
+    = javascript_tag 'try {Typekit.load();} catch(e) {}'
+
+    style type="text/css"
+      | * {
+      |   margin:0;
+      |   padding:0;
+      | }
+
+      | html{height:100%}
+
+      | body {
+      |   height:100%;
+      |   font-family:proxima-nova-1, proxima-nova-2, Helvetica, Arial, sans-serif;
+      |   text-rendering:optimizeLegibility;
+      |   color:#4a648e;
+      |   font-size:20px;
+      |   line-height:30px;
+      |   text-shadow:rgba(255,255,255,0.75) 0 1px 0;
+      |   background:#dee4f0;
+      | }
+
+      | #distance{
+      |   float:left;
+      |   width:1px;
+      |   height:50%;
+      |   margin-bottom:-150px
+      | }
+
+      | #global {
+      |   width:390px;
+      |   height:240px;
+      |   margin:0 auto;
+      |   position:relative;
+      |   clear:left;
+      | }
+
+      | h1 {
+      |   display:block;
+      |   width:292px;
+      |   height:41px;
+      |   background:url(#{asset_path 'sublimevideo_maintenance.png'}) no-repeat;
+      | }
+
+      | h1 span {display:none}
+
+      | p {
+      |   padding:30px 0 0;
+      | }
+
+      | p.team {
+      |   padding-top:15px;
+      |   font-size:17px;
+      | }
+
+      | a {
+      |   text-decoration:none;
+      |   color:#00a1cf;
+      | }
+
+  body
+    #distance
+    #global
+      h1
+        span SublimeVideo
+      p
+        ' We'll be back soon with something big. Keep an eye on
+        a href="http://twitter.com/jilion" onclick="window.open(this); return false" @jilion
+        |  to stay informed.
+      p
+        ' If you have any questions, please send an email to
+        a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#115;&#117;&#98;&#108;&#105;&#109;&#101;&#118;&#105;&#100;&#101;&#111;&#46;&#110;&#101;&#116;" &#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#115;&#117;&#98;&#108;&#105;&#109;&#101;&#118;&#105;&#100;&#101;&#111;&#46;&#110;&#101;&#116;
+        ' .
+      p.team —The SublimeVideo Team
