@@ -1,6 +1,5 @@
 require 'rails'
 require 'jquery-rails'
-require 'haml'
 require 'slim'
 require 'bourbon'
 

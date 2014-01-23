@@ -6,9 +6,9 @@ group :backend do
 
     # Rails example
     watch(%r{^app/(.+)\.rb$})                           { |m| "spec/#{m[1]}_spec.rb" }
-    watch(%r{^app/(.*)(\.erb|\.haml)$})                 { |m| "spec/#{m[1]}#{m[2]}_spec.rb" }
+    watch(%r{^app/(.*)(\.erb|\.slim)$})                 { |m| "spec/#{m[1]}#{m[2]}_spec.rb" }
     # Capybara request specs
-    watch(%r{^app/views/(.+)/.*\.(erb|haml)$})          { |m| "spec/integration/#{m[1]}_spec.rb" }
+    watch(%r{^app/views/(.+)/.*\.(slim)$})          { |m| "spec/integration/#{m[1]}_spec.rb" }
   end
 end
 
@@ -28,7 +28,7 @@ group :frontend do
   end
 
   guard :livereload, host: 'sublime-video-layout.dev' do
-    watch(%r{(app|spec/internal/app)/views/.+\.(erb|haml|slim)})
+    watch(%r{(app|spec/internal/app)/views/.+\.(slim)})
     watch(%r{(app|spec/internal/app)/helpers/.+\.rb})
     watch(%r{spec/internal/public/.+\.(css|js|html)})
     # Rails Assets Pipeline
