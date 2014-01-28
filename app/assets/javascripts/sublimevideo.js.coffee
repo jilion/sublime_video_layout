@@ -1,4 +1,5 @@
 #= require modernizr
+#= require snap.min
 #= require jquery
 #= require jquery_ujs
 
