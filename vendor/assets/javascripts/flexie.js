@@ -100,8 +100,8 @@ var Flexie = (function (win, doc) {
       LIBRARY,
 
       // Regular Expressions
-      PIXEL = /^\\-?\d+(?:px)?$/i,
-      NUMBER = /^\\-?\d/,
+      PIXEL = /^-?\d+(?:px)?$/i,
+      NUMBER = /^-?\d/,
       SIZES = /width|height|margin|padding|border/,
       MSIE = /(msie) ([\w.]+)/,
       WHITESPACE_CHARACTERS = /\t|\n|\r/g,
@@ -647,6 +647,8 @@ var Flexie = (function (win, doc) {
 
                 switch (key) {
                 case "selector" :
+                  console.log('value ' + value);
+                  console.log('match[key] ' + match[key]);
                   if (value && !(new RegExp(value).test(match[key]))) {
                     match[key] += ", " + value;
                   }
