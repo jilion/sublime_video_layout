@@ -5,10 +5,6 @@ require 'bourbon'
 
 module SublimeVideoLayout
   class Engine < ::Rails::Engine
-    initializer 'assets' do |app|
-      # Should be duplicated to application when initialize_on_precompile is false
-      # app.config.assets.precompile += %w[errors.css ie.css flexie.js]
-    end
     initializer 'static assets' do |app|
       app.middleware.insert_before ::Rack::Runtime, ::ActionDispatch::Static, "#{root}/public"
     end

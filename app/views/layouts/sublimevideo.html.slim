@@ -9,7 +9,7 @@ html
     meta content='http://media.jilion.s3.amazonaws.com/facebook/sublimevideo_facebook.png' property='og:image'
     meta content="SublimeVideo is the world's first cloud-based HTML5 video player; a universal and pain-free solution that allows video to play flawlessly on any device or browser." property='og:description'
     meta content='469681536424865' property='fb:app_id'
-    /[if lte IE 8]
+    /[if lte IE 9]
       meta content="0;url=http://browsehappy.com" http-equiv="Refresh"
 
     = yield :meta
@@ -21,8 +21,6 @@ html
     = yield :css
     = stylesheet_link_tag 'application'
     = stylesheet_link_tag '//fast.fonts.com/cssapi/408c56a9-a5bb-46f5-b6cf-20bc44f6bd24.css'
-    /[if lte IE 9]
-      = stylesheet_link_tag 'ie'
 
     link rel='shortcut icon' href='http://sublimevideo.net/favicon.ico' type='image/x-icon'
 
@@ -31,8 +29,6 @@ html
 
     = yield :javascript
     = javascript_include_tag 'application'
-    /[if lte IE 9]
-      = javascript_include_tag 'flexie'
     = javascript_tag 'try {Typekit.load();} catch(e) {}'
 
   body
