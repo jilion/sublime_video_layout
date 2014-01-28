@@ -647,7 +647,7 @@ var Flexie = (function (win, doc) {
 
                 switch (key) {
                 case "selector" :
-                  value = value.replace('-', '\\-')
+                  value = value.replace('-', '\\-');
                   if (value && !(new RegExp(value).test(match[key]))) {
                     match[key] += ", " + value;
                   }
