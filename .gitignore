@@ -9,3 +9,5 @@ Gemfile.lock
 doc/*
 *.sublime-project
 !.sublime-project
+
+*.gem
