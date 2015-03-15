@@ -24,19 +24,26 @@ body {
   top:-76px;
   left:0;
   right:0;
-  background:url(<%= asset_path "dm_banner_bg.png" %>) repeat-x;
+  text-align:center;
+  background-color: #f66929;
 }
 
 #dm_banner a {
-  display:block;
-  margin:0 auto;
-  width:569px;
-  height:76px;
-  background:url(<%= asset_path "dm_banner.png" %>) no-repeat;
+  display:inline-block;
+  line-height:70px;
+  width:410px;
+}
+
+#dm_banner a img {
+  float: left;
+  width:146px;
 }
 
 #dm_banner h2 {
-  display:none;
+  float: left;
+  color: white;
+  width:264px;
+  font-size: 2em;
 }
 
 header {
